@@ -14,6 +14,8 @@
 	<!--[if IE 6]>
 		{{ HTML::style('css/ie6.css') }}
 	<![endif]-->
+
+	{{ HTML::style('css/bootstrap.css') }}
 </head>
 <body>
 	<div id="header">
@@ -36,6 +38,8 @@
 	<div id="content">
 		@yield('content')
 	</div>
-	@include('layout.footer');
+	@include('layout.footer')
+	{{ HTML::script('js/jquery-1.9.0.js') }}
+	{{ HTML::script('js/bootstrap.js') }}
 </body>
 </html>
