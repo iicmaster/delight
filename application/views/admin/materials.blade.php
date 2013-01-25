@@ -11,10 +11,10 @@ Supplier
      
     <!-- Create Modal -->
     <div id="create-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		{{ Form::open('admin/suppliers/create', '', array('class' => 'form-horizontal')); }}
+		{{ Form::open('admin/materials/create', '', array('class' => 'form-horizontal')); }}
 	    <div class="modal-header">
 		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-		    <h3 id="myModalLabel">Supplier</h3>
+		    <h3 id="myModalLabel">Material</h3>
 	    </div>
 	    <div class="modal-body">
 			    <div class="control-group">
@@ -55,7 +55,7 @@ Supplier
 	    {{ Form::close() }}
     </div>
 
-	<h1>Suppliers</h1>	
+	<h1>Materials</h1>	
 	<hr>    
 
 	<!-- Report Message -->
@@ -69,7 +69,7 @@ Supplier
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>#</th>w
+				<th>#</th>
 				<th>Name</th>
 				<th>Address</th>
 				<th>Tel</th>
@@ -79,7 +79,7 @@ Supplier
 			</tr>
 		</thead>
 		<tbody>
-			@forelse ($suppliers->results as $supplier)
+			@forelse ($materials->results as $supplier)
 			<tr>
 				<td>{{ $supplier->id }}</td>
 				<td>{{ $supplier->name }}</td>
@@ -89,9 +89,9 @@ Supplier
 				<td>{{ $supplier->contact_tel }}</td>
 				<td>
 					<a href="#create-update-{{ $supplier->id }}" role="button" class="btn" data-toggle="modal"><i class="icon-pencil"></i></a>
-					<a href="/admin/suppliers/delete/{{ $supplier->id }}" role="button" class="btn"><i class="icon-trash"></i></a>
+					<a href="/admin/materials/delete/{{ $supplier->id }}" role="button" class="btn"><i class="icon-trash"></i></a>
 				    <div id="create-update-{{ $supplier->id }}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						{{ Form::open('admin/suppliers/update/'.$supplier->id, '', array('class' => 'form-horizontal')) }}
+						{{ Form::open('admin/materials/update/'.$supplier->id, '', array('class' => 'form-horizontal')) }}
 					    <div class="modal-header">
 						    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 						    <h3 id="myModalLabel">{{ $supplier->name }}</h3>
@@ -141,6 +141,6 @@ Supplier
 			@endforelse
 		</tbody>
 	</table>
-    {{ $suppliers->links() }}
+    {{ $materials->links() }}
 </div>
 @endsection

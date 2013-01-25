@@ -8,7 +8,7 @@
 	</li>
 	<li><a href="#">Material</a>
 		<ul style="margin-left: -132.5px">
-			<li>วัตถุดิบทั้งหมด</li>
+			<li>{{ HTML::link('admin/materials', 'วัตถุดิบทั้งหมด') }}</li>
 			<li>วัตถุดิบที่แนะนำให้ซื้อเพิ่ม</li>
 			<li>สั่งซื้อวัตถุดิบ</li>
 			<li>ใบสั่งซื้อวัตถุดิบ</li>

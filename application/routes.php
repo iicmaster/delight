@@ -37,7 +37,19 @@ Route::get('/', function()
 	return View::make('home.index');
 });
 
-Route::controller(Controller::detect());
+Route::controller(array(
+	'admin.auth'
+));
+
+Route::group(array('before' => 'auth'), function()
+{
+	Route::controller(array(
+		'admin.home',
+		'admin.users',
+		'admin.suppliers',
+		'admin.materials',
+	));
+});
 
 /*
 |--------------------------------------------------------------------------
@@ -109,5 +121,5 @@ Route::filter('csrf', function()
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::to('login');
+	if (Auth::guest()) return Redirect::to('admin/auth/login');
 });

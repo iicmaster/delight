@@ -1,5 +1,5 @@
 /* -------------------------------------------------------------------------- */
-/* Utilities Class */
+/* utilities Class */
 /* -------------------------------------------------------------------------- */
 
 .center { text-align: center; }
@@ -134,7 +134,7 @@ p a {
 		position: relative;
 	}
 
-	#header div ul li a {
+	#header div > ul > li > a {
 		background: url(../img/sprite-buttons.gif) no-repeat 0 -205px;
 		color: #5b5c5e;
 		display: block;
@@ -173,6 +173,12 @@ p a {
 	#header div ul > li:hover > ul > li {
 		display: inline-block;
 		padding: 0 10px
+	}
+	
+	#header div ul > li:hover > ul > li > a {
+		color: #FFF;
+		text-decoration: none;
+		text-shadow: none;
 	}
 
 	#header div div#section, 
@@ -629,13 +635,13 @@ p a {
 	    width: 341px;
 	}
 
-	#content div form textarea {
+/*	#content div form textarea {
 		background: #fff;
 		border: 1px solid #cccccc;
 		height: 350px;
 		padding: 5px;
 		width: 890px;
-	}
+	}*/
 
 	#content div form input.submit {
 		background: url(../img/sprite-buttons.gif) no-repeat 0 -411px;
@@ -1257,4 +1263,8 @@ p a {
 
 	.table td.center {
 		text-align: center
+	}
+
+	.modal form {
+		margin: 0px;
 	}
