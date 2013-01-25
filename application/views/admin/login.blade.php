@@ -19,13 +19,13 @@ Login
         </div>
     @endif
 
-    <h1>Login</h1>   
+    <h1>{{ __('admin.login') }}</h1>   
     <hr>    
     {{ Form::open('admin/auth/validate', 'POST', array('class' => 'form-horizontal')) }}
         <div class="control-group">
-            <label class="control-label" for="inputEmail">Email</label>
+            <label class="control-label" for="inputUsername">Username</label>
             <div class="controls">
-                <input type="text" name="username" id="inputEmail" placeholder="Email">
+                <input type="text" name="username" id="inputUsername" placeholder="Username">
             </div>
         </div>
         <div class="control-group">

@@ -28,8 +28,7 @@ class Admin_Auth_Controller extends Base_Controller
 	    if (Auth::attempt($credentials)) {
 	    	return Redirect::to('admin/home');
 	    } else {
-	    	$data['message'] = 'Incurrect Username / Password';
-	    	return Redirect::to('admin/auth/login', $data);
+	    	return Redirect::to('admin/auth/login')->with('message', __('admin.message_invalid_login'));
 	    }
 	}
 

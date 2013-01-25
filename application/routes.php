@@ -126,5 +126,5 @@ Route::filter('auth', function()
 
 Route::filter('admin_auth', function()
 {
-	if (Auth::guest()) return Redirect::to('admin/auth/login')->with('message', 'Please login.');
+	if (Auth::guest()) return Redirect::to('admin/auth/login')->with('message', __('admin.message_please_login'));
 });
