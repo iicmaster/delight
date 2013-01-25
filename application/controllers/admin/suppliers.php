@@ -1,0 +1,39 @@
+<?php
+
+class Admin_Suppliers_Controller extends Base_Controller 
+{
+	public function action_index()
+	{
+		$data['result'] = Session::get('result');
+		$data['suppliers'] = Supplier::paginate(Config::get('admin.row_per_page'));
+		return View::make('admin.suppliers', $data);
+	}
+
+	// --------------------------------------------------------------------------
+
+	public function action_create()
+	{    
+		$input = Input::get();
+		$result = Supplier::create($input) ? 'Create data success' : false;
+		return Redirect::to_action('admin.suppliers@index')->with('result', $result);
+	}
+	
+	// --------------------------------------------------------------------------
+
+	public function action_update($id)
+	{    
+		$input = Input::get();
+		$result = Supplier::where('id', '=', $id)->update($input) ? 'Update data success' : false;
+		return Redirect::to_action('admin.suppliers@index')->with('result', $result);
+	}
+	
+	// --------------------------------------------------------------------------
+
+	public function action_delete($id)
+	{    
+		$result = Supplier::where('id', '=', $id)->delete() ? 'Delete data success' : false;
+		return Redirect::to_action('admin.suppliers@index')->with('result', $result);
+	}
+	
+	// --------------------------------------------------------------------------
+}

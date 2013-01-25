@@ -9,9 +9,9 @@ Supplier
 	<!-- Button to trigger modal -->
     <a href="#create-modal" role="button" class="btn" data-toggle="modal" style="float:right"><i class="icon-plus"></i> New</a>
      
-    <!-- Modal -->
+    <!-- Create Modal -->
     <div id="create-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		{{ Form::open('admin/supplier', '', array('class' => 'form-horizontal')); }}
+		{{ Form::open('admin/suppliers/create', '', array('class' => 'form-horizontal')); }}
 	    <div class="modal-header">
 		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 		    <h3 id="myModalLabel">Supplier</h3>
@@ -57,10 +57,12 @@ Supplier
 
 	<h1>Supplier</h1>	
 	<hr>    
-	@if ($result !== false)
+
+	<!-- Report Message -->
+	@if ($result !== false and ! is_null($result))
 		<div class="alert alert-success">
 			<button class="close" data-dismiss="alert" type="button">×</button>
-			{{ $result_action }} data success.
+			{{ $result }}
 		</div>
 	@endif
 
@@ -77,7 +79,7 @@ Supplier
 			</tr>
 		</thead>
 		<tbody>
-			@foreach ($suppliers as $supplier)
+			@forelse ($suppliers->results as $supplier)
 			<tr>
 				<td>{{ $supplier->id }}</td>
 				<td>{{ $supplier->name }}</td>
@@ -87,9 +89,9 @@ Supplier
 				<td>{{ $supplier->contact_tel }}</td>
 				<td>
 					<a href="#create-update-{{ $supplier->id }}" role="button" class="btn" data-toggle="modal"><i class="icon-pencil"></i></a>
-					<a href="/admin/supplier/delete/{{ $supplier->id }}" role="button" class="btn"><i class="icon-trash"></i></a>
+					<a href="/admin/suppliers/delete/{{ $supplier->id }}" role="button" class="btn"><i class="icon-trash"></i></a>
 				    <div id="create-update-{{ $supplier->id }}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						{{ Form::open('admin/supplier/update/'.$supplier->id, '', array('class' => 'form-horizontal')) }}
+						{{ Form::open('admin/suppliers/update/'.$supplier->id, '', array('class' => 'form-horizontal')) }}
 					    <div class="modal-header">
 						    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 						    <h3 id="myModalLabel">{{ $supplier->name }}</h3>
@@ -131,21 +133,14 @@ Supplier
 						    <input type="submit" class="btn btn-primary" value="Save changes" />
 					    </div>
 	    				{{ Form::close() }}
-    </div>
+    				</div>
 				</td>
 			</tr>
-			@endforeach
+			@empty
+			<tr><td colspan="7" class="center">No result found.</td></tr>
+			@endforelse
 		</tbody>
 	</table>
-    <div class="pagination pagination-centered">
-	    <ul>
-		    <li><a href="#">Prev</a></li>
-		    <li><a href="#">1</a></li>
-		    <li><a href="#">2</a></li>
-		    <li><a href="#">3</a></li>
-		    <li><a href="#">4</a></li>
-		    <li><a href="#">Next</a></li>
-	    </ul>
-    </div>
+    {{ $suppliers->links() }}
 </div>
 @endsection
