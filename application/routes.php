@@ -41,7 +41,7 @@ Route::controller(array(
 	'admin.auth'
 ));
 
-Route::group(array('before' => 'auth'), function()
+Route::group(array('before' => 'admin_auth'), function()
 {
 	Route::controller(array(
 		'admin.home',
@@ -121,5 +121,10 @@ Route::filter('csrf', function()
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::to('admin/auth/login');
+	if (Auth::guest()) return Redirect::to('login');
+});
+
+Route::filter('admin_auth', function()
+{
+	if (Auth::guest()) return Redirect::to('admin/auth/login')->with('message', 'Please login.');
 });

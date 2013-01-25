@@ -11,8 +11,6 @@ Login
 
 @section('content')
 <div id="auth-login">
-    <h1>Login</h1>   
-    <hr>    
     <!-- Report Message -->
     @if (isset($message))
         <div class="alert alert-error">
@@ -20,6 +18,9 @@ Login
             {{ $message }}
         </div>
     @endif
+
+    <h1>Login</h1>   
+    <hr>    
     {{ Form::open('admin/auth/validate', 'POST', array('class' => 'form-horizontal')) }}
         <div class="control-group">
             <label class="control-label" for="inputEmail">Email</label>
@@ -35,7 +36,7 @@ Login
         </div>
         <div class="control-group">
             <div class="controls">
-                <button type="submit" class="btn">Login</button>
+                <button type="submit" class="btn">{{ __('admin.login') }}</button>
             </div>
         </div>
     {{ Form::close() }}

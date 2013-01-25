@@ -2,7 +2,7 @@
 	<div class="navbar-inner">
 		<div style="width: auto;" class="container">
 			<ul role="navigation" class="nav">
-				<li class="dropdown"><a href="index.php">Home</a></li>
+				<li class="dropdown"><a href="/admin/home">Home</a></li>
 				<li class="dropdown">
 					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Location <b class="caret"></b></a>
 					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
@@ -47,11 +47,13 @@
 					</ul>
 				</li>
 			</ul>
-			<ul class="nav pull-right">
-				<li  id="fat-menu">
-					<a role="button" href="/admin/auth/logout">Logout</a>
-				</li>
-			</ul>
+			@if (Auth::check())
+				<ul class="nav pull-right">
+					<li  id="fat-menu">
+						<a role="button" href="/admin/auth/logout">{{ __('admin.logout') }}</a>
+					</li>
+				</ul>
+			@endif
 		</div>
 	</div>
 </div>
