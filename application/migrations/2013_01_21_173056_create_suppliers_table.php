@@ -17,6 +17,6 @@ class Create_Suppliers_Table
 
 	public function down()
     {
-		Schema::drop('supplier');
+		Schema::drop('suppliers');
     }
 }

@@ -19,6 +19,6 @@ class Create_Materials_Table
 
 	public function down()
     {
-		Schema::drop('material');
+		Schema::drop('materials');
     }
 }

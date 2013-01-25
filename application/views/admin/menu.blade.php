@@ -1,39 +1,57 @@
-<ul>
-	<li class="current"><a href="index.php">Home</a></li>
-	<li><a href="#">Location</a>
-		<ul style="margin-left: -32.5px">
-			<li>สถานที่จักส่งทั้งหมด</li>
-			<li>เพิ่มสถานที่จักส่ง</li>
-		</ul>				
-	</li>
-	<li><a href="#">Material</a>
-		<ul style="margin-left: -132.5px">
-			<li>{{ HTML::link('admin/materials', 'วัตถุดิบทั้งหมด') }}</li>
-			<li>วัตถุดิบที่แนะนำให้ซื้อเพิ่ม</li>
-			<li>สั่งซื้อวัตถุดิบ</li>
-			<li>ใบสั่งซื้อวัตถุดิบ</li>
-			<li>{{ HTML::link('admin/suppliers', 'ผู้จำหน่ายวัดถุดิบ') }}</li>
-		</ul>
-	</li>
-	<li><a href="#">Product</a>
-		<ul style="margin-left: -7.5px">
-			<li>สินค้าทั้งหมด</li>
-			<li>เพิ่มชนิดสินค้า</li>
-		</ul>
-	</li>
-	<li><a href="#">Menufacturing</a>
-		<ul style="margin-left: -8px">
-			<li>ผลิตสินค้า</li>
-			<li>รายการผลิตสินค้า</li>
-		</ul>
-	</li>
-	<li><a href="#">Report</a>
-		<ul style="right: 0px">
-			<li>รายงาน</li>
-			<li>รายงาน</li>
-			<li>รายงาน</li>
-			<li>รายงาน</li>
-			<li>รายงาน</li>
-		</ul>				
-	</li>
-</ul>
+<div class="navbar navbar-static">
+	<div class="navbar-inner">
+		<div style="width: auto;" class="container">
+			<ul role="navigation" class="nav">
+				<li class="dropdown"><a href="index.php">Home</a></li>
+				<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Location <b class="caret"></b></a>
+					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
+						<li>{{ HTML::link('#', 'สถานที่จักส่งทั้งหมด') }}</li>
+						<li>{{ HTML::link('#', 'เพิ่มสถานที่จักส่ง') }}</li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Material <b class="caret"></b></a>
+					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
+						<li>{{ HTML::link('admin/materials', 'วัตถุดิบทั้งหมด') }}</li>
+						<li>{{ HTML::link('#', 'วัตถุดิบที่แนะนำให้ซื้อเพิ่ม') }}</li>
+						<li>{{ HTML::link('#', 'สั่งซื้อวัตถุดิบ') }}</li>
+						<li>{{ HTML::link('#', 'ใบสั่งซื้อวัตถุดิบ') }}</li>
+						<li>{{ HTML::link('admin/suppliers', 'ผู้จำหน่ายวัดถุดิบ') }}</li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Product <b class="caret"></b></a>
+					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
+						<li>{{ HTML::link('#', 'สินค้าทั้งหมด') }}</li>
+						<li>{{ HTML::link('#', 'เพิ่มชนิดสินค้า') }}</li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Menufacturing <b class="caret"></b></a>
+					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
+						<li>{{ HTML::link('#', 'ผลิตสินค้า') }}</li>
+						<li>{{ HTML::link('#', 'รายการผลิตสินค้า') }}</li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Users <b class="caret"></b></a>
+					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
+						<li>{{ HTML::link('/admin/users', 'Users') }}</li>
+					</ul>
+				</li>
+				<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Report <b class="caret"></b></a>
+					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
+						<li>{{ HTML::link('#', 'รายงาน') }}</li>
+					</ul>
+				</li>
+			</ul>
+			<ul class="nav pull-right">
+				<li  id="fat-menu">
+					<a role="button" href="/admin/auth/logout">Logout</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>

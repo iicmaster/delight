@@ -3,6 +3,8 @@
 /* -------------------------------------------------------------------------- */
 
 .center { text-align: center; }
+.left { text-align: left; }
+.right { text-align: right; }
 .clear { clear: both; }
 
 /* -------------------------------------------------------------------------- */
@@ -38,7 +40,7 @@ p a {
 
 	#header {
 		background: #f5f5f5 url(../img/bg-body.gif) repeat-x center top;
-		border-bottom: 30px solid #6A3E4F;
+		/*border-bottom: 30px solid #6A3E4F;*/
 	}
 
 	#header .warper {
@@ -239,6 +241,17 @@ p a {
 	#header div div#section img {
 		float: right;
 	}
+/* -------------------------------------------------------------------------- */
+/* Navigation */
+/* -------------------------------------------------------------------------- */
+
+#nav .navbar {
+	margin: 0;
+}
+
+#nav .navbar-inner {
+	border-radius: 0px;
+}
 
 /* -------------------------------------------------------------------------- */
 /* Content */
@@ -247,6 +260,7 @@ p a {
 	#content {
 		background: #f5f5f5;
 		height: auto;
+		padding-top: 16px;
 		width: 100%;
 	}
 
@@ -1254,8 +1268,12 @@ p a {
 	}
 
 /* -------------------------------------------------------------------------- */
-/* Fiexd Bootstarp */
+/* Overwrite Bootstarp */
 /* -------------------------------------------------------------------------- */
+
+	#content hr {
+		margin: 0;
+	}
 
 	#content .pagination ul li {
 		float: none;
@@ -1264,7 +1282,17 @@ p a {
 	.table td.center {
 		text-align: center
 	}
+	.table td.left {
+		text-align: left
+	}
+	.table td.right {
+		text-align: right
+	}
 
 	.modal form {
 		margin: 0px;
+	}
+
+	.modal-header h3 {
+		font-weight: normal;
 	}

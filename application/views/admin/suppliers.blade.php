@@ -59,17 +59,17 @@ Supplier
 	<hr>    
 
 	<!-- Report Message -->
-	@if ($result !== false and ! is_null($result))
+	@if ($report_message !== false and ! is_null($report_message))
 		<div class="alert alert-success">
 			<button class="close" data-dismiss="alert" type="button">×</button>
-			{{ $result }}
+			{{ $report_message }}
 		</div>
 	@endif
 
 	<table class="table table-hover">
 		<thead>
 			<tr>
-				<th>#</th>w
+				<th>#</th>
 				<th>Name</th>
 				<th>Address</th>
 				<th>Tel</th>
@@ -79,52 +79,52 @@ Supplier
 			</tr>
 		</thead>
 		<tbody>
-			@forelse ($suppliers->results as $supplier)
+			@forelse ($query->results as $data)
 			<tr>
-				<td>{{ $supplier->id }}</td>
-				<td>{{ $supplier->name }}</td>
-				<td>{{ $supplier->address }}</td>
-				<td>{{ $supplier->tel }}</td>
-				<td>{{ $supplier->contact }}</td>
-				<td>{{ $supplier->contact_tel }}</td>
+				<td>{{ $data->id }}</td>
+				<td>{{ $data->name }}</td>
+				<td>{{ $data->address }}</td>
+				<td>{{ $data->tel }}</td>
+				<td>{{ $data->contact }}</td>
+				<td>{{ $data->contact_tel }}</td>
 				<td>
-					<a href="#create-update-{{ $supplier->id }}" role="button" class="btn" data-toggle="modal"><i class="icon-pencil"></i></a>
-					<a href="/admin/suppliers/delete/{{ $supplier->id }}" role="button" class="btn"><i class="icon-trash"></i></a>
-				    <div id="create-update-{{ $supplier->id }}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						{{ Form::open('admin/suppliers/update/'.$supplier->id, '', array('class' => 'form-horizontal')) }}
+					<a href="#create-update-{{ $data->id }}" role="button" class="btn" data-toggle="modal"><i class="icon-pencil"></i></a>
+					<a href="/admin/suppliers/delete/{{ $data->id }}" role="button" class="btn"><i class="icon-trash"></i></a>
+				    <div id="create-update-{{ $data->id }}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						{{ Form::open('admin/suppliers/update/'.$data->id, '', array('class' => 'form-horizontal')) }}
 					    <div class="modal-header">
 						    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						    <h3 id="myModalLabel">{{ $supplier->name }}</h3>
+						    <h3 id="myModalLabel">{{ $data->name }}</h3>
 					    </div>
 					    <div class="modal-body">
 							    <div class="control-group">
 								    <label class="control-label" for="inputName">Name</label>
 								    <div class="controls">
-								    	<input type="text" id="inputName" placeholder="Name" name="name" value="{{ $supplier->name }}">
+								    	<input type="text" id="inputName" placeholder="Name" name="name" value="{{ $data->name }}">
 							    	</div>
 							    </div>
 							    <div class="control-group">
 								    <label class="control-label" for="inputAddress">Address</label>
 								    <div class="controls">
-								    	<input type="text" id="inputAddress" placeholder="Address" name="address" value="{{ $supplier->address }}">
+								    	<input type="text" id="inputAddress" placeholder="Address" name="address" value="{{ $data->address }}">
 							    	</div>
 							    </div>
 							    <div class="control-group">
 								    <label class="control-label" for="inputTel">Tel</label>
 								    <div class="controls">
-								    	<input type="text" id="inputTel" placeholder="Tel" name="tel" value="{{ $supplier->tel }}">
+								    	<input type="text" id="inputTel" placeholder="Tel" name="tel" value="{{ $data->tel }}">
 							    	</div>
 							    </div>
 							    <div class="control-group">
 								    <label class="control-label" for="inputContact">Contact</label>
 								    <div class="controls">
-								    	<input type="text" id="inputContact" placeholder="Contact" name="contact" value="{{ $supplier->contact }}">
+								    	<input type="text" id="inputContact" placeholder="Contact" name="contact" value="{{ $data->contact }}">
 							    	</div>
 							    </div>
 							    <div class="control-group">
 								    <label class="control-label" for="inputContact Tel">Contact Tel</label>
 								    <div class="controls">
-								    	<input type="text" id="inputContact Tel" placeholder="Contact Tel" name="contact_tel" value="{{ $supplier->contact_tel }}">
+								    	<input type="text" id="inputContact Tel" placeholder="Contact Tel" name="contact_tel" value="{{ $data->contact_tel }}">
 							    	</div>
 							    </div>
 					    </div>
@@ -141,6 +141,6 @@ Supplier
 			@endforelse
 		</tbody>
 	</table>
-    {{ $suppliers->links() }}
+    {{ $query->links() }}
 </div>
 @endsection

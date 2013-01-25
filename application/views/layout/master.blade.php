@@ -26,22 +26,13 @@
 				<div id="logo">
 					<a href="index.php">{{ HTML::image('img/logo.gif', 'Logo') }}</a>
 				</div>
-				<div>
-					<div>
-					@if (Auth::check())
-						<!-- <a href="signup.php">My Account</a> -->
-						<a href="/admin/auth/logout" class="last">Logout</a>
-						{{--expr
-					@else
-						<a href="/admin/auth/login" class="last">Login</a>
-					@endif
-					</div>
-				</div>
 			</div>
-			@yield('menu')
-			<div class="clear"></div>
 		</div>
 	</div>
+	<nav id="nav">
+		@yield('menu')
+	</nav>
+
 	<div id="content">
 		@yield('content')
 	</div>

@@ -4,8 +4,8 @@ class Admin_Materials_Controller extends Base_Controller
 {
 	public function action_index()
 	{
-		$data['result'] = Session::get('result');
-		$data['materials'] = Material::paginate(Config::get('admin.row_per_page'));
+		$data['report_message'] = Session::get('result');
+		$data['query'] = Material::paginate(Config::get('admin.row_per_page'));
 		return View::make('admin.materials', $data);
 	}
 

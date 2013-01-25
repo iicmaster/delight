@@ -24,33 +24,32 @@ Supplier
 			    	</div>
 			    </div>
 			    <div class="control-group">
-				    <label class="control-label" for="inputAddress">Address</label>
+				    <label class="control-label" for="inputTotal">Total</label>
 				    <div class="controls">
-				    	<input type="text" id="inputAddress" placeholder="Address" name="address">
+				    	<input type="text" id="inputTotal" placeholder="Total" name="total">
 			    	</div>
 			    </div>
 			    <div class="control-group">
-				    <label class="control-label" for="inputTel">Tel</label>
+				    <label class="control-label" for="inputUnit">Unit</label>
 				    <div class="controls">
-				    	<input type="text" id="inputTel" placeholder="Tel" name="tel">
+				    	<input type="text" id="inputUnit" placeholder="Unit" name="unit">
 			    	</div>
 			    </div>
 			    <div class="control-group">
-				    <label class="control-label" for="inputContact">Contact</label>
+				    <label class="control-label" for="inputMin Stock">Min Stock</label>
 				    <div class="controls">
-				    	<input type="text" id="inputContact" placeholder="Contact" name="contact">
+				    	<input type="text" id="inputMin Stock" placeholder="Min Stock" name="min_Stock">
 			    	</div>
 			    </div>
 			    <div class="control-group">
-				    <label class="control-label" for="inputContact Tel">Contact Tel</label>
+				    <label class="control-label" for="inputMax Stock">Max Stock</label>
 				    <div class="controls">
-				    	<input type="text" id="inputContact Tel" placeholder="Contact Tel" name="contact_tel">
+				    	<input type="text" id="inputMax Stock" placeholder="Max Stock" name="max_stock">
 			    	</div>
 			    </div>
 	    </div>
 	    <div class="modal-footer">
-		    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-		    <input type="submit" class="btn btn-primary" value="Save changes" />
+		    <input type="submit" class="btn btn-primary" value="Save" />
 	    </div>
 	    {{ Form::close() }}
     </div>
@@ -59,10 +58,10 @@ Supplier
 	<hr>    
 
 	<!-- Report Message -->
-	@if ($result !== false and ! is_null($result))
+	@if ($report_message !== false and ! is_null($report_message))
 		<div class="alert alert-success">
 			<button class="close" data-dismiss="alert" type="button">×</button>
-			{{ $result }}
+			{{ $report_message }}
 		</div>
 	@endif
 
@@ -71,66 +70,66 @@ Supplier
 			<tr>
 				<th>#</th>
 				<th>Name</th>
-				<th>Address</th>
-				<th>Tel</th>
-				<th>Contact</th>
-				<th>Contact Tel</th>
-				<th>Action</th>
+				<th>Total</th>
+				<th>Min Stock</th>
+				<th>Max Stock</th>
+				<th>Unit</th>
+				<th></th>
 			</tr>
 		</thead>
 		<tbody>
-			@forelse ($materials->results as $supplier)
+			@forelse ($query->results as $data)
 			<tr>
-				<td>{{ $supplier->id }}</td>
-				<td>{{ $supplier->name }}</td>
-				<td>{{ $supplier->address }}</td>
-				<td>{{ $supplier->tel }}</td>
-				<td>{{ $supplier->contact }}</td>
-				<td>{{ $supplier->contact_tel }}</td>
-				<td>
-					<a href="#create-update-{{ $supplier->id }}" role="button" class="btn" data-toggle="modal"><i class="icon-pencil"></i></a>
-					<a href="/admin/materials/delete/{{ $supplier->id }}" role="button" class="btn"><i class="icon-trash"></i></a>
-				    <div id="create-update-{{ $supplier->id }}" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						{{ Form::open('admin/materials/update/'.$supplier->id, '', array('class' => 'form-horizontal')) }}
+				<td>{{ $data->id }}</td>
+				<td>{{ $data->name }}</td>
+				<td>{{ $data->total }}</td>
+				<td>{{ $data->min_stock }}</td>
+				<td>{{ $data->max_stock }}</td>
+				<td>{{ $data->unit }}</td>
+				<td class="right">
+					<a href="#create-update-{{ $data->id }}" role="button" class="btn" data-toggle="modal"><i class="icon-pencil"></i></a>
+					<a href="/admin/materials/delete/{{ $data->id }}" role="button" class="btn"><i class="icon-trash"></i></a>
+
+				    <div id="create-update-{{ $data->id }}" class="modal hide fade left" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+						{{ Form::open('admin/materials/update/'.$data->id, '', array('class' => 'form-horizontal')) }}
 					    <div class="modal-header">
 						    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-						    <h3 id="myModalLabel">{{ $supplier->name }}</h3>
+						    <h3 id="myModalLabel">{{ $data->name }}</h3>
 					    </div>
 					    <div class="modal-body">
 							    <div class="control-group">
 								    <label class="control-label" for="inputName">Name</label>
 								    <div class="controls">
-								    	<input type="text" id="inputName" placeholder="Name" name="name" value="{{ $supplier->name }}">
+								    	<input type="text" id="inputName" placeholder="Name" name="name" value="{{ $data->name }}">
 							    	</div>
 							    </div>
 							    <div class="control-group">
-								    <label class="control-label" for="inputAddress">Address</label>
+								    <label class="control-label" for="inputTotal">Total</label>
 								    <div class="controls">
-								    	<input type="text" id="inputAddress" placeholder="Address" name="address" value="{{ $supplier->address }}">
+								    	<input type="text" id="inputTotal" placeholder="Total" name="total" value="{{ $data->total }}">
 							    	</div>
 							    </div>
 							    <div class="control-group">
-								    <label class="control-label" for="inputTel">Tel</label>
+								    <label class="control-label" for="inputUnit">Unit</label>
 								    <div class="controls">
-								    	<input type="text" id="inputTel" placeholder="Tel" name="tel" value="{{ $supplier->tel }}">
+								    	<input type="text" id="inputUnit" placeholder="Unit" name="unit" value="{{ $data->unit }}">
 							    	</div>
 							    </div>
 							    <div class="control-group">
-								    <label class="control-label" for="inputContact">Contact</label>
+								    <label class="control-label" for="inputMin Stock">Min Stock</label>
 								    <div class="controls">
-								    	<input type="text" id="inputContact" placeholder="Contact" name="contact" value="{{ $supplier->contact }}">
+								    	<input type="text" id="inputMin Stock" placeholder="Min Stock" name="min_stock" value="{{ $data->min_stock }}">
 							    	</div>
 							    </div>
 							    <div class="control-group">
-								    <label class="control-label" for="inputContact Tel">Contact Tel</label>
+								    <label class="control-label" for="inputMax Stock">Max Stock</label>
 								    <div class="controls">
-								    	<input type="text" id="inputContact Tel" placeholder="Contact Tel" name="contact_tel" value="{{ $supplier->contact_tel }}">
+								    	<input type="text" id="inputMax Stock" placeholder="Max Stock" name="max_stock" value="{{ $data->max_stock }}">
 							    	</div>
 							    </div>
 					    </div>
 					    <div class="modal-footer">
-						    <button class="btn" data-dismiss="modal" aria-hidden="true">Close</button>
-						    <input type="submit" class="btn btn-primary" value="Save changes" />
+						    <input type="submit" class="btn btn-primary" value="Save" />
 					    </div>
 	    				{{ Form::close() }}
     				</div>
@@ -141,6 +140,6 @@ Supplier
 			@endforelse
 		</tbody>
 	</table>
-    {{ $materials->links() }}
+    {{ $query->links() }}
 </div>
 @endsection
