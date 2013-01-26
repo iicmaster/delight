@@ -1,7 +1,7 @@
 @layout('layout.admin')
 
 @section('title')
-Suppliers
+{{ __('suppliers.suppliers') }}
 @endsection
 
 @section('content')
@@ -22,7 +22,7 @@ Suppliers
 		{{ Form::open('admin/suppliers/create', '', array('class' => 'form-horizontal')); }}
 	    <div class="modal-header">
 		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{{ __('admin.button_close') }}">×</button>
-		    <h3 id="myModalLabel">Supplier</h3>
+		    <h3 id="myModalLabel">{{ __('suppliers.suppliers') }}</h3>
 	    </div>
 	    <div class="modal-body">
 			    <div class="control-group">
@@ -62,30 +62,30 @@ Suppliers
 	    {{ Form::close() }}
     </div>
 
-	<h1>Suppliers</h1>	
+	<h1>{{ __('suppliers.suppliers') }}</h1>	
 	<hr>    
 
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>{{ __('admin.id') }}</th>
+				<th class='center'>#</th>
 				<th>{{ __('admin.name') }}</th>
-				<th>{{ __('suppliers.address') }}</th>
-				<th>{{ __('suppliers.tel') }}</th>
-				<th>{{ __('suppliers.contact') }}</th>
-				<th>{{ __('suppliers.contact_tel') }}</th>
-				<th></th>
+				<th class="span1 left">{{ __('suppliers.address') }}</th>
+				<th class="span2 left">{{ __('suppliers.tel') }}</th>
+				<th class="span1 left">{{ __('suppliers.contact') }}</th>
+				<th class="span1 left">{{ __('suppliers.contact_tel') }}</th>
+				<th class="span3"></th>
 			</tr>
 		</thead>
 		<tbody>
 			@forelse ($query->results as $data)
 			<tr>
-				<td>{{ $data->id }}</td>
-				<td>{{ $data->name }}</td>
-				<td>{{ $data->address }}</td>
-				<td>{{ $data->tel }}</td>
-				<td>{{ $data->contact }}</td>
-				<td>{{ $data->contact_tel }}</td>
+				<td class="center">{{ $data->id }}</td>
+				<td class="left">{{ $data->name }}</td>
+				<td class="left">{{ $data->address }}</td>
+				<td class="left">{{ $data->tel }}</td>
+				<td class="left">{{ $data->contact }}</td>
+				<td class="left">{{ $data->contact_tel }}</td>
 				<td class="right">
 					<a href="#create-update-{{ $data->id }}" role="button" class="btn" data-toggle="modal" title="{{ __('admin.button_update') }}"><i class="icon-pencil"></i></a>
 					<a href="/admin/suppliers/delete/{{ $data->id }}" role="button" class="btn" title="{{ __('admin.button_delete') }}"><i class="icon-trash"></i></a>

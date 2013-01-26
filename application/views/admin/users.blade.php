@@ -1,7 +1,7 @@
 @layout('layout.admin')
 
 @section('title')
-Users
+{{ __('users.user') }}
 @endsection
 
 @section('content')
@@ -22,7 +22,7 @@ Users
 		{{ Form::open('admin/users/create', '', array('class' => 'form-horizontal')); }}
 	    <div class="modal-header">
 		    <button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{{ __('admin.button_close') }}">×</button>
-		    <h3 id="myModalLabel">User</h3>
+		    <h3 id="myModalLabel">{{ __('users.user') }}</h3>
 	    </div>
 	    <div class="modal-body">
 		    <div class="control-group">
@@ -68,7 +68,7 @@ Users
 	    {{ Form::close() }}
     </div>
 
-	<h1>User</h1>	
+	<h1>{{ __('users.user') }}</h1>	
 	<hr>    
 
 	
@@ -76,22 +76,22 @@ Users
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>{{ __('admin.id') }}</th>
-				<th>{{ __('admin.name') }}</th>
-				<th>{{ __('users.username') }}</th>
-				<th>{{ __('users.email') }}</th>
-				<th>{{ __('users.tel') }}</th>
-				<th></th>
+				<th class="center">#</th>
+				<th class="left">{{ __('admin.name') }}</th>
+				<th class="span2 left">{{ __('users.username') }}</th>
+				<th class="span2 left">{{ __('users.email') }}</th>
+				<th class="span2 left">{{ __('users.tel') }}</th>
+				<th class="span3"></th>
 			</tr>
 		</thead>
 		<tbody>
 			@forelse ($query->results as $data)
 			<tr>
-				<td>{{ $data->id }}</td>
-				<td>{{ $data->name }}</td>
-				<td>{{ $data->username }}</td>
-				<td>{{ $data->email }}</td>
-				<td>{{ $data->tel }}</td>
+				<td class="center">{{ $data->id }}</td>
+				<td class="left">{{ $data->name }}</td>
+				<td class="left">{{ $data->username }}</td>
+				<td class="left">{{ $data->email }}</td>
+				<td class="left">{{ $data->tel }}</td>
 				<td class="right">
 					<a href="#create-update-{{ $data->id }}" role="button" class="btn" data-toggle="modal" title="{{ __('admin.button_update') }}"><i class="icon-pencil"></i></a>
 					<a href="/admin/users/delete/{{ $data->id }}" role="button" class="btn" title="{{ __('admin.button_delete') }}"><i class="icon-trash"></i></a>

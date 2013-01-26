@@ -5,6 +5,6 @@ return array(
 	'tel' => 'Tel',
 	'password' => 'Password',
 	'address' => 'Address',
-	'user' => 'User',
+	'user' => 'Users',
 
 );
