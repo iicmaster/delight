@@ -2,9 +2,10 @@
 /* utilities Class */
 /* -------------------------------------------------------------------------- */
 
-.center { text-align: center; }
-.left { text-align: left; }
-.right { text-align: right; }
+.center, #content .center { text-align: center; }
+.left, #content .left { text-align: left; }
+.right, #content .right { text-align: right; }
+
 .clear { clear: both; }
 
 /* -------------------------------------------------------------------------- */
@@ -1284,14 +1285,14 @@ p a {
 		float: none;
 	}
 
-	.table td.center {
-		text-align: center
+	#content .table th {
+		/*text-align: center;*/
 	}
-	.table td.left {
-		text-align: left
-	}
-	.table td.right {
-		text-align: right
+
+	.table td,
+	.table th 
+	{
+		padding: 8px 16px;
 	}
 
 	.modal form {

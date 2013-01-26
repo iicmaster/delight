@@ -38,9 +38,17 @@
 	</div>
 	@include('layout.footer')
 	@section('js')
-	{{ HTML::script('js/jquery-1.9.0.js') }}
+	{{ HTML::script('js/jquery-1.8.3.js') }}
 	{{ HTML::script('js/bootstrap.js') }}
 	{{ HTML::script('js/select2/select2.js') }}
+	<script>
+	$(function() {
+		$('#select-all').click(function() {
+			var root = $(this).parent().parent().parent().parent();
+			root.find(':checkbox').attr('checked', $(this).is(':checked'));
+		})
+	})
+	</script>
 	@yield_section
 </body>
 </html>

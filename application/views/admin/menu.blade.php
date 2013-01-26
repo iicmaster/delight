@@ -13,8 +13,8 @@
 				<li class="dropdown">
 					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Material <b class="caret"></b></a>
 					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
-						<li>{{ HTML::link('admin/materials', 'All raw materials.') }}</li>
-						<li>{{ HTML::link('#', 'Materials recommended to purchase.') }}</li>
+						<li>{{ HTML::link('/admin/materials/index', 'All raw materials.') }}</li>
+						<li>{{ HTML::link('/admin/materials/stock', 'Materials recommended to purchase.') }}</li>
 						<li>{{ HTML::link('#', 'Purchase raw materials.') }}</li>
 						<li>{{ HTML::link('#', 'Purchased orders sheet.') }}</li>
 						<li>{{ HTML::link('admin/suppliers', 'Raw material suppliers.') }}</li>

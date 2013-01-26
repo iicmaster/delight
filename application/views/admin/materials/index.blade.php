@@ -31,7 +31,7 @@ Materials
 	 
 	<!-- Create Modal -->
 	<div id="create-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-		{{ Form::open('admin/materials/create', '', array('class' => 'form-horizontal')); }}
+		{{ Form::open('admin/materials/index/create', '', array('class' => 'form-horizontal')); }}
 		<div class="modal-header">
 			<button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
 			<h3 id="myModalLabel">Material</h3>
@@ -90,26 +90,26 @@ Materials
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th>#</th>
-				<th>{{ __('admin.name') }}</th>
-				<th>{{ __('admin.total') }}</th>
-				<th>{{ __('admin.unit') }}</th>
-				<th></th>
+				<th class="span1 center">#</th>
+				<th class="left">{{ __('admin.name') }}</th>
+				<th class="span2 right">{{ __('admin.total') }}</th>
+				<th class="span1 left">{{ __('admin.unit') }}</th>
+				<th class="span3"></th>
 			</tr>
 		</thead>
 		<tbody>
 			@forelse ($query->results as $data)
 			<tr>
-				<td>{{ $data->id }}</td>
-				<td>{{ $data->name }}</td>
-				<td>{{ $data->total }}</td>
-				<td>{{ $data->unit }}</td>
+				<td class="center">{{ $data->id }}</td>
+				<td class="left">{{ $data->name }}</td>
+				<td class="right">{{ Helper::add_comma($data->total) }}</td>
+				<td class="left">{{ $data->unit }}</td>
 				<td class="right">
 					<a href="#create-update-{{ $data->id }}" role="button" class="btn" data-toggle="modal" title="{{ __('admin.button_update') }}"><i class="icon-pencil"></i></a>
-					<a href="/admin/materials/delete/{{ $data->id }}" role="button" class="btn" title="{{ __('admin.button_delete') }}"><i class="icon-trash"></i></a>
+					<a href="/admin/materials/index/delete/{{ $data->id }}" role="button" class="btn" title="{{ __('admin.button_delete') }}"><i class="icon-trash"></i></a>
 
 					<div id="create-update-{{ $data->id }}" class="modal hide fade left" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						{{ Form::open('admin/materials/update/'.$data->id, '', array('class' => 'form-horizontal')) }}
+						{{ Form::open('admin/materials/index/update/'.$data->id, '', array('class' => 'form-horizontal')) }}
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{{ __('admin.button_close') }}">×</button>
 							<h3 id="myModalLabel">{{ $data->name }}</h3>
