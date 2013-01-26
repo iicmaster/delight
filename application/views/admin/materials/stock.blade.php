@@ -25,7 +25,7 @@
 			<tr>
 				<th class="center"><input type="checkbox" id="select-all"></th>
 				<th class="span1 center">#</th>
-				<th>{{ __('admin.name') }}</th>
+				<th class="left">{{ __('admin.name') }}</th>
 				<th class="span2 right">{{ __('admin.total') }}</th>
 				<th class="span2 right">{{ __('materials.recommended_restock_quantity') }}</th>
 				<th class="span1 center">{{ __('admin.unit') }}</th>
@@ -37,7 +37,7 @@
 			<tr>
 				<th class="center"><input type="checkbox" name="selected_id[]"></th>
 				<td class="center">{{ $data->id }}</td>
-				<td>{{ $data->name }}</td> 
+				<td class="left">{{ $data->name }}</td> 
 				<td class="right">{{ Helper::add_comma($data->total) }}</td>
 				<td class="right">{{ Helper::add_comma($data->max_stock - $data->total) }}</td>
 				<td class="center">{{ $data->unit }}</td>
