@@ -8,15 +8,6 @@
 	{{ HTML::style('css/bootstrap.css') }}
 	{{ HTML::style('js/select2/select2.css') }}
 	{{ HTML::style('css/style.css') }}
-	<!--[if IE 8]>
-		{{ HTML::style('css/ie8.css') }}
-	<![endif]-->
-	<!--[if IE 7]>
-		{{ HTML::style('css/ie7.css') }}
-	<![endif]-->
-	<!--[if IE 6]>
-		{{ HTML::style('css/ie6.css') }}
-	<![endif]-->
 	@yield_section
 </head>
 <body>

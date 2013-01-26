@@ -39,7 +39,13 @@
 				<td class="center">{{ $data->id }}</td>
 				<td>{{ $data->name }}</td> 
 				<td class="right">{{ Helper::add_comma($data->total) }}</td>
-				<td class="right">{{ Helper::add_comma($data->max_stock - $data->total) }}</td>
+				<td class="right">
+					@if ($data->max_stock - $data->total > 0)
+						{{ Helper::add_comma($data->max_stock - $data->total) }}
+					@else 
+						0
+					@endif
+				</td>
 				<td class="center">{{ $data->unit }}</td>
 				<td class="right">
 					<a href="#create-update-{{ $data->id }}" role="button" class="btn" data-toggle="modal" title="{{ __('admin.button_update') }}"><i class="icon-list"></i></a>
