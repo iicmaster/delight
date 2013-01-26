@@ -87,14 +87,12 @@ Materials
 	<h1>Materials</h1>	
 	<hr>    
 
-	<table class="table table-hover">
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>#</th>
 				<th>{{ __('admin.name') }}</th>
 				<th>{{ __('admin.total') }}</th>
-				<th>{{ __('materials.min_stock') }}</th>
-				<th>{{ __('materials.max_stock') }}</th>
 				<th>{{ __('admin.unit') }}</th>
 				<th></th>
 			</tr>
@@ -105,8 +103,6 @@ Materials
 				<td>{{ $data->id }}</td>
 				<td>{{ $data->name }}</td>
 				<td>{{ $data->total }}</td>
-				<td>{{ $data->min_stock }}</td>
-				<td>{{ $data->max_stock }}</td>
 				<td>{{ $data->unit }}</td>
 				<td class="right">
 					<a href="#create-update-{{ $data->id }}" role="button" class="btn" data-toggle="modal" title="{{ __('admin.button_update') }}"><i class="icon-pencil"></i></a>
@@ -175,7 +171,7 @@ Materials
 				</td>
 			</tr>
 			@empty
-			<tr><td colspan="7" class="center">No result found.</td></tr>
+			<tr><td colspan="5" class="center">No result found.</td></tr>
 			@endforelse
 		</tbody>
 	</table>

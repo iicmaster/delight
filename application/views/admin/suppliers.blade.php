@@ -1,7 +1,7 @@
 @layout('layout.admin')
 
 @section('title')
-Supplier
+Suppliers
 @endsection
 
 @section('content')
@@ -65,7 +65,7 @@ Supplier
 	<h1>Suppliers</h1>	
 	<hr>    
 
-	<table class="table table-hover">
+	<table class="table table-striped">
 		<thead>
 			<tr>
 				<th>{{ __('admin.id') }}</th>

@@ -254,6 +254,10 @@ p a {
 	border-radius: 0px;
 }
 
+#nav .container {
+	width: 940px;
+}
+
 /* -------------------------------------------------------------------------- */
 /* Content */
 /* -------------------------------------------------------------------------- */
@@ -1305,20 +1309,20 @@ p a {
 /* -------------------------------------------------------------------------- */
 
 #content .select2-container-multi .select2-choices {
-	display: inline-block;
-    margin-bottom: 0;
-    vertical-align: middle;
-	min-width: 206px;    
 	background-color: #FFFFFF;
+	display: inline-block;
+	min-width: 206px;    
+    border-radius: 4px 4px 4px 4px;
     border: 1px solid #CCCCCC;
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
-    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
-    border-radius: 4px 4px 4px 4px;
     color: #555555;
     font-size: 14px;
     height: 20px;
     line-height: 20px;
+    margin-bottom: 0;
     padding: 4px 6px;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    vertical-align: middle;
 }
 
 #content .select2-search-choice div {
