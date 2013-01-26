@@ -6,6 +6,7 @@
 	<title>Cake Delights - @yield('title')</title>
 	@section('css')
 	{{ HTML::style('css/bootstrap.css') }}
+	{{ HTML::style('js/select2/select2.css') }}
 	{{ HTML::style('css/style.css') }}
 	<!--[if IE 8]>
 		{{ HTML::style('css/ie8.css') }}
@@ -16,7 +17,6 @@
 	<!--[if IE 6]>
 		{{ HTML::style('css/ie6.css') }}
 	<![endif]-->
-		{{--expr
 	@yield_section
 </head>
 <body>
@@ -40,6 +40,7 @@
 	@section('js')
 	{{ HTML::script('js/jquery-1.9.0.js') }}
 	{{ HTML::script('js/bootstrap.js') }}
+	{{ HTML::script('js/select2/select2.js') }}
 	@yield_section
 </body>
 </html>

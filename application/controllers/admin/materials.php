@@ -6,6 +6,7 @@ class Admin_Materials_Controller extends Base_Controller
 	{
 		$data['report_message'] = Session::get('result');
 		$data['query'] = Material::order_by('id', 'desc')->paginate(Config::get('admin.row_per_page'));
+		$data['suppliers'] = Supplier::all();
 		return View::make('admin.materials', $data);
 	}
 
@@ -14,7 +15,17 @@ class Admin_Materials_Controller extends Base_Controller
 	public function action_create()
 	{    
 		$input = Input::get();
-		$result = Material::create($input) ? __('admin.message_create_success') : false;
+		unset($input['suppliers']);
+
+		$material = Material::create($input);
+
+		if ($material) {
+			$material->suppliers()->sync(Input::get('suppliers'));
+			$result = __('admin.message_create_success');
+		} else {
+			$result = false;
+		}
+
 		return Redirect::to_action('admin.materials@index')->with('result', $result);
 	}
 	
@@ -23,7 +34,18 @@ class Admin_Materials_Controller extends Base_Controller
 	public function action_update($id)
 	{    
 		$input = Input::get();
-		$result = Material::where('id', '=', $id)->update($input) ? __('admin.message_update_success') : false;
+		unset($input['suppliers']);
+
+		// $material = Material::where('id', '=', $id)->update($input);
+		$material = Material::find($id)->update($id, $input);
+
+		if ($material) {
+			Material::find($id)->suppliers()->sync(Input::get('suppliers'));
+			$result = __('admin.message_update_success');
+		} else {
+			$result = false;
+		}
+
 		return Redirect::to_action('admin.materials@index')->with('result', $result);
 	}
 	

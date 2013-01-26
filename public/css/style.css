@@ -485,11 +485,11 @@ p a {
 		padding: 0;
 	}
 
-	#content div ul li {
+/*	#content div ul li {
 		float: left;
 		height: 220px;
 		width: 450px;
-	}
+	}*/
 
 	#content div ul li div {
 		padding: 0;
@@ -1269,7 +1269,7 @@ p a {
 	}
 
 /* -------------------------------------------------------------------------- */
-/* Overwrite Bootstarp */
+/* Customize Bootstarp */
 /* -------------------------------------------------------------------------- */
 
 	#content hr {
@@ -1299,3 +1299,32 @@ p a {
 		font-style: italic;
 		font-family: "Trebuchet MS";
 	}
+
+/* -------------------------------------------------------------------------- */
+/* Customize Select2 */
+/* -------------------------------------------------------------------------- */
+
+#content .select2-container-multi .select2-choices {
+	display: inline-block;
+    margin-bottom: 0;
+    vertical-align: middle;
+	min-width: 206px;    
+	background-color: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    border-radius: 4px 4px 4px 4px;
+    color: #555555;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    padding: 4px 6px;
+}
+
+#content .select2-search-choice div {
+	font-size: 11px;
+}
+
+#content .select2-container-multi .select2-choices .select2-search-choice {
+	line-height: 15px;
+}
