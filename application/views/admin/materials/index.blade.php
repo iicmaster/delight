@@ -17,7 +17,7 @@ Materials
 @endsection
 
 @section('content')
-<div id="admin-materials">
+<div id="admin-materials-index">
 	<!-- Report Message -->
 	@if ($report_message !== false and ! is_null($report_message))
 		<div class="alert alert-success">
