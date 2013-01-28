@@ -4,27 +4,19 @@
 			<ul role="navigation" class="nav">
 				<li class="dropdown"><a href="/admin/home">Home</a></li>
 				<li class="dropdown">
-					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Location <b class="caret"></b></a>
+					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Product <b class="caret"></b></a>
 					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
-						<li>{{ HTML::link('#', 'All shipping locations.') }}</li>
-						<li>{{ HTML::link('#', 'Add shipping locations.') }}</li>
+						<li>{{ HTML::link('#', 'Products.') }}</li>
 					</ul>
 				</li>
 				<li class="dropdown">
 					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Material <b class="caret"></b></a>
 					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
-						<li>{{ HTML::link('/admin/materials/index', 'All raw materials.') }}</li>
+						<li>{{ HTML::link('/admin/materials/index', 'Raw materials.') }}</li>
 						<li>{{ HTML::link('/admin/materials/stock', 'Materials recommended to purchase.') }}</li>
 						<li>{{ HTML::link('#', 'Purchase raw materials.') }}</li>
 						<li>{{ HTML::link('#', 'Purchased orders sheet.') }}</li>
 						<li>{{ HTML::link('admin/suppliers', 'Raw material suppliers.') }}</li>
-					</ul>
-				</li>
-				<li class="dropdown">
-					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Product <b class="caret"></b></a>
-					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
-						<li>{{ HTML::link('#', 'All products.') }}</li>
-						<li>{{ HTML::link('#', 'Add new products.') }}</li>
 					</ul>
 				</li>
 				<li class="dropdown">
@@ -35,9 +27,15 @@
 					</ul>
 				</li>
 				<li class="dropdown">
+					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Location <b class="caret"></b></a>
+					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
+						<li>{{ HTML::link('#', 'Shipping locations.') }}</li>
+					</ul>
+				</li>	
+				<li class="dropdown">
 					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Users <b class="caret"></b></a>
 					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
-						<li>{{ HTML::link('/admin/users', 'All users') }}</li>
+						<li>{{ HTML::link('/admin/users', 'Users') }}</li>
 					</ul>
 				</li>
 				<li class="dropdown">
