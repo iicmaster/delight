@@ -14,7 +14,7 @@ class Seed_Materials extends \S2\Seed
             'max_stock' => '10000',
         ]);
         $material->save();
-        $material->suppliers()->sync([1, 2, 3, 4,]);
+        $material->suppliers()->sync([1, 2, 3, 4]);
 
         $material = new Material;
         $material->owner_id = 1;
