@@ -18,6 +18,17 @@ class Seed_Materials extends \S2\Seed
 
         $material = new Material;
         $material->owner_id = 1;
+        $material->name = 'แป้งเค้ก';
+        $material->description = 'แป้งเค้ก';
+        $material->total = '0';
+        $material->unit = 'กรัม';
+        $material->min_stock = '500';
+        $material->max_stock = '10000';
+        $material->save();
+        $material->suppliers()->sync([1, 2, 3, 4]);
+
+        $material = new Material;
+        $material->owner_id = 1;
         $material->name = 'ไข่ไก่';
         $material->description = 'ไข่ไก่';
         $material->total = '0';
@@ -25,6 +36,7 @@ class Seed_Materials extends \S2\Seed
         $material->min_stock = '5';
         $material->max_stock = '32';
         $material->save();
+        $material->suppliers()->sync([1, 2, 3, 4]);
 
         $material = new Material;
         $material->owner_id = 1;
@@ -35,6 +47,7 @@ class Seed_Materials extends \S2\Seed
         $material->min_stock = '500';
         $material->max_stock = '5000';
         $material->save();
+        $material->suppliers()->sync([1, 2, 3, 4]);
 
         $material = new Material;
         $material->owner_id = 1;
@@ -45,6 +58,7 @@ class Seed_Materials extends \S2\Seed
         $material->min_stock = '500';
         $material->max_stock = '5000';
         $material->save();
+        $material->suppliers()->sync([1, 2, 3, 4]);
 
         $material = new Material;
         $material->owner_id = 1;
@@ -55,6 +69,7 @@ class Seed_Materials extends \S2\Seed
         $material->min_stock = '100';
         $material->max_stock = '1000';
         $material->save();
+        $material->suppliers()->sync([1, 2, 3, 4]);
 
         $material = new Material;
         $material->owner_id = 1;
@@ -65,6 +80,7 @@ class Seed_Materials extends \S2\Seed
         $material->min_stock = '100';
         $material->max_stock = '1000';
         $material->save();
+        $material->suppliers()->sync([1, 4]);
 
         $material = new Material;
         $material->owner_id = 1;
@@ -75,6 +91,7 @@ class Seed_Materials extends \S2\Seed
         $material->min_stock = '500';
         $material->max_stock = '5000';
         $material->save();
+        $material->suppliers()->sync([2, 4]);
 
         $material = new Material;
         $material->owner_id = 1;
@@ -85,6 +102,7 @@ class Seed_Materials extends \S2\Seed
         $material->min_stock = '100';
         $material->max_stock = '1000';
         $material->save();
+        $material->suppliers()->sync([2, 4]);
 
         $material = new Material;
         $material->owner_id = 1;
@@ -95,6 +113,7 @@ class Seed_Materials extends \S2\Seed
         $material->min_stock = '500';
         $material->max_stock = '5000';
         $material->save();
+        $material->suppliers()->sync([1, 4]);
 
         $material = new Material;
         $material->owner_id = 1;
@@ -105,6 +124,7 @@ class Seed_Materials extends \S2\Seed
         $material->min_stock = '50';
         $material->max_stock = '100';
         $material->save();
+        $material->suppliers()->sync([2, 3]);
 
         $material = new Material;
         $material->owner_id = 1;
@@ -115,6 +135,7 @@ class Seed_Materials extends \S2\Seed
         $material->min_stock = '5';
         $material->max_stock = '30';
         $material->save();
+        $material->suppliers()->sync([1, 3, 4]);
 
         $material = new Material;
         $material->owner_id = 1;
@@ -125,6 +146,7 @@ class Seed_Materials extends \S2\Seed
         $material->min_stock = '50';
         $material->max_stock = '100';
         $material->save();
+        $material->suppliers()->sync([1, 4]);
 
         $material = new Material;
         $material->owner_id = 1;
@@ -135,8 +157,9 @@ class Seed_Materials extends \S2\Seed
         $material->min_stock = '5';
         $material->max_stock = '50';
         $material->save();
+        $material->suppliers()->sync([1, 4]);
 
-$material = new Material;
+        $material = new Material;
         $material->owner_id = 1;
         $material->name = 'กล่องเค้ก 2 ปอนด์';
         $material->description = 'กล่องเค้ก';
@@ -145,6 +168,7 @@ $material = new Material;
         $material->min_stock = '5';
         $material->max_stock = '50';
         $material->save();
+        $material->suppliers()->sync([1, 4]);
 
 $material = new Material;
         $material->owner_id = 1;
@@ -155,6 +179,8 @@ $material = new Material;
         $material->min_stock = '5';
         $material->max_stock = '50';
         $material->save();
+        $material->suppliers()->sync([1, 4]);
+
 
         $material = new Material;
         $material->owner_id = 1;
@@ -165,6 +191,7 @@ $material = new Material;
         $material->min_stock = '5';
         $material->max_stock = '50';
         $material->save();
+        $material->suppliers()->sync([1, 4]);
 
         $material = new Material;
         $material->owner_id = 1;
@@ -175,6 +202,7 @@ $material = new Material;
         $material->min_stock = '50';
         $material->max_stock = '100';
         $material->save();
+        $material->suppliers()->sync([2, 3]);
 
         $material = new Material;
         $material->owner_id = 1;
@@ -185,6 +213,7 @@ $material = new Material;
         $material->min_stock = '500';
         $material->max_stock = '5000';
         $material->save();
+        $material->suppliers()->sync([1, 2, 3, 4]);
 
         $material = new Material;
         $material->owner_id = 1;
@@ -195,6 +224,7 @@ $material = new Material;
         $material->min_stock = '500';
         $material->max_stock = '5000';
         $material->save();
+        $material->suppliers()->sync([1, 2, 3, 4]);
 
         $material = new Material;
         $material->owner_id = 1;
@@ -205,6 +235,9 @@ $material = new Material;
         $material->min_stock = '50';
         $material->max_stock = '1000';
         $material->save();
+        $material->suppliers()->sync([2, 3]);
+
+        //-------------------------------------------------------------------------------------------
 
         $material = new Material;
         $material->owner_id = 2;
@@ -215,6 +248,7 @@ $material = new Material;
         $material->min_stock = '500';
         $material->max_stock = '10000';
         $material->save();
+        $material->suppliers()->sync([1, 2, 3, 4]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -225,6 +259,7 @@ $material = new Material;
         $material->min_stock = '5';
         $material->max_stock = '32';
         $material->save();
+        $material->suppliers()->sync([1, 2, 3, 4]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -235,6 +270,7 @@ $material = new Material;
         $material->min_stock = '500';
         $material->max_stock = '5000';
         $material->save();
+        $material->suppliers()->sync([1, 2, 3, 4]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -245,6 +281,7 @@ $material = new Material;
         $material->min_stock = '500';
         $material->max_stock = '5000';
         $material->save();
+        $material->suppliers()->sync([1, 2, 3, 4]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -255,6 +292,7 @@ $material = new Material;
         $material->min_stock = '100';
         $material->max_stock = '1000';
         $material->save();
+        $material->suppliers()->sync([1, 2, 3, 4]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -265,6 +303,7 @@ $material = new Material;
         $material->min_stock = '100';
         $material->max_stock = '1000';
         $material->save();
+        $material->suppliers()->sync([1, 4]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -275,6 +314,7 @@ $material = new Material;
         $material->min_stock = '500';
         $material->max_stock = '5000';
         $material->save();
+        $material->suppliers()->sync([2, 4]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -285,6 +325,7 @@ $material = new Material;
         $material->min_stock = '100';
         $material->max_stock = '1000';
         $material->save();
+        $material->suppliers()->sync([2, 4]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -295,6 +336,7 @@ $material = new Material;
         $material->min_stock = '500';
         $material->max_stock = '5000';
         $material->save();
+        $material->suppliers()->sync([1, 4]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -305,6 +347,7 @@ $material = new Material;
         $material->min_stock = '50';
         $material->max_stock = '100';
         $material->save();
+        $material->suppliers()->sync([2, 3]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -315,6 +358,7 @@ $material = new Material;
         $material->min_stock = '5';
         $material->max_stock = '30';
         $material->save();
+        $material->suppliers()->sync([1, 3, 4]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -325,6 +369,7 @@ $material = new Material;
         $material->min_stock = '50';
         $material->max_stock = '100';
         $material->save();
+        $material->suppliers()->sync([1, 4]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -335,6 +380,7 @@ $material = new Material;
         $material->min_stock = '5';
         $material->max_stock = '50';
         $material->save();
+        $material->suppliers()->sync([1, 4]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -345,6 +391,7 @@ $material = new Material;
         $material->min_stock = '5';
         $material->max_stock = '50';
         $material->save();
+        $material->suppliers()->sync([1, 4]);
 
 $material = new Material;
         $material->owner_id = 2;
@@ -355,6 +402,7 @@ $material = new Material;
         $material->min_stock = '5';
         $material->max_stock = '50';
         $material->save();
+        $material->suppliers()->sync([1, 4]);
 
 
         $material = new Material;
@@ -366,6 +414,7 @@ $material = new Material;
         $material->min_stock = '5';
         $material->max_stock = '50';
         $material->save();
+        $material->suppliers()->sync([1, 4]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -376,6 +425,7 @@ $material = new Material;
         $material->min_stock = '50';
         $material->max_stock = '100';
         $material->save();
+        $material->suppliers()->sync([2, 3]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -386,6 +436,7 @@ $material = new Material;
         $material->min_stock = '500';
         $material->max_stock = '5000';
         $material->save();
+        $material->suppliers()->sync([1, 2, 3, 4]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -396,6 +447,7 @@ $material = new Material;
         $material->min_stock = '500';
         $material->max_stock = '5000';
         $material->save();
+        $material->suppliers()->sync([1, 2, 3, 4]);
 
         $material = new Material;
         $material->owner_id = 2;
@@ -406,6 +458,7 @@ $material = new Material;
         $material->min_stock = '50';
         $material->max_stock = '1000';
         $material->save();
+        $material->suppliers()->sync([2, 3]);
     }
 
     public function order()
