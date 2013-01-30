@@ -128,7 +128,27 @@ class Seed_Materials extends \S2\Seed
 
         $material = new Material;
         $material->owner_id = 1;
-        $material->name = 'กล่องเค้ก';
+        $material->name = 'กล่องเค้ก 1 ปอนด์';
+        $material->description = 'กล่องเค้ก';
+        $material->total = '0';
+        $material->unit = 'กล่อง';
+        $material->min_stock = '5';
+        $material->max_stock = '50';
+        $material->save();
+
+$material = new Material;
+        $material->owner_id = 1;
+        $material->name = 'กล่องเค้ก 2 ปอนด์';
+        $material->description = 'กล่องเค้ก';
+        $material->total = '0';
+        $material->unit = 'กล่อง';
+        $material->min_stock = '5';
+        $material->max_stock = '50';
+        $material->save();
+
+$material = new Material;
+        $material->owner_id = 1;
+        $material->name = 'กล่องเค้ก 3 ปอนด์';
         $material->description = 'กล่องเค้ก';
         $material->total = '0';
         $material->unit = 'กล่อง';
@@ -308,13 +328,34 @@ class Seed_Materials extends \S2\Seed
 
         $material = new Material;
         $material->owner_id = 2;
-        $material->name = 'กล่องเค้ก';
+        $material->name = 'กล่องเค้ก 1 ปอนด์';
         $material->description = 'กล่องเค้ก';
         $material->total = '0';
         $material->unit = 'กล่อง';
         $material->min_stock = '5';
         $material->max_stock = '50';
         $material->save();
+
+        $material = new Material;
+        $material->owner_id = 2;
+        $material->name = 'กล่องเค้ก 2 ปอนด์';
+        $material->description = 'กล่องเค้ก';
+        $material->total = '0';
+        $material->unit = 'กล่อง';
+        $material->min_stock = '5';
+        $material->max_stock = '50';
+        $material->save();
+
+$material = new Material;
+        $material->owner_id = 2;
+        $material->name = 'กล่องเค้ก 3 ปอนด์';
+        $material->description = 'กล่องเค้ก';
+        $material->total = '0';
+        $material->unit = 'กล่อง';
+        $material->min_stock = '5';
+        $material->max_stock = '50';
+        $material->save();
+
 
         $material = new Material;
         $material->owner_id = 2;
