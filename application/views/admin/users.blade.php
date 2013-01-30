@@ -76,12 +76,12 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th class="center">#</th>
+				<th class="span1 center">#</th>
 				<th class="left">{{ __('admin.name') }}</th>
 				<th class="span2 left">{{ __('users.username') }}</th>
-				<th class="span2 left">{{ __('users.email') }}</th>
+				<th class="left">{{ __('users.email') }}</th>
 				<th class="span2 left">{{ __('users.tel') }}</th>
-				<th class="span3"></th>
+				<th class="span2"></th>
 			</tr>
 		</thead>
 		<tbody>

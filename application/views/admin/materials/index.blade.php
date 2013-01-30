@@ -94,7 +94,7 @@ Materials
 				<th class="left">{{ __('admin.name') }}</th>
 				<th class="span2 right">{{ __('admin.total') }}</th>
 				<th class="span1 left">{{ __('admin.unit') }}</th>
-				<th class="span3"></th>
+				<th class="span2"></th>
 			</tr>
 		</thead>
 		<tbody>

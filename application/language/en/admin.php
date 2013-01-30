@@ -2,11 +2,11 @@
 
 return array(
 	// Buttons
+	'button_close' => 'Close',
 	'button_create' => 'New',
-	'button_update' => 'Edit',
 	'button_delete' => 'Delete',
 	'button_save' => 'Save',
-	'button_close' => 'Close',
+	'button_update' => 'Edit',
 
 	// Report Messages
 	'message_please_login' => 'Please login.',
@@ -17,13 +17,16 @@ return array(
 	'message_delete_success' => 'Deleted data success.',
 
 	// General words
+	'created_at' => 'Created Date',
+	'date' => 'Date',
+	'description' => 'Description',
+	'detail' => 'Detail',
+	'id' => 'ID',
 	'login' => 'Login',
 	'logout' => 'Logout',
-	'id' => 'ID',
 	'name' => 'Name',
-	'description' => 'Description',
+	'status' => 'Status',
 	'total' => 'Total',
 	'unit' => 'Unit',
-	'created_at' => 'Created Date',
 	'updated_at' => 'Updated Date',
 );

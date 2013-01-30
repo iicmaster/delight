@@ -4,15 +4,17 @@ class Seed_Materials extends \S2\Seed
 {
     public function grow()
     {
-        $material = new Material;
-        $material->owner_id = 1;
-        $material->name = 'แป้งเค้ก';
-        $material->description = 'แป้งเค้ก';
-        $material->total = '0';
-        $material->unit = 'กรัม';
-        $material->min_stock = '500';
-        $material->max_stock = '10000';
+        $material = new Material([
+            'owner_id' => 1,
+            'name' => 'แป้งเค้ก',
+            'description' => 'แป้งเค้ก',
+            'total' => '0',
+            'unit' => 'กรัม',
+            'min_stock' => '500',
+            'max_stock' => '10000',
+        ]);
         $material->save();
+        $material->suppliers()->sync([1, 2, 3, 4,]);
 
         $material = new Material;
         $material->owner_id = 1;

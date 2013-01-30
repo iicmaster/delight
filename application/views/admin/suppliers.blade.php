@@ -68,13 +68,13 @@
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th class='center'>#</th>
+				<th class='span1 center'>#</th>
 				<th>{{ __('admin.name') }}</th>
-				<th class="span1 left">{{ __('suppliers.address') }}</th>
-				<th class="span2 left">{{ __('suppliers.tel') }}</th>
+				<th class="span2 left">{{ __('suppliers.address') }}</th>
+				<th class="span1 left">{{ __('suppliers.tel') }}</th>
 				<th class="span1 left">{{ __('suppliers.contact') }}</th>
 				<th class="span1 left">{{ __('suppliers.contact_tel') }}</th>
-				<th class="span3"></th>
+				<th class="span2"></th>
 			</tr>
 		</thead>
 		<tbody>
