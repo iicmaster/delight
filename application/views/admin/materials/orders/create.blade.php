@@ -1,7 +1,7 @@
 @layout('layout.admin')
 
 @section('title')
-{{ __('materials.order') }}
+{{ __('materials.orders') }}
 @endsection
 
 @section('js')
@@ -15,9 +15,14 @@
 
 @section('content')
 <div id="admin-materials-order">
-	<h1>{{ __('materials.order') }}</h1>	
+	<h1>{{ __('materials.orders') }}</h1>	
 	<hr>    
-	{{ Form::open('admin/materials/order/create') }}
+	{{ Form::open('admin/materials/orders/store') }}
+		<p>
+			<p class="bold">{{ __('admin.description') }}</p>
+			<textarea name="description" class="span6"></textarea>
+		</p>
+		<hr>    
 		<table class="table table-striped">
 			<thead>
 				<tr>
@@ -32,16 +37,18 @@
 			<tbody>
 				@forelse ($query as $data)
 				<tr>
-					<th class="center"><input type="checkbox" name="selected_id[]" value="{{ $data->id }}" checked></th>
+					<td class="center">
+						<input type="checkbox" name="selected_items[]" value="{{ $data->id }}" checked>
+					</td>
 					<td class="center">{{ $data->id }}</td>
 					<td class="left">{{ $data->name }}</td> 
 					<td class="right">
-						<input type="text" name="quantity[{{ $data->id }}]" value="<?php
+						<input type="text" name="items[{{ $data->id }}][quantity]" value="<?php
 							echo ($data->max_stock - $data->total > 0) ? ($data->max_stock - $data->total) : 0;
 						?>" class="right" required pattern="^[0-9]+$" title="Number only"></td>
 					<td class="center">{{ $data->unit }}</td>
 					<td class="left">
-						<select id="inputSuppliers" name="suppliers[]" required>
+						<select id="inputSuppliers" name="items[{{ $data->id }}][supplier_id]" required>
 							<option value="" disabled selected>Choose...</option>
 							@foreach ($data->suppliers as $supplier)
 								<option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
@@ -54,8 +61,8 @@
 				@endforelse
 			</tbody>
 		</table>
-		<div class="center">
-			<button class="btn btn-large btn-primary">Create Material Order</button>
+		<div class="right">
+			<button class="btn btn-primary">Save</button>
 		</div>
 	{{ Form::close() }}
 </div>

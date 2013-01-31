@@ -7,7 +7,8 @@ class Admin_Materials_Orders_Controller extends Base_Controller
 		$data['report_message'] = Session::get('result');
 		$data['query'] = Material_Order::order_by('id', 'desc')
 							 		   ->paginate(Config::get('admin.row_per_page'));
-		return View::make('admin.materials.orders', $data);
+		$data['suppliers'] = Supplier::all();
+		return View::make('admin.materials.orders.index', $data);
 	}
 
 	// --------------------------------------------------------------------------
@@ -31,7 +32,33 @@ class Admin_Materials_Orders_Controller extends Base_Controller
 
 	public function action_store()
 	{
-		# code...
+		$items = Input::get('items');
+
+		// Create material order
+		$order = new Material_Order([
+			'owner_id' => Auth::user()->id,
+			'description' => Input::get('description'),
+		]);
+		$order->save();
+
+		// Insert order items
+		if ($order) {
+			foreach (Input::get('selected_items') as $id) {
+				$item = new Material_Order_item([
+					'material_id' => $id,
+					'supplier_id' => $items[$id]['supplier_id'],
+					'ordered_quantity' => $items[$id]['quantity'],
+				]);
+				$order->items()->insert($item);
+			}
+			$result['status'] = true;
+			$result['message'] = __('admin.message_create_succeed');
+		} else {
+			$result['status'] = false;
+			$result['message'] = __('admin.message_create_failed');
+		}
+
+		return Redirect::to_action('admin.materials.orders@index')->with('result', $result);
 	}
 
 	// --------------------------------------------------------------------------

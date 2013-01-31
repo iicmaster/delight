@@ -6,8 +6,8 @@ class Admin_Materials_Index_Controller extends Base_Controller
 	{
 		$data['report_message'] = Session::get('result');
 		$data['query'] = Material::where('owner_id', '=', Auth::user()->id)
-									->order_by('id', 'desc')
-									->paginate(Config::get('admin.row_per_page'));
+							  	 ->order_by('id', 'desc')
+								 ->paginate(Config::get('admin.row_per_page'));
 		$data['suppliers'] = Supplier::all();
 		return View::make('admin.materials.index', $data);
 	}
@@ -24,7 +24,7 @@ class Admin_Materials_Index_Controller extends Base_Controller
 
 		if ($material) {
 			$material->suppliers()->sync(Input::get('suppliers'));
-			$result = __('admin.message_create_success');
+			$result = __('admin.message_create_succeed');
 		} else {
 			$result = false;
 		}

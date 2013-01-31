@@ -255,7 +255,7 @@ class Helper
 	{	
 		@list($_date, $_time) = explode(" ", $date_time);
 		
-		$_new_date		= change_date_format($_date);
+		$_new_date = Static::change_date_format($_date);
 		$_new_date_time = $_new_date.' '.substr($_time, 0, 5);
 		
 		return $_new_date_time;

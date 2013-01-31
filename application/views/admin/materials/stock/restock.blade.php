@@ -118,8 +118,8 @@
 				@endforelse
 			</tbody>
 		</table>
-		<div class="center">
-			<button class="btn btn-large btn-primary">Create Material Order</button>
+		<div class="right">
+			<button class="btn btn-primary">Create Material Order</button>
 		</div>
 	{{ Form::close() }}
 </div>

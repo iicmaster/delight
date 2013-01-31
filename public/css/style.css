@@ -7,6 +7,10 @@
 .right, #content .right { text-align: right; }
 
 .clear { clear: both; }
+.nowrap { white-space: nowrap; }
+
+.bold { font-weight: bold; }
+.normal { font-weight: normal; font-style: normal; text-decoration: none; }
 
 /* -------------------------------------------------------------------------- */
 /* Website template by freewebsitetemplates.com */
