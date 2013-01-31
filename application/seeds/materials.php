@@ -170,7 +170,7 @@ class Seed_Materials extends \S2\Seed
         $material->save();
         $material->suppliers()->sync([1, 4]);
 
-$material = new Material;
+        $material = new Material;
         $material->owner_id = 1;
         $material->name = 'กล่องเค้ก 3 ปอนด์';
         $material->description = 'กล่องเค้ก';
@@ -393,7 +393,7 @@ $material = new Material;
         $material->save();
         $material->suppliers()->sync([1, 4]);
 
-$material = new Material;
+        $material = new Material;
         $material->owner_id = 2;
         $material->name = 'กล่องเค้ก 3 ปอนด์';
         $material->description = 'กล่องเค้ก';
