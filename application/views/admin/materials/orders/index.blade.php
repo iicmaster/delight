@@ -60,57 +60,38 @@
 					<a href="/admin/materials/orders/delete/{{ $data->id }}" role="button" class="btn" title="{{ __('admin.button_delete') }}"><i class="icon-trash"></i></a>
 
 					<div id="create-update-{{ $data->id }}" class="modal hide fade left" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-						{{ Form::open('admin/materials/index/update/'.$data->id, '', array('class' => 'form-horizontal')) }}
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{{ __('admin.button_close') }}">×</button>
-							<h3 id="myModalLabel">{{ $data->name }}</h3>
+							<h3 id="myModalLabel" style="display:inline; margin-right:15px">Order: {{ $data->id }}</h3>
+							<span>{{ $data->description }}</span>
 						</div>
 						<div class="modal-body">
-								<div class="control-group">
-									<label class="control-label" for="inputSuppliers">{{ __('suppliers.suppliers') }}</label>
-									<div class="controls">
-										<select id="inputSuppliers" class="select2" name="suppliers[]" multiple="multiple">
-											@foreach ($suppliers as $supplier)
-												<option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
-											@endforeach
-										</select>
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="inputName">{{ __('admin.name') }}</label>
-									<div class="controls">
-										<input type="text" id="inputName" placeholder="Name" name="name" value="{{ $data->name }}">
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="inputTotal">{{ __('admin.total') }}</label>
-									<div class="controls">
-										<input type="text" id="inputTotal" placeholder="Total" name="total" value="{{ $data->total }}">
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="inputUnit">{{ __('admin.unit') }}</label>
-									<div class="controls">
-										<input type="text" id="inputUnit" placeholder="Unit" name="unit" value="{{ $data->unit }}">
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="inputMin Stock">{{ __('materials.min_stock') }}</label>
-									<div class="controls">
-										<input type="text" id="inputMin Stock" placeholder="Min Stock" name="min_stock" value="{{ $data->min_stock }}">
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="inputMax Stock">{{ __('materials.max_stock') }}</label>
-									<div class="controls">
-										<input type="text" id="inputMax Stock" placeholder="Max Stock" name="max_stock" value="{{ $data->max_stock }}">
-									</div>
-								</div>
+							<table width="100%">
+								<thead>
+									<tr>
+										<th class="center">#</th>
+										<th class="left">{{ __('admin.name') }}</th>
+										<th class="right">{{ __('materials.quantity') }}</th>
+										<th class="center">{{ __('admin.unit') }}</th>
+										<th class="left">{{ __('suppliers.suppliers') }}</th>
+									</tr>
+								</thead>
+								<tbody>
+									@foreach ($data->items as $key => $item)
+									<tr>
+										<td class="center">{{ $key + 1 }}</td>
+										<td class="left">{{ $item->material->name }}</td>
+										<td class="right">{{ $item->orered_quantity }}</td>
+										<td class="center">{{ $item->material->unit }}</td>
+										<td class="left">{{ $item->supplier->name }}</td>
+									</tr>
+									@endforeach
+								</tbody>
+							</table>
 						</div>
 						<div class="modal-footer">
-							<input type="submit" class="btn btn-primary" value="{{ __('admin.button_save') }}" />
+
 						</div>
-						{{ Form::close() }}
 					</div>
 				</td>
 			</tr>
