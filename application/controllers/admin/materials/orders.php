@@ -2,6 +2,9 @@
 
 class Admin_Materials_Orders_Controller extends Base_Controller 
 {
+	/**
+	* Materials orders index page
+	*/
 	public function action_index()
 	{
 		$data['report_message'] = Session::get('result');
@@ -13,6 +16,9 @@ class Admin_Materials_Orders_Controller extends Base_Controller
 
 	// --------------------------------------------------------------------------
 
+	/**
+	 * Create material order page
+	 */
 	public function action_create()
 	{
 		if (count(Input::get('selected_id')) > 0) {
@@ -30,6 +36,9 @@ class Admin_Materials_Orders_Controller extends Base_Controller
 
 	// --------------------------------------------------------------------------
 
+	/**
+	 * Save order into database
+	 */
 	public function action_store()
 	{
 		$items = Input::get('items');
@@ -56,6 +65,26 @@ class Admin_Materials_Orders_Controller extends Base_Controller
 		} else {
 			$result['status'] = false;
 			$result['message'] = __('admin.message_create_failed');
+		}
+
+		return Redirect::to_action('admin.materials.orders@index')->with('result', $result);
+	}
+	
+	// --------------------------------------------------------------------------
+
+	/**
+	 * Delete materials order
+	 */
+	public function action_delete($id)
+	{    
+		$query = Material_Order::where('id', '=', $id)->delete();
+
+		if ($query) {
+			$result['status'] = true;
+			$result['message'] = __('admin.message_delete_succeed');
+		} else {
+			$result['status'] = false;
+			$result['message'] = __('admin.message_delete_failed');
 		}
 
 		return Redirect::to_action('admin.materials.orders@index')->with('result', $result);

@@ -4,6 +4,7 @@ return array(
 	// Buttons
 	'button_close' => 'Close',
 	'button_create' => 'New',
+	'button_read' => 'More detail',
 	'button_delete' => 'Delete',
 	'button_save' => 'Save',
 	'button_update' => 'Edit',

@@ -56,8 +56,8 @@
 				<td class="left">{{ $data->status }}</td>
 				<td class="right">
 					<a href="#create-update-{{ $data->id }}" role="button" class="btn" data-toggle="modal" title="{{ __('admin.button_read') }}"><i class="icon-list"></i></a>
-					<a href="#create-update-{{ $data->id }}" role="button" class="btn" data-toggle="modal" title="{{ __('admin.button_update') }}"><i class="icon-ok-circle"></i></a>
-					<a href="/admin/materials/index/delete/{{ $data->id }}" role="button" class="btn" title="{{ __('admin.button_delete') }}"><i class="icon-trash"></i></a>
+					<a href="#create-update-{{ $data->id }}" role="button" class="btn" title="{{ __('admin.button_update') }}"><i class="icon-ok-circle"></i></a>
+					<a href="/admin/materials/orders/delete/{{ $data->id }}" role="button" class="btn" title="{{ __('admin.button_delete') }}"><i class="icon-trash"></i></a>
 
 					<div id="create-update-{{ $data->id }}" class="modal hide fade left" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						{{ Form::open('admin/materials/index/update/'.$data->id, '', array('class' => 'form-horizontal')) }}
