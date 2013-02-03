@@ -11,7 +11,7 @@ class Seed_Users extends \S2\Seed
         $user->email = 'okara@delight.com';
         $user->address = 'Bangsue, Bangkok';
         $user->tel = '0894568959';
-        $user->role = 'Admin';
+        $user->role = 'admin';
         $user->save();
 
         $user = new User;
@@ -21,7 +21,7 @@ class Seed_Users extends \S2\Seed
         $user->email = 'anniza@delight,com';
         $user->address = 'Bangkae, Bangkok';
         $user->tel = '0835689958';
-        $user->role = 'Admin';
+        $user->role = 'admin';
         $user->save();
 
         $user = new User;
@@ -31,7 +31,7 @@ class Seed_Users extends \S2\Seed
         $user->email = 'kawin99@delihgt.com';
         $user->address = 'Bangsue, Bangkok';
         $user->tel = '0856949586';
-        $user->role = 'User';
+        $user->role = 'user';
         $user->save();
 
         $user = new User;
@@ -41,7 +41,7 @@ class Seed_Users extends \S2\Seed
         $user->email = 'jame01@hotmail.com';
         $user->address = 'Onnuch, Bangkok';
         $user->tel = '0859968899';
-        $user->role = 'User';
+        $user->role = 'user';
         $user->save();
 
         $user = new User;
@@ -51,7 +51,7 @@ class Seed_Users extends \S2\Seed
         $user->email = 'taeyeon09@girls-generation.net';
         $user->address = 'Rachaprasong, Bangkok';
         $user->tel = '0859989999';
-        $user->role = 'User';
+        $user->role = 'user';
         $user->save();
 
         $user = new User;
@@ -61,7 +61,7 @@ class Seed_Users extends \S2\Seed
         $user->email = 'jessica09@girls-generation.net';
         $user->address = 'Rachaprasong, Bangkok';
         $user->tel = '0899959995';
-        $user->role = 'User';
+        $user->role = 'user';
         $user->save();
 
         $user = new User;
@@ -71,7 +71,7 @@ class Seed_Users extends \S2\Seed
         $user->email = 'yoona09@girls-generation.net';
         $user->address = 'Rachaprasong, Bangkok';
         $user->tel = '0899988899';
-        $user->role = 'User';
+        $user->role = 'user';
         $user->save();
 
         $user = new User;
@@ -81,7 +81,7 @@ class Seed_Users extends \S2\Seed
         $user->email = 'yuri09@girls-generation.net';
         $user->address = 'Rachaprasong, Bangkok';
         $user->tel = '0899988855';
-        $user->role = 'User';
+        $user->role = 'user';
         $user->save();
 
         $user = new User;
@@ -91,7 +91,7 @@ class Seed_Users extends \S2\Seed
         $user->email = 'aof_05@hotmail.com';
         $user->address = 'Bangkae, Bangkok';
         $user->tel = '0856489758';
-        $user->role = 'User';
+        $user->role = 'user';
         $user->save();
 
         $user = new User;
@@ -101,7 +101,7 @@ class Seed_Users extends \S2\Seed
         $user->email = 'nan_99@gmail.com';
         $user->address = 'Dindang, Bangkok';
         $user->tel = '0825498658';
-        $user->role = 'User';
+        $user->role = 'user';
         $user->save();
 
         $user = new User;
@@ -111,7 +111,7 @@ class Seed_Users extends \S2\Seed
         $user->email = 'nun_55@gmail.com';
         $user->address = 'Rachada, Bangkok';
         $user->tel = '0811548858';
-        $user->role = 'User';
+        $user->role = 'user';
         $user->save();
 
         $user = new User;
@@ -121,7 +121,7 @@ class Seed_Users extends \S2\Seed
         $user->email = 'gamer_mama@gmail.com';
         $user->address = 'Silom, Bangkok';
         $user->tel = '0813455855';
-        $user->role = 'User';
+        $user->role = 'user';
         $user->save();
 
         $user = new User;
@@ -131,7 +131,7 @@ class Seed_Users extends \S2\Seed
         $user->email = 'jane012@gmail.com';
         $user->address = 'Bangrak, Bangkok';
         $user->tel = '0813455855';
-        $user->role = 'User';
+        $user->role = 'user';
         $user->save();
     }
     
