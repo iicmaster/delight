@@ -7,7 +7,7 @@
 	@section('css')
 	{{ HTML::style('css/bootstrap.css') }}
 	{{ HTML::style('js/select2/select2.css') }}
-	{{ HTML::style('css/style.css') }}
+	{{ HTML::style('css/main.css') }}
 	@yield_section
 </head>
 <body>
@@ -15,13 +15,13 @@
 		<div class="warper">
 			<div>
 				<div id="logo">
-					<a href="index.php">{{ HTML::image('img/logo.gif', 'Logo') }}</a>
+					<a href="/">{{ HTML::image('img/logo.gif', 'Logo') }}</a>
 				</div>
 			</div>
 		</div>
 	</div>
 	<nav id="nav">
-		@yield('menu')
+		@include('main.menu')
 	</nav>
 
 	<div id="content">

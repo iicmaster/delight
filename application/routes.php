@@ -32,15 +32,22 @@
 |
 */
 
-Route::get('/', function()
-{
-	return View::make('home.index');
-});
+// Default home page
+Route::get('/', 'main@index');
+Route::get('/about', 'main@about');
+Route::get('/services', 'main@services');
+Route::get('/blog', 'main@blog');
+Route::get('/contact', 'main@contact');
+Route::get('/signin', 'main@signin');
+Route::get('/signup', 'main@signup');
+Route::get('/products', 'products@index');
 
 Route::controller(array(
+	'main',
 	'admin.auth'
 ));
 
+// Required admin auth
 Route::group(array('before' => 'admin_auth'), function()
 {
 	Route::controller(array(
