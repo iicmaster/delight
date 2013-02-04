@@ -114,11 +114,12 @@
 					</td>
 				</tr>
 				@empty
-				<tr><td colspan="5" class="center">No result found.</td></tr>
+				<tr><td colspan="7" class="center">No result found.</td></tr>
 				@endforelse
 			</tbody>
 		</table>
-		<div class="right">
+		<hr>
+		<div class="button-wraper right">
 			<button class="btn btn-primary">Create Material Order</button>
 		</div>
 	{{ Form::close() }}

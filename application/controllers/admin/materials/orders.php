@@ -91,4 +91,18 @@ class Admin_Materials_Orders_Controller extends Base_Controller
 	}
 
 	// --------------------------------------------------------------------------
+
+	/**
+	 * Materials order approve page
+	 */
+	public function action_approve($id)
+	{
+		$data['query'] = Material_Order::where('id', '=', $id)
+									   ->where('owner_id', '=', Auth::user()->id)
+									   ->first();
+
+		return View::make('admin.materials.orders.approve', $data);
+	}
+
+	// --------------------------------------------------------------------------
 }

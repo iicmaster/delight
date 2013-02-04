@@ -56,8 +56,10 @@
 				<td class="left">{{ $data->status }}</td>
 				<td class="right">
 					<a href="#create-update-{{ $data->id }}" role="button" class="btn" data-toggle="modal" title="{{ __('admin.button_read') }}"><i class="icon-list"></i></a>
-					<a href="#create-update-{{ $data->id }}" role="button" class="btn" title="{{ __('admin.button_update') }}"><i class="icon-ok-circle"></i></a>
-					<a href="/admin/materials/orders/delete/{{ $data->id }}" role="button" class="btn" title="{{ __('admin.button_delete') }}"><i class="icon-trash"></i></a>
+					@if ( ! $data->is_approved)
+						<a href="/admin/materials/orders/approve/{{ $data->id }}" role="button" class="btn" title="{{ __('materials.approve') }}"><i class="icon-ok-circle"></i></a>
+						<a href="/admin/materials/orders/delete/{{ $data->id }}" role="button" class="btn" title="{{ __('admin.button_delete') }}"><i class="icon-trash"></i></a>
+					@endif
 
 					<div id="create-update-{{ $data->id }}" class="modal hide fade left" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-header">
@@ -66,24 +68,26 @@
 							<span>{{ $data->description }}</span>
 						</div>
 						<div class="modal-body">
-							<table width="100%">
+							<table class="table">
 								<thead>
 									<tr>
-										<th class="center">#</th>
-										<th class="left">{{ __('admin.name') }}</th>
-										<th class="right">{{ __('materials.quantity') }}</th>
-										<th class="center">{{ __('admin.unit') }}</th>
+										<th class=" center">#</th>
 										<th class="left">{{ __('suppliers.suppliers') }}</th>
+										<th class="left">{{ __('materials.materials') }}</th>
+										<th class="right">{{ __('materials.ordered') }}</th>
+										<th class="right">{{ __('materials.receive') }}</th>
+										<th class="center">{{ __('admin.unit') }}</th>
 									</tr>
 								</thead>
 								<tbody>
 									@foreach ($data->items as $key => $item)
 									<tr>
 										<td class="center">{{ $key + 1 }}</td>
-										<td class="left">{{ $item->material->name }}</td>
-										<td class="right">{{ $item->orered_quantity }}</td>
-										<td class="center">{{ $item->material->unit }}</td>
 										<td class="left">{{ $item->supplier->name }}</td>
+										<td class="left">{{ $item->material->name }}</td>
+										<td class="right">{{ Helper::add_comma($item->ordered_quantity) }}</td>
+										<td class="right">{{ $item->approved_quantity ? Helper::add_comma($item->ordered_quantity) : '-' }}</td>
+										<td class="center">{{ $item->material->unit }}</td>
 									</tr>
 									@endforeach
 								</tbody>

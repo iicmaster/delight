@@ -12,6 +12,8 @@
 .bold { font-weight: bold; }
 .normal { font-weight: normal; font-style: normal; text-decoration: none; }
 
+.button-wraper { margin-top: 32px; }
+
 /* -------------------------------------------------------------------------- */
 /* Website template by freewebsitetemplates.com */
 /* -------------------------------------------------------------------------- */
@@ -1291,12 +1293,18 @@ p a {
 
 	#content .table th {
 		/*text-align: center;*/
+		white-space: nowrap;
 	}
 
 	.table td,
 	.table th 
 	{
 		padding: 8px 16px;
+	}
+
+	#content .table td input[type=text] {
+		display: inline-block;
+		width: 60%;
 	}
 
 	.modal form {

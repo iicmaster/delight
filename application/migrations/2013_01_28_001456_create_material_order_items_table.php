@@ -11,7 +11,8 @@ class Create_Material_Order_Items_Table
 			$table->integer('supplier_id')->unsigned();
 			$table->integer('ordered_quantity')->unsigned()->default(0);			
 			$table->integer('approved_quantity')->unsigned()->default(0);
-			$table->integer('price')->unsigned()->default(0);
+			$table->decimal('price_per_unit', 10, 4)->unsigned()->nullable;
+			$table->decimal('amount', 10, 4)->unsigned()->nullable;
 			$table->timestamps();
 
 			$table->foreign('material_order_id')->references('id')->on('material_orders')->on_delete('cascade');

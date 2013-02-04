@@ -45,7 +45,7 @@
 					<td class="right">
 						<input type="text" name="items[{{ $data->id }}][quantity]" value="<?php
 							echo ($data->max_stock - $data->total > 0) ? ($data->max_stock - $data->total) : 0;
-						?>" class="right" required pattern="^[0-9]+$" title="Number only"></td>
+						?>" class="right" required pattern="^[0-9]+$" title="{{ __('validation.numeric') }}"></td>
 					<td class="center">{{ $data->unit }}</td>
 					<td class="left">
 						<select id="inputSuppliers" name="items[{{ $data->id }}][supplier_id]" required>
@@ -61,7 +61,8 @@
 				@endforelse
 			</tbody>
 		</table>
-		<div class="right">
+		<hr>
+		<div class="button-wraper right">
 			<button class="btn btn-primary">Save</button>
 		</div>
 	{{ Form::close() }}
