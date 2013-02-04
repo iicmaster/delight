@@ -43,7 +43,7 @@ class Admin_Materials_Index_Controller extends Base_Controller
 
 		if ($material) {
 			Material::find($id)->suppliers()->sync(Input::get('suppliers'));
-			$result = __('admin.message_update_success');
+			$result = __('admin.message_update_succeed');
 		} else {
 			$result = false;
 		}
@@ -55,7 +55,7 @@ class Admin_Materials_Index_Controller extends Base_Controller
 
 	public function action_delete($id)
 	{    
-		$result = Material::where('id', '=', $id)->delete() ? __('admin.message_delete_success') : false;
+		$result = Material::where('id', '=', $id)->delete() ? __('admin.message_delete_succeed') : false;
 		return Redirect::to_action('admin.materials@index')->with('result', $result);
 	}
 

@@ -14,7 +14,7 @@ class Admin_Suppliers_Controller extends Base_Controller
 	public function action_create()
 	{    
 		$input = Input::get();
-		$result = Supplier::create($input) ? 'Create data success' : false;
+		$result = Supplier::create($input) ? 'Create data succeed' : false;
 		return Redirect::to_action('admin.suppliers@index')->with('result', $result);
 	}
 	
@@ -23,7 +23,7 @@ class Admin_Suppliers_Controller extends Base_Controller
 	public function action_update($id)
 	{    
 		$input = Input::get();
-		$result = Supplier::where('id', '=', $id)->update($input) ? 'Update data success' : false;
+		$result = Supplier::where('id', '=', $id)->update($input) ? 'Update data succeed' : false;
 		return Redirect::to_action('admin.suppliers@index')->with('result', $result);
 	}
 	
@@ -31,7 +31,7 @@ class Admin_Suppliers_Controller extends Base_Controller
 
 	public function action_delete($id)
 	{    
-		$result = Supplier::where('id', '=', $id)->delete() ? 'Delete data success' : false;
+		$result = Supplier::where('id', '=', $id)->delete() ? 'Delete data succeed' : false;
 		return Redirect::to_action('admin.suppliers@index')->with('result', $result);
 	}
 	

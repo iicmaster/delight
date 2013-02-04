@@ -15,7 +15,7 @@ class Admin_Users_Controller extends Base_Controller
 	{    
 		$input = Input::get();
 		$input['password'] = Hash::make($input['password']);
-		$result = User::create($input) ? 'Create data success' : false;
+		$result = User::create($input) ? 'Create data succeed' : false;
 		return Redirect::to_action('admin.users@index')->with('result', $result);
 	}
 	
@@ -25,7 +25,7 @@ class Admin_Users_Controller extends Base_Controller
 	{    
 		$input = Input::get();
 		$input['password'] = Hash::make($input['password']);
-		$result = User::where('id', '=', $id)->update($input) ? 'Update data success' : false;
+		$result = User::where('id', '=', $id)->update($input) ? 'Update data succeed' : false;
 		return Redirect::to_action('admin.users@index')->with('result', $result);
 	}
 	
@@ -33,7 +33,7 @@ class Admin_Users_Controller extends Base_Controller
 
 	public function action_delete($id)
 	{    
-		$result = User::where('id', '=', $id)->delete() ? 'Delete data success' : false;
+		$result = User::where('id', '=', $id)->delete() ? 'Delete data succeed' : false;
 		return Redirect::to_action('admin.users@index')->with('result', $result);
 	}
 	
