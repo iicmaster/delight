@@ -26,7 +26,6 @@
 		<table class="table table-striped">
 			<thead>
 				<tr>
-					<th class="span1 center"><input type="checkbox" id="select-all" checked></th>
 					<th class="span1 center">#</th>
 					<th class="left">{{ __('admin.name') }}</th>
 					<th class="span2 right">{{ __('materials.quantity') }}</th>
@@ -37,9 +36,6 @@
 			<tbody>
 				@forelse ($query as $data)
 				<tr>
-					<td class="center">
-						<input type="checkbox" name="selected_items[]" value="{{ $data->id }}" checked>
-					</td>
 					<td class="center">{{ $data->id }}</td>
 					<td class="left">{{ $data->name }}</td> 
 					<td class="right">

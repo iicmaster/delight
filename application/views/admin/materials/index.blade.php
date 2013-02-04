@@ -92,7 +92,7 @@ Materials
 			<tr>
 				<th class="span1 center">#</th>
 				<th class="left">{{ __('admin.name') }}</th>
-				<th class="span2 right">{{ __('admin.total') }}</th>
+				<th class="span2 right">{{ __('materials.stock_remain') }}</th>
 				<th class="span1 left">{{ __('admin.unit') }}</th>
 				<th class="span2"></th>
 			</tr>
@@ -108,7 +108,7 @@ Materials
 					<a href="#create-update-{{ $data->id }}" role="button" class="btn" data-toggle="modal" title="{{ __('admin.button_update') }}"><i class="icon-pencil"></i></a>
 					<a href="/admin/materials/index/delete/{{ $data->id }}" role="button" class="btn" title="{{ __('admin.button_delete') }}"><i class="icon-trash"></i></a>
 
-					<div id="create-update-{{ $data->id }}" class="modal hide fade left" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+					<div id="update-modal-{{ $data->id }}" class="modal hide fade left" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						{{ Form::open('admin/materials/index/update/'.$data->id, '', array('class' => 'form-horizontal')) }}
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{{ __('admin.button_close') }}">×</button>
