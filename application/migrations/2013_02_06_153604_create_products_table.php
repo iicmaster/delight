@@ -1,18 +1,22 @@
 <?php
 
-class Create_Materials_Table 
+class Create_Products_Table 
 {    
 	public function up()
     {
-		Schema::create('materials', function($table) {
+		Schema::create('products', function($table) {
 			$table->increments('id');
 			$table->integer('owner_id')->unsigned();
 			$table->string('name', 255);
 			$table->string('description', 255)->nullable();
+			$table->string('image', 255)->nullable();
 			$table->string('unit', 255)->nullable();
 			$table->integer('total')->unsigned()->default(0);
 			$table->integer('min_stock')->unsigned()->default(0);
 			$table->integer('max_stock')->unsigned()->default(0);
+			$table->integer('min_order')->unsigned()->default(0);
+			$table->decimal('retail_price', 10, 2)->unsigned();
+			$table->decimal('wholesale_price', 10, 2)->unsigned();
 			$table->date('latest_transaction');
 			$table->timestamps();
 
@@ -22,6 +26,6 @@ class Create_Materials_Table
 
 	public function down()
     {
-		Schema::drop('materials');
+		Schema::drop('products');
     }
 }
