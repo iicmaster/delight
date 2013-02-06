@@ -7,6 +7,8 @@
 	@section('css')
 	{{ HTML::style('css/bootstrap.css') }}
 	{{ HTML::style('js/select2/select2.css') }}
+	{{ HTML::style('css/template.css') }}
+	{{ HTML::style('css/style.css') }}
 	{{ HTML::style('css/main.css') }}
 	@yield_section
 </head>

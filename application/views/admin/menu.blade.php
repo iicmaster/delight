@@ -17,13 +17,13 @@
 						<li>{{ HTML::link('/admin/materials/stock/restock', 'Materials recommended to purchase.') }}</li>
 						<li>{{ HTML::link('#', 'Purchase raw materials.') }}</li>
 						<li>{{ HTML::link('/admin/materials/orders', 'Purchased orders sheet.') }}</li>
-						<li>{{ HTML::link('admin/suppliers', 'Raw material suppliers.') }}</li>
+						<li>{{ HTML::link('/admin/suppliers', 'Raw material suppliers.') }}</li>
 					</ul>
 				</li>
 				<li class="dropdown">
 					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Product <b class="caret"></b></a>
 					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
-						<li>{{ HTML::link('#', 'All products.') }}</li>
+						<li>{{ HTML::link('/admin/products/index', 'All products.') }}</li>
 						<li>{{ HTML::link('#', 'Add new products.') }}</li>
 					</ul>
 				</li>

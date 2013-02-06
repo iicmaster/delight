@@ -1,0 +1,82 @@
+/* -------------------------------------------------------------------------- */
+/* Utilities Class */
+/* -------------------------------------------------------------------------- */
+
+.center, #content .center { text-align: center; }
+.left, #content .left { text-align: left; }
+.right, #content .right { text-align: right; }
+
+.clear { clear: both; }
+.nowrap { white-space: nowrap; }
+
+.bold { font-weight: bold; }
+.normal { font-weight: normal; font-style: normal; text-decoration: none; }
+
+.button-wraper { margin-top: 32px; }
+
+/* -------------------------------------------------------------------------- */
+/* Customize Bootstarp */
+/* -------------------------------------------------------------------------- */
+
+	#content hr {
+		margin: 0;
+	}
+
+	#content .pagination ul li {
+		float: none;
+	}
+
+	#content .table th {
+		/*text-align: center;*/
+		white-space: nowrap;
+	}
+
+	.table td,
+	.table th 
+	{
+		padding: 8px 16px;
+	}
+
+	#content .table td input[type=text] {
+		display: inline-block;
+		width: 60%;
+	}
+
+	.modal form {
+		margin: 0px;
+	}
+
+	.modal-header h3 {
+		font-weight: normal;
+		font-style: italic;
+		font-family: "Trebuchet MS";
+	}
+
+/* -------------------------------------------------------------------------- */
+/* Customize Select2 */
+/* -------------------------------------------------------------------------- */
+
+#content .select2-container-multi .select2-choices {
+	background-color: #FFFFFF;
+	display: inline-block;
+	min-width: 206px;    
+    border-radius: 4px 4px 4px 4px;
+    border: 1px solid #CCCCCC;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset;
+    color: #555555;
+    font-size: 14px;
+    height: 20px;
+    line-height: 20px;
+    margin-bottom: 0;
+    padding: 4px 6px;
+    transition: border 0.2s linear 0s, box-shadow 0.2s linear 0s;
+    vertical-align: middle;
+}
+
+#content .select2-search-choice div {
+	font-size: 11px;
+}
+
+#content .select2-container-multi .select2-choices .select2-search-choice {
+	line-height: 15px;
+}
