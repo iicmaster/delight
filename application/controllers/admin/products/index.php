@@ -26,14 +26,14 @@ class Admin_Products_Index_Controller extends Base_Controller
 				$product = Product::create($input);
 
 				// Insert product's materials data
-				if (Input::has('materials')) {
+				if (Input::get('materials')) {
 					foreach (Input::get('materials') as $id => $data) {
 						$product->materials()->attach($id, $data);
 					}
 				}
 
 				// Check has upload image
-				if (Input::all('image')) {
+				if (Input::file('image.name')) {
 					$upload_path = 'uploads/products';
 					$file_name = $product->id.'.'.File::extension(Input::file('image.name'));
 					$file_path = $upload_path.'/'.$file_name;
