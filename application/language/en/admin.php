@@ -24,7 +24,7 @@ return array(
 	'created_at' => 'Created Date',
 	'date' => 'Date',
 	'description' => 'Description',
-	'detail' => 'Detail',
+	'details' => 'Details',
 	'id' => 'ID',
 	'login' => 'Login',
 	'logout' => 'Logout',
@@ -33,4 +33,6 @@ return array(
 	'total' => 'Total',
 	'unit' => 'Unit',
 	'updated_at' => 'Updated Date',
+	'image' => 'Image',
+	'quantity' => 'Quantity',
 );

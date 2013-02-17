@@ -54,12 +54,6 @@ Materials
 					</div>
 				</div>
 				<div class="control-group">
-					<label class="control-label" for="inputTotal">{{ __('admin.total') }}</label>
-					<div class="controls">
-						<input type="text" id="inputTotal" placeholder="Total" name="total">
-					</div>
-				</div>
-				<div class="control-group">
 					<label class="control-label" for="inputUnit">{{ __('admin.unit') }}</label>
 					<div class="controls">
 						<input type="text" id="inputUnit" placeholder="Unit" name="unit">

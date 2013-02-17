@@ -14,6 +14,9 @@
 
 .button-wraper { margin-top: 32px; }
 
+/* Fixed outline dotted on FF */
+:-moz-any-link:focus { outline: none; }
+
 /* -------------------------------------------------------------------------- */
 /* Customize Bootstarp */
 /* -------------------------------------------------------------------------- */

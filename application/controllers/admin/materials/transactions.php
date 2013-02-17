@@ -42,7 +42,6 @@ class Admin_Materials_Transactions_Controller extends Base_Controller
 			]);
 		}
 
-
 		$result['status'] = true;
 		$result['message'] = __('admin.message_update_succeed');
 

@@ -33,6 +33,7 @@
 	@section('js')
 	{{ HTML::script('js/jquery-1.8.3.js') }}
 	{{ HTML::script('js/bootstrap.js') }}
+	{{ HTML::script('js/bootstrap.file-input.js') }}
 	{{ HTML::script('js/select2/select2.js') }}
 	<script>
 	$(function() {

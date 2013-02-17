@@ -45,7 +45,7 @@
 					<td class="center">{{ $data->unit }}</td>
 					<td class="left">
 						<select id="inputSuppliers" name="items[{{ $data->id }}][supplier_id]" required>
-							<option value="" disabled selected>Choose...</option>
+							<option class="muted" value="" disabled selected>Choose...</option>
 							@foreach ($data->suppliers as $supplier)
 								<option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
 							@endforeach
