@@ -8,7 +8,7 @@ class Create_Product_Materials_Table
 			$table->increments('id');
 			$table->integer('product_id')->unsigned();
 			$table->integer('material_id')->unsigned();
-			$table->decimal('quantity', 10, 4)->unsigned();
+			$table->decimal('quantity', 10, 2)->unsigned();
 			$table->timestamps();
 
 			$table->foreign('product_id')->references('id')->on('products')->on_delete('cascade');
