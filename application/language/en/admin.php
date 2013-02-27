@@ -35,4 +35,5 @@ return array(
 	'updated_at' => 'Updated Date',
 	'image' => 'Image',
 	'quantity' => 'Quantity',
+	'size' => 'Size',
 );

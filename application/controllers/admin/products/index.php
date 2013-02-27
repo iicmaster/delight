@@ -5,8 +5,7 @@ class Admin_Products_Index_Controller extends Base_Controller
 	public function action_index()
 	{
 		$data['report_message'] = Session::get('result');
-		$data['query'] = Product::where('owner_id', '=', Auth::user()->id)
-							  	->order_by('id', 'desc')
+		$data['query'] = Product::order_by('id', 'desc')
 								->paginate(Config::get('admin.row_per_page'));
 		$data['materials'] = Material::all();
 		return View::make('admin.products.index', $data);
@@ -17,7 +16,6 @@ class Admin_Products_Index_Controller extends Base_Controller
 	public function action_create()
 	{    
 		$input = Input::get();
-		$input['owner_id'] = Auth::user()->id;
 		unset($input['materials']);
 
 		try {
@@ -34,12 +32,12 @@ class Admin_Products_Index_Controller extends Base_Controller
 
 				// Check has upload image
 				if (Input::file('image.name')) {
-					$upload_path = 'uploads/products';
+					$upload_path = '/uploads/products';
 					$file_name = $product->id.'.'.File::extension(Input::file('image.name'));
 					$file_path = $upload_path.'/'.$file_name;
 
 					// Move uploaded image
-					Input::upload('image', $upload_path, $file_name);
+					Input::upload('image', 'public'.$upload_path, $file_name);
 
 					// Save image path
 					$product->image = $file_path;
@@ -55,6 +53,55 @@ class Admin_Products_Index_Controller extends Base_Controller
 			Log::write('error', $e);
 			$result['status'] = false;
 			$result['message'] = __('admin.message_create_failed');
+		}
+
+		// Redirect to product index
+		return Redirect::to_action('admin.products@index')->with('result', $result);
+	}
+
+	// --------------------------------------------------------------------------
+
+	public function action_update($id)
+	{    
+		$input = Input::get();
+		unset($input['materials']);
+
+		try {
+			DB::transaction((function() use ($id, $input) {
+				// Update product data 
+				Product::update($id, $input);
+
+				// Remove old product's materials
+				$product = Product::find($id);
+				$product->materials()->delete();
+
+				// Insert product's materials
+				if (Input::get('materials')) {
+					foreach (Input::get('materials') as $id => $data) {
+						$product->materials()->attach($id, $data);
+					}
+				}
+
+				// Check has upload image
+				if (Input::file('image.name')) {
+					$upload_path = '/uploads/products';
+					$file_name = $product->id.'.'.File::extension(Input::file('image.name'));
+					$file_path = $upload_path.'/'.$file_name;
+
+					// Move uploaded image
+					File::delete('public'.$product->image);
+					Input::upload('image', 'public'.$upload_path, $file_name);
+				}
+			}));
+
+			$result['status'] = true;
+			$result['message'] = __('admin.message_update_succeed');
+		}
+		catch(\Exception $e)
+		{
+			Log::write('error', $e);
+			$result['status'] = false;
+			$result['message'] = __('admin.message_update_failed');
 		}
 
 		// Redirect to product index

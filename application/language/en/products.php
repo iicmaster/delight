@@ -1,5 +1,6 @@
 <?php
 return [
 	'products' => 'Products',
-	'min_order' => 'Minimum Orders'
+	'min_order' => 'Minimum Orders',
+	'price' => 'Price',
 ];
