@@ -190,7 +190,8 @@
 			<tr>
 				<th class="span1 center">#</th>
 				<th class="left">{{ __('admin.name') }}</th>
-				<th class="span2 right">{{ __('materials.stock_remain') }}</th>
+				<th class="span2 right">{{ __('products.price') }}</th>
+				<th class="span2 right">{{ __('products.size') }}</th>
 				<th class="span1 left">{{ __('admin.unit') }}</th>
 				<th class="span2"></th>
 			</tr>
@@ -201,7 +202,8 @@
 				<tr>
 					<td class="center">{{ $data->id }}</td>
 					<td class="left">{{ $data->name }}</td>
-					<td class="right">{{ Helper::add_comma($data->total) }}</td>
+					<td class="right">{{ Helper::add_comma($data->price) }}</td>
+					<td class="right">{{ $data->size }}</td>
 					<td class="left">{{ $data->unit }}</td>
 					<td class="right">
 						<a href="#update-modal-{{ $data->id }}" role="button" class="btn" data-toggle="modal" title="{{ __('admin.button_update') }}"><i class="icon-pencil"></i></a>
