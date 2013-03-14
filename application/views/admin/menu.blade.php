@@ -6,7 +6,7 @@
 				<li class="dropdown">
 					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Location <b class="caret"></b></a>
 					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
-						<li>{{ HTML::link('#', 'All shipping locations.') }}</li>
+						<li>{{ HTML::link('/admin/locations', 'All shipping locations.') }}</li>
 						<li>{{ HTML::link('#', 'Add shipping locations.') }}</li>
 					</ul>
 				</li>

@@ -6,5 +6,4 @@ return array(
 	'password' => 'Password',
 	'address' => 'Address',
 	'user' => 'Users',
-
 );

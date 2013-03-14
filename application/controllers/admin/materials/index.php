@@ -17,12 +17,9 @@ class Admin_Materials_Index_Controller extends Base_Controller
 	public function action_create()
 	{    
 		$input = Input::get();
-		$input['owner_id'] = Auth::user()->id;
-		unset($input['suppliers']);
+		$query = Location::create($input);
 
-		$material = Material::create($input);
-
-		if ($material) {
+		if ($query) {
 			$material->suppliers()->sync(Input::get('suppliers'));
 			$result = __('admin.message_create_succeed');
 		} else {

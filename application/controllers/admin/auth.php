@@ -34,5 +34,4 @@ class Admin_Auth_Controller extends Base_Controller
 
 	// --------------------------------------------------------------------------
 
-
 }
