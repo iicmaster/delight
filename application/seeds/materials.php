@@ -106,10 +106,10 @@ class Seed_Materials extends \S2\Seed
 
         $material = new Material;
         $material->owner_id = 1;
-        $material->name = 'มะนาว';
-        $material->description = 'มะนาว';
+        $material->name = 'น้ำมะนาว';
+        $material->description = 'น้ำมะนาว';
         $material->total = '0';
-        $material->unit = 'ลูก';
+        $material->unit = 'cc.';
         $material->min_stock = '5';
         $material->max_stock = '30';
         $material->save();
@@ -318,10 +318,10 @@ class Seed_Materials extends \S2\Seed
 
         $material = new Material;
         $material->owner_id = 2;
-        $material->name = 'มะนาว';
-        $material->description = 'มะนาว';
+        $material->name = 'น้ำมะนาว';
+        $material->description = 'น้ำมะนาว';
         $material->total = '0';
-        $material->unit = 'ลูก';
+        $material->unit = 'cc.';
         $material->min_stock = '5';
         $material->max_stock = '30';
         $material->save();
