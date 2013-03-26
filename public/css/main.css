@@ -1,6 +1,21 @@
 /* -------------------------------------------------------------------------- */
+/* Header */
+/* -------------------------------------------------------------------------- */
+
+	#header #member-menu {
+		padding: 16px 32px;
+		height: auto;
+	}
+
+/* -------------------------------------------------------------------------- */
 /* Content */
 /* -------------------------------------------------------------------------- */
+
+	
+	#content div#services, #content div#about, #content div.alert,
+	#content > div#services, #content > div#about, #content > div.alert {
+		padding: 8px 35px 8px 14px;
+	}
 
 	#content div#services, #content div#about, #content div {
 		margin: 0 auto;

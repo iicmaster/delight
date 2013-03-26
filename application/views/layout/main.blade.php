@@ -19,6 +19,8 @@
 				<div id="logo">
 					<a href="/">{{ HTML::image('img/logo.gif', 'Logo') }}</a>
 				</div>
+				<div id="member-menu">
+				</div>
 			</div>
 		</div>
 	</div>

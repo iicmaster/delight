@@ -5,6 +5,13 @@ Welcome
 @endsection
 
 @section('content')
+	<!-- Report Message -->
+	@if ($report['message'])
+		<div class="alert alert-{{ $report['status'] }}">
+			<button class="close" data-dismiss="alert" type="button">×</button>
+			{{ $report['message'] }}
+		</div>
+	@endif
 	<div class="home">
 		<div class="aside">
 			<h1>Welcome to our site</h1>

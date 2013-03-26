@@ -38,12 +38,14 @@ Route::get('/about', 'main@about');
 Route::get('/services', 'main@services');
 Route::get('/blog', 'main@blog');
 Route::get('/contact', 'main@contact');
-Route::get('/signin', 'main@signin');
-Route::get('/signup', 'main@signup');
+Route::get('/login', 'main@login');
+Route::get('/logout', 'main@logout');
+Route::get('/register', 'main@register');
 Route::get('/products', 'products@index');
 
 Route::controller(array(
 	'main',
+	'users',
 	'admin.auth'
 ));
 
@@ -138,5 +140,7 @@ Route::filter('auth', function()
 
 Route::filter('admin_auth', function()
 {
-	if (Auth::guest()) return Redirect::to('admin/auth/login')->with('message', __('admin.message_please_login'));
+	if (Auth::guest() or Auth::user()->role == 'user') {
+		return Redirect::to('admin/auth/login')->with('message', __('admin.message_please_login'));
+	}
 });

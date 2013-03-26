@@ -4,7 +4,8 @@ class Main_Controller extends Base_Controller
 {
 	public function action_index()
 	{
-		return View::make('main.index');
+		$data['report'] = Session::get('report');
+		return View::make('main.index', $data);
 	}
 	
 	// --------------------------------------------------------------------------
@@ -37,16 +38,27 @@ class Main_Controller extends Base_Controller
 	
 	// --------------------------------------------------------------------------
 
-	public function action_signin()
+	public function action_login()
 	{
 		return View::make('main.signin');
 	}
 	
 	// --------------------------------------------------------------------------
 
-	public function action_signup()
+	public function action_register()
 	{
-		return View::make('main.signup');
+		return View::make('main.register');
+	}
+	
+	// --------------------------------------------------------------------------
+
+	public function action_logout()
+	{
+		Auth::logout();
+        $report['status'] = 'success';
+        $report['message'] = 'Logout successful.';
+
+        return Redirect::to_action('main@index')->with('report', $report);
 	}
 	
 	// --------------------------------------------------------------------------

@@ -7,13 +7,23 @@
 				<li class="dropdown"><a href="/contact">Contact us</a></li>
 				<li class="dropdown"><a href="#">Check Cart <i class="icon-shopping-cart"></i></a></li>
 			</ul>
-			@if (Auth::check())
-				<ul class="nav pull-right">
+			<ul class="nav pull-right">
+				@if (Auth::check())
 					<li  id="fat-menu">
-						<a role="button" href="#">Logout</a>
+						<a role="button" href="/profile">Profile</a>
 					</li>
-				</ul>
-			@endif
+					<li  id="fat-menu">
+						<a role="button" href="/logout">Logout</a>
+					</li>
+				@else
+					<li  id="fat-menu">
+						<a role="button" href="/login">Login</a>
+					</li>
+					<li  id="fat-menu">
+						<a role="button" href="/register">Register</a>
+					</li>
+				@endif
+			</ul>
 		</div>
 	</div>
 </div>
