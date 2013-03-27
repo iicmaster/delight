@@ -49,6 +49,12 @@ Route::controller(array(
 	'admin.auth'
 ));
 
+
+Route::group(array('before' => 'auth'), function()
+{
+	Route::get('/profile', 'users@profile');
+});
+
 // Required admin auth
 Route::group(array('before' => 'admin_auth'), function()
 {

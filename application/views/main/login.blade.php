@@ -32,13 +32,13 @@ Login
 
 @section('content')
 	<div>
-					<!-- Report Message -->
-					@if ($report['message'])
-						<div class="alert alert-{{ $report['status'] }}">
-							<button class="close" data-dismiss="alert" type="button">×</button>
-							{{ $report['message'] }}
-						</div>
-					@endif
+		<!-- Report Message -->
+		@if ($report['message'])
+			<div class="alert alert-{{ $report['status'] }}">
+				<button class="close" data-dismiss="alert" type="button">×</button>
+				{{ $report['message'] }}
+			</div>
+		@endif
 		<div id="account">
 			<div>
 				<form action="/users/validate" method="post">
