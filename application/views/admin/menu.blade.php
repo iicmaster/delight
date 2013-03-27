@@ -25,7 +25,10 @@
 				<li class="dropdown">
 					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Report <b class="caret"></b></a>
 					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
-						<li>{{ HTML::link('#', 'Report.') }}</li>
+						<li>{{ HTML::link('#', 'Material used report.') }}</li>
+						<li>{{ HTML::link('#', 'Material purchased report.') }}</li>
+						<li>{{ HTML::link('#', 'Product sales report.') }}</li>
+						<li>{{ HTML::link('#', 'Profit - loss report.') }}</li>
 					</ul>
 				</li>
 			</ul>
