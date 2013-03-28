@@ -4,70 +4,80 @@
 Products
 @endsection
 
+@section('css')
+  @parent
+  <style type="text/css" media="screen">
+    #content div ul li div.thumbnail {
+        border: 1px solid #DDDDDD;
+        border-radius: 4px 4px 4px 4px;
+        box-shadow: 0 1px 3px rgba(0, 0, 0, 0.055);
+        display: block;
+        line-height: 20px;
+        padding: 4px;
+        transition: all 0.2s ease-in-out 0s;
+    }
+
+    #content div ul.thumbnails > li {
+      background-color: #F9F9F9;
+      float: left;
+      margin-bottom: 20px;
+      margin-left: 20px;
+      width: 220px;
+      height: auto;
+    }
+
+    #content div ul li div.thumbnail div.caption  {
+        color: #555555;
+        padding: 9px;
+        left: inherit;
+        position: inherit;
+        top: inherit;
+    }
+
+    #content div ul li div div.product-tumbnail {
+      background-position: center;
+      background-size: cover;
+      height: 200px;  
+      width: 200px;  
+      left: inherit;
+      padding: inherit;
+      position: inherit;
+      top: inherit;
+    }
+
+    #content div.caption ul  {
+      margin-bottom: 16px;
+    }
+
+    #content div.caption ul li {
+      float: none;
+      height: inherit;
+      width: inherit;
+    }
+  </style>
+@endsection 
+
 @section('content')
-	<div>
-		<h1>The Pastry shop</h1>
-		<ul>
-			<li>
-				<div>
-					<div>
-						<h2><a href="index.php">Special Treats</a></h2>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
-						<a href="index.php" class="view">view all</a>
-					</div>
-					<a href="index.php">{{ HTML::image('img/special-treats.jpg', 'Image') }}</a>
-				</div>
-			</li>
-			<li>
-				<div>
-					<div>
-						<h2><a href="index.php">Tarts</a></h2>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
-						<a href="index.php" class="view">view all</a>
-					</div>
-					<a href="index.php">{{ HTML::image('img/tarts.jpg', 'Image') }}</a>
-				</div>
-			</li>
-			<li>
-				<div>
-					<div>
-						<h2><a href="index.php">Cakes</a></h2>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
-						<a href="index.php" class="view">view all</a>
-					</div>
-					<a href="index.php">{{ HTML::image('img/cakes.jpg', 'Image') }}</a>
-				</div>
-			</li>
-			<li>
-				<div>
-					<div>
-						<h2><a href="index.php">Desserts</a></h2>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
-						<a href="index.php" class="view">view all</a>
-					</div>
-					<a href="index.php">{{ HTML::image('img/dessert.jpg', 'Image') }}</a>
-				</div>
-			</li>
-			<li>
-				<div>
-					<div>
-						<h2><a href="index.php">Pastries</a></h2>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
-						<a href="index.php" class="view">view all</a>
-					</div>
-					<a href="index.php">{{ HTML::image('img/pastries.jpg', 'Image') }}</a>
-				</div>
-			</li>
-			<li>
-				<div>
-					<div>
-						<h2><a href="index.php">Healthy Food</a></h2>
-						<p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh</p>
-						<a href="index.php" class="view">view all</a>
-					</div>
-					<a href="index.php">{{ HTML::image('img/healthy-food.jpg', 'Image') }}</a>
-				</div>
-			</li>
-		</ul>
-	</div>
+  <div>
+    <h1>Products</h1>
+    <div class="row">
+      <ul class="thumbnails">
+        @foreach ($products as $product)
+        <li class="span3">
+          <div class="thumbnail">
+            <div class="product-tumbnail" style="background-image: url('{{ $product->image }}')"></div>
+            <div class="caption">
+              <h5>{{ $product->name }}</h5>
+              <ul>
+                <li>Size: {{ $product->size }} {{ $product->unit }}</li>
+                <li>Price: {{ $product->price }} ฿</li>
+              </ul>
+              <div class="center"><a class="btn" href="/cart/add/{{ $product->id }}">ซื้อเบย</a></div>
+            </div>
+          </div>
+        </li>
+        @endforeach
+      </ul>
+    </div>  
+  </div>
 @endsection

@@ -42,11 +42,13 @@ Route::get('/login', 'main@login');
 Route::get('/logout', 'main@logout');
 Route::get('/register', 'main@register');
 Route::get('/products', 'products@index');
+Route::get('/cart', 'cart@index');
 
 Route::controller(array(
 	'main',
 	'users',
-	'admin.auth'
+	'cart',
+	'admin.auth',
 ));
 
 

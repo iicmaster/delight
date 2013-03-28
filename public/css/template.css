@@ -477,7 +477,7 @@
 	    width: auto;
 	}
 
-	#content div ul li div div {
+	#content > div > ul > li > div > div {
 		left: 30px;
 	    padding: 0;
 	    position: absolute;
