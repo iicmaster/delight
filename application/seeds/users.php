@@ -133,6 +133,16 @@ class Seed_Users extends \S2\Seed
         $user->tel = '0813455855';
         $user->role = 'user';
         $user->save();
+
+        $user = new User;
+        $user->name = 'โอคาระ';
+        $user->username = 'Okara';
+        $user->password = Hash::make('suankularb');
+        $user->email = 'Okara_Os@delight.com';
+        $user->address = 'Bangsue, Bangkok';
+        $user->tel = '0818222250';
+        $user->role = 'user';
+        $user->save();
     }
     
     public function order()

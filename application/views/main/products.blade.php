@@ -72,7 +72,7 @@ Products
                 <li>Size: {{ $product->size }} {{ $product->unit }}</li>
                 <li>Price: {{ $product->price }} ฿</li>
               </ul>
-              <div class="center"><a class="btn" href="/cart/add/{{ $product->id }}">ซื้อเบย</a></div>
+              <div class="center"><a class="btn" href="/cart/add/{{ $product->id }}">Add <i class="icon-shopping-cart"></i></a></div>
             </div>
           </div>
         </li>
