@@ -71,8 +71,21 @@ Products
     #content div h1 { 
       margin-bottom: 16px;
     }
-
   </style>
+@endsection 
+
+@section('js')
+  @parent
+  <script>
+    $(function() {
+      $('.btn-add-cart').on('click', function () {
+        if ({{ Auth::guest() }}) {
+          alert('พ่องตาย!!! Please login');
+          return false;
+        }
+      })
+    })
+  </script>
 @endsection 
 
 @section('content')
@@ -91,7 +104,7 @@ Products
                 <li>Size: {{ $product->size }} {{ $product->unit }}</li>
                 <li>Price: {{ $product->price }} ฿</li>
               </ul>
-              <div class="center"><a class="btn" href="/cart/add/{{ $product->id }}">Add <i class="icon-shopping-cart"></i></a></div>
+              <div class="center"><a class="btn btn-add-cart" href="/cart/add/{{ $product->id }}">Add <i class="icon-shopping-cart"></i></a></div>
             </div>
           </div>
         </li>

@@ -5,7 +5,9 @@
 				<li class="dropdown"><a href="/">Home</a></li>
 				<li class="dropdown"><a href="/products">Products</a></li>
 				<li class="dropdown"><a href="/contact">Contact us</a></li>
-				<li class="dropdown"><a href="/cart">Check Cart <i class="icon-shopping-cart"></i></a></li>
+				@if (Auth::check())
+					<li class="dropdown"><a href="/cart">Check Cart <i class="icon-shopping-cart"></i></a></li>
+				@endif
 			</ul>
 			<ul class="nav pull-right">
 				@if (Auth::check())

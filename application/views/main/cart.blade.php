@@ -60,7 +60,7 @@ Products
     }
     #content tfoot {
       font-size: 18px;
-      font-weight: bold;
+      /*font-weight: bold;*/
     }
   </style>
 @endsection 
@@ -107,7 +107,7 @@ Products
         <tfoot>
           <tr>
             <td colspan="6" class="right">Total</td>
-            <td class="span2 right">{{ $total }}</td>
+            <td class="span2 right">{{ Helper::add_comma($total) }}</td>
           </tr> 
         </tfoot>
       @endif
