@@ -21,7 +21,7 @@ Products
       background-color: #F9F9F9;
       float: left;
       margin-bottom: 20px;
-      margin-left: 20px;
+      margin-left: 16px;
       width: 220px;
       height: auto;
     }
@@ -54,13 +54,32 @@ Products
       height: inherit;
       width: inherit;
     }
+
+    #content div#services, #content div#about, #content div.span12,
+    #content > div#services, #content > div#about, #content > div.span12 {
+      width: 960px;
+      padding: 0px;
+    }
+
+    #content div#services, #content div#about, #content div.row,
+    #content > div#services, #content > div#about, #content > div.row {
+      padding: 0;
+      margin-left: -32px;
+      width: inherit;
+    }
+
+    #content div h1 { 
+      margin-bottom: 16px;
+    }
+
   </style>
 @endsection 
 
 @section('content')
-  <div>
-    <h1>Products</h1>
-    <div class="row">
+<div class="container">
+  <h1>Products</h1>
+  <div class="row">
+    <div class="span12">
       <ul class="thumbnails">
         @foreach ($products as $product)
         <li class="span3">
@@ -80,4 +99,5 @@ Products
       </ul>
     </div>  
   </div>
+</div>
 @endsection

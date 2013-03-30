@@ -55,9 +55,11 @@ Products
       height: inherit;
       width: inherit;
     }
-
+    #content .table th {
+      text-align: center;
+    }
     #content tfoot {
-      font-size: 16px;
+      font-size: 18px;
       font-weight: bold;
     }
   </style>
@@ -66,13 +68,16 @@ Products
 @section('content')
   <div>
     <h1>Cart</h1>
-    <table class="table table-striped">
+    <table class="table table-striped table-bordered">
       <thead>
         <tr>
           <th>#</th>
           <th>Image</th>
           <th>Name</th>
+          <th>Size</th>
           <th>Price</th>
+          <th>Quantity</th>
+          <th>Total</th>
         </tr>
       </thead>
       <tbody>
@@ -85,20 +90,23 @@ Products
             <td>{{ $loop }}</td>
             <td><div class="product-tumbnail" style="background-image: url('{{ $product->image }}')"></div></td>
             <td>{{ $product->name }}</td>
-            <td class="span2 right">{{ $product->price }}</td>
+            <td class="right">{{ $product->size }} {{ $product->unit }}</td>
+            <td class="right">{{ $product->price }}</td>
+            <td class="right"><input type="text" name="quantity" class="right" value="{{ $product->quantity }}"></td>
+            <td class="right">{{ Helper::add_comma($product->price * $product->quantity) }}</td>
           </tr>
           <?php 
             $loop++;
-            $total += $product->price;
+            $total += ($product->price * $product->quantity);
           ?>
         @empty
-          <tr><td colspan="4"><p>No products in cart.</p></td></tr> 
+          <tr><td colspan="7" class="center"><p>No products in cart.</p></td></tr> 
         @endforelse
       </tbody>
       @if ($total > 0)
         <tfoot>
           <tr>
-            <td colspan="3" class="right">Total</td>
+            <td colspan="6" class="right">Total</td>
             <td class="span2 right">{{ $total }}</td>
           </tr> 
         </tfoot>

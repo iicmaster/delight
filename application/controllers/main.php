@@ -56,6 +56,7 @@ class Main_Controller extends Base_Controller
     public function action_logout()
     {
         Auth::logout();
+        Session::flush();
         $report['status'] = 'success';
         $report['message'] = 'Logout successful.';
 
