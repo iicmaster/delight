@@ -5,8 +5,11 @@ class Cart_Controller extends Base_Controller
     public function action_index()
     {
         $data['cart'] = Session::get('cart', array());
+        $data['locations'] = Location::all();
         return View::make('main.cart', $data);
     }
+    
+    // -------------------------------------------------------------------------
 
     public function action_add($id)
     {
@@ -26,10 +29,12 @@ class Cart_Controller extends Base_Controller
                 'quantity' => 1,
             );
         }
-        
+
         Session::put('cart', $cart);
         return Redirect::to('/cart');
     }
+    
+    // -------------------------------------------------------------------------
 
     public function action_remove($id)
     {
@@ -38,4 +43,24 @@ class Cart_Controller extends Base_Controller
         Session::put('cart', $cart);
         return Redirect::to('/cart');
     }
+    
+    // -------------------------------------------------------------------------
+
+    public function action_shiping()
+    {
+        return View::make('main.shiping', $data);
+    }
+    
+    // -------------------------------------------------------------------------
+
+    public function action_checkout()
+    {
+        $report['status'] = 'success';
+        $report['message'] = 'Create order successful.';    
+        Session::forget('cart');
+
+        return Redirect::to('products')->with('report', $report);
+    }
+    
+    // -------------------------------------------------------------------------
 }

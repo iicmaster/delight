@@ -90,6 +90,13 @@ Products
 
 @section('content')
 <div class="container">
+  <!-- Report Message -->
+  @if ($report['message'])
+    <div class="alert alert-{{ $report['status'] }}">
+      <button class="close" data-dismiss="alert" type="button">×</button>
+      {{ $report['message'] }}
+    </div>
+  @endif
   <h1>Products</h1>
   <div class="row">
     <div class="span12">

@@ -10,14 +10,13 @@
 /* -------------------------------------------------------------------------- */
 /* Content */
 /* -------------------------------------------------------------------------- */
-
 	
 	#content div#services, #content div#about, #content div.alert,
 	#content > div#services, #content > div#about, #content > div.alert {
 		padding: 8px 35px 8px 14px;
 	}
 
-	#content div#services, #content div#about, #content div {
+	#content div#services, #content div#about, #content > div {
 		margin: 0 auto;
 		padding: 10px 30px 30px;
 		position: relative;
