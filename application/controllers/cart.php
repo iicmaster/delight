@@ -26,9 +26,16 @@ class Cart_Controller extends Base_Controller
                 'quantity' => 1,
             );
         }
-
+        
         Session::put('cart', $cart);
+        return Redirect::to('/cart');
+    }
 
+    public function action_remove($id)
+    {
+        $cart = Session::get('cart', array());
+        unset($cart[$id]);
+        Session::put('cart', $cart);
         return Redirect::to('/cart');
     }
 }

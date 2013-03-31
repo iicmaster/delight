@@ -78,6 +78,7 @@ Products
           <th>Price</th>
           <th>Quantity</th>
           <th>Total</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
@@ -94,6 +95,7 @@ Products
             <td class="right">{{ $product->price }}</td>
             <td class="right"><input type="text" name="quantity" class="right" value="{{ $product->quantity }}"></td>
             <td class="right">{{ Helper::add_comma($product->price * $product->quantity) }}</td>
+            <td class="center"><a class="btn" href="/cart/remove/{{ $product->id }}" title="Remove this product from cart"><i class="icon-remove"></i></a></td>
           </tr>
           <?php 
             $loop++;
@@ -108,6 +110,7 @@ Products
           <tr>
             <td colspan="6" class="right">Total</td>
             <td class="span2 right">{{ Helper::add_comma($total) }}</td>
+            <td></td>
           </tr> 
         </tfoot>
       @endif
