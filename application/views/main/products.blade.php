@@ -80,7 +80,7 @@ Products
     $(function() {
       $('.btn-add-cart').on('click', function () {
         if ({{ Auth::guest() }}) {
-          alert('พ่องตาย!!! Please login');
+          alert('Please login');
           return false;
         }
       })

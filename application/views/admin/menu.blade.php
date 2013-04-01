@@ -21,7 +21,7 @@
 						<li>{{ HTML::link('#', 'Production lists.') }}</li>
 					</ul>
 				</li>
-				<li class="dropdown"><a href="/admin/locations">Users</a></li>
+				<li class="dropdown"><a href="/admin/users">Users</a></li>
 				<li class="dropdown">
 					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Report <b class="caret"></b></a>
 					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">

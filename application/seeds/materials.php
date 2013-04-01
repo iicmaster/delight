@@ -215,6 +215,50 @@ class Seed_Materials extends \S2\Seed
         $material->save();
         $material->suppliers()->sync([2, 3]);
 
+        $material = new Material;
+        $material->owner_id = 1;
+        $material->name = 'น้ำส้ม';
+        $material->description = 'น้ำส้ม';
+        $material->total = '0';
+        $material->unit = 'cc.';
+        $material->min_stock = '50';
+        $material->max_stock = '1000';
+        $material->save();
+        $material->suppliers()->sync([2, 3]);
+
+        $material = new Material;
+        $material->owner_id = 1;
+        $material->name = 'น้ำส้มซันควิก';
+        $material->description = 'น้ำส้มซันควิก';
+        $material->total = '0';
+        $material->unit = 'cc.';
+        $material->min_stock = '50';
+        $material->max_stock = '1000';
+        $material->save();
+        $material->suppliers()->sync([2, 3]);
+
+        $material = new Material;
+        $material->owner_id = 1;
+        $material->name = 'แป้งกวนไส้';
+        $material->description = 'แป้งกวนไส้';
+        $material->total = '0';
+        $material->unit = 'g.';
+        $material->min_stock = '500';
+        $material->max_stock = '5000';
+        $material->save();
+        $material->suppliers()->sync([2, 3]);
+
+        $material = new Material;
+        $material->owner_id = 1;
+        $material->name = 'นมผง';
+        $material->description = 'นมผง';
+        $material->total = '0';
+        $material->unit = 'g.';
+        $material->min_stock = '500';
+        $material->max_stock = '5000';
+        $material->save();
+        $material->suppliers()->sync([2, 3]);
+
         //-------------------------------------------------------------------------------------------
 
         $material = new Material;
@@ -426,6 +470,51 @@ class Seed_Materials extends \S2\Seed
         $material->max_stock = '1000';
         $material->save();
         $material->suppliers()->sync([2, 3]);
+
+                $material = new Material;
+        $material->owner_id = 2;
+        $material->name = 'น้ำส้ม';
+        $material->description = 'น้ำส้ม';
+        $material->total = '0';
+        $material->unit = 'cc.';
+        $material->min_stock = '50';
+        $material->max_stock = '1000';
+        $material->save();
+        $material->suppliers()->sync([2, 3]);
+
+        $material = new Material;
+        $material->owner_id = 2;
+        $material->name = 'น้ำส้มซันควิก';
+        $material->description = 'น้ำส้มซันควิก';
+        $material->total = '0';
+        $material->unit = 'cc.';
+        $material->min_stock = '50';
+        $material->max_stock = '1000';
+        $material->save();
+        $material->suppliers()->sync([2, 3]);
+
+        $material = new Material;
+        $material->owner_id = 2;
+        $material->name = 'แป้งกวนไส้';
+        $material->description = 'แป้งกวนไส้';
+        $material->total = '0';
+        $material->unit = 'g.';
+        $material->min_stock = '500';
+        $material->max_stock = '5000';
+        $material->save();
+        $material->suppliers()->sync([2, 3]);
+
+        $material = new Material;
+        $material->owner_id = 2;
+        $material->name = 'นมผง';
+        $material->description = 'นมผง';
+        $material->total = '0';
+        $material->unit = 'g.';
+        $material->min_stock = '500';
+        $material->max_stock = '5000';
+        $material->save();
+        $material->suppliers()->sync([2, 3]);
+
     }
 
     public function order()

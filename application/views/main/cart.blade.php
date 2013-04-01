@@ -205,7 +205,7 @@ Cart
         </tfoot>
       </table>
       <hr>
-      <div class="button-wraper right"><button type="submit" id="submit-btn" class="btn btn-large btn-primary">Buy เบย</button></div>
+      <div class="button-wraper right"><button type="submit" id="submit-btn" class="btn btn-large btn-primary">Buy</button></div>
     </form> 
   </div>
 @endsection
