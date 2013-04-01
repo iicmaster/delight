@@ -42,7 +42,6 @@ Route::get('/login', 'main@login');
 Route::get('/logout', 'main@logout');
 Route::get('/register', 'main@register');
 Route::get('/products', 'products@index');
-Route::get('/cart', 'cart@index');
 
 Route::controller(array(
 	'main',
@@ -55,6 +54,7 @@ Route::controller(array(
 Route::group(array('before' => 'auth'), function()
 {
 	Route::get('/profile', 'users@profile');
+	Route::get('/cart', 'cart@index');
 });
 
 // Required admin auth
