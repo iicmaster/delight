@@ -10,7 +10,6 @@ class Create_Product_Order_Items_Table {
 			$table->integer('product_id')->unsigned();
 			$table->integer('price')->unsigned();
 			$table->integer('quantity')->unsigned();
-			$table->integer('total')->unsigned();
 			$table->timestamps();
 
 			$table->foreign('product_order_id')->references('id')->on('product_orders')->on_delete('cascade');

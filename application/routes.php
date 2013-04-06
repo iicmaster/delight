@@ -11,66 +11,67 @@
 |
 | Let's respond to a simple GET request to http://example.com/hello:
 |
-|		Route::get('hello', function()
-|		{
-|			return 'Hello World!';
-|		});
+|       Route::get('hello', function()
+|       {
+|           return 'Hello World!';
+|       });
 |
 | You can even respond to more than one URI:
 |
-|		Route::post(array('hello', 'world'), function()
-|		{
-|			return 'Hello World!';
-|		});
+|       Route::post(array('hello', 'world'), function()
+|       {
+|           return 'Hello World!';
+|       });
 |
 | It's easy to allow URI wildcards using (:num) or (:any):
 |
-|		Route::put('hello/(:any)', function($name)
-|		{
-|			return "Welcome, $name.";
-|		});
+|       Route::put('hello/(:any)', function($name)
+|       {
+|           return "Welcome, $name.";
+|       });
 |
 */
 
 // Default home page
 Route::get('/', 'main@index');
-Route::get('/about', 'main@about');
-Route::get('/services', 'main@services');
-Route::get('/blog', 'main@blog');
-Route::get('/contact', 'main@contact');
-Route::get('/login', 'main@login');
-Route::get('/logout', 'main@logout');
-Route::get('/register', 'main@register');
-Route::get('/products', 'products@index');
+Route::get('about', 'main@about');
+Route::get('services', 'main@services');
+Route::get('blog', 'main@blog');
+Route::get('contact', 'main@contact');
+Route::get('login', 'main@login');
+Route::get('logout', 'main@logout');
+Route::get('register', 'main@register');
+Route::get('products', 'products@index');
 
 Route::controller(array(
-	'main',
-	'users',
-	'cart',
-	'admin.auth',
+    'main',
+    'users',
+    'cart',
+    'admin.auth',
 ));
 
 
 Route::group(array('before' => 'auth'), function()
 {
-	Route::get('/profile', 'users@profile');
-	Route::get('/cart', 'cart@index');
+    Route::get('/profile', 'users@profile');
+    Route::get('/cart', 'cart@index');
+    Route::get('orders', 'main@orders');
 });
 
 // Required admin auth
 Route::group(array('before' => 'admin_auth'), function()
 {
-	Route::controller(array(
-		'admin.home',
-		'admin.users',
-		'admin.suppliers',
-		'admin.materials.index',
-		'admin.materials.stock',
-		'admin.materials.orders',
-		'admin.materials.transactions',
-		'admin.products.index',
-		'admin.locations',
-	));
+    Route::controller(array(
+        'admin.home',
+        'admin.users',
+        'admin.suppliers',
+        'admin.materials.index',
+        'admin.materials.stock',
+        'admin.materials.orders',
+        'admin.materials.transactions',
+        'admin.products.index',
+        'admin.locations',
+    ));
 });
 
 /*
@@ -90,12 +91,12 @@ Route::group(array('before' => 'admin_auth'), function()
 
 Event::listen('404', function()
 {
-	return Response::error('404');
+    return Response::error('404');
 });
 
 Event::listen('500', function()
 {
-	return Response::error('500');
+    return Response::error('500');
 });
 
 /*
@@ -112,43 +113,43 @@ Event::listen('500', function()
 |
 | First, define a filter:
 |
-|		Route::filter('filter', function()
-|		{
-|			return 'Filtered!';
-|		});
+|       Route::filter('filter', function()
+|       {
+|           return 'Filtered!';
+|       });
 |
 | Next, attach the filter to a route:
 |
-|		Route::get('/', array('before' => 'filter', function()
-|		{
-|			return 'Hello World!';
-|		}));
+|       Route::get('/', array('before' => 'filter', function()
+|       {
+|           return 'Hello World!';
+|       }));
 |
 */
 
 Route::filter('before', function()
 {
-	// Do stuff before every request to your application...
+    // Do stuff before every request to your application...
 });
 
 Route::filter('after', function($response)
 {
-	// Do stuff after every request to your application...
+    // Do stuff after every request to your application...
 });
 
 Route::filter('csrf', function()
 {
-	if (Request::forged()) return Response::error('500');
+    if (Request::forged()) return Response::error('500');
 });
 
 Route::filter('auth', function()
 {
-	if (Auth::guest()) return Redirect::to('login');
+    if (Auth::guest()) return Redirect::to('login');
 });
 
 Route::filter('admin_auth', function()
 {
-	if (Auth::guest() or Auth::user()->role == 'user') {
-		return Redirect::to('admin/auth/login')->with('message', __('admin.message_please_login'));
-	}
+    if (Auth::guest() or Auth::user()->role == 'user') {
+        return Redirect::to('admin/auth/login')->with('message', __('admin.message_please_login'));
+    }
 });
