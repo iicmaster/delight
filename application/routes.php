@@ -32,7 +32,7 @@
 |
 */
 
-// Default home page
+// Frontend page
 Route::get('/', 'main@index');
 Route::get('about', 'main@about');
 Route::get('services', 'main@services');
@@ -50,12 +50,13 @@ Route::controller(array(
     'admin.auth',
 ));
 
-
+// Required auth
 Route::group(array('before' => 'auth'), function()
 {
-    Route::get('/profile', 'users@profile');
-    Route::get('/cart', 'cart@index');
-    Route::get('orders', 'main@orders');
+    Route::get('profile', 'users@profile');
+    Route::get('cart', 'cart@index');
+    Route::get('orders', 'orders@index');
+    Route::get('orders/(:num)', 'orders@view');
 });
 
 // Required admin auth

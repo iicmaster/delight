@@ -64,13 +64,4 @@ class Main_Controller extends Base_Controller
     }
     
     // -------------------------------------------------------------------------
-
-    public function action_orders()
-    {
-        $data['orders'] = Product_Order::where('user_id', '=', Auth::user()->id)->get();
-        // $data['orders'] = array();
-        return View::make('main.orders', $data);
-    }
-    
-    // -------------------------------------------------------------------------
 }

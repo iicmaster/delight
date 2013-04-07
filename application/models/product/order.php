@@ -7,6 +7,11 @@ class Product_order extends Eloquent
         return $this->has_many('Product_order_item');
     }
 
+    public function location()
+    {
+        return $this->belongs_to('Location');
+    }
+
     public function get_status_text()
     {
         switch ((int) $this->get_attribute('status')) {
