@@ -7,7 +7,7 @@ class Seed_Products extends \S2\Seed
         $product = new Product;
         $product->name = 'Soft Chocolate Cake';
         $product->description = 'เค้กช็อกโกแล๊ตหน้านิ่ม';
-        $product->image = '/uploads/products/1.jpg';
+        $product->image = '/img/1.jpg';
         $product->unit = 'ปอนด์';
         $product->size = '1';
         $product->total = '0';
@@ -35,7 +35,7 @@ class Seed_Products extends \S2\Seed
         $product = new Product;
         $product->name = 'Soft Orange Cake';
         $product->description = 'เค้กส้มหน้านิ่ม';
-        $product->image = '/uploads/products/2.jpg';
+        $product->image = '/img/2.jpg';
         $product->unit = 'ปอนด์';
         $product->size = '1';
         $product->total = '0';
