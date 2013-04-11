@@ -15,11 +15,7 @@
 				</li>
 				<li class="dropdown"><a href="/admin/locations">Location</a></li>
 				<li class="dropdown">
-					<a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">Menufacturing <b class="caret"></b></a>
-					<ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
-						<li>{{ HTML::link('#', 'Produces.') }}</li>
-						<li>{{ HTML::link('#', 'Production lists.') }}</li>
-					</ul>
+					<a role="button" href="/admin/orders">Orders</a>
 				</li>
 				<li class="dropdown"><a href="/admin/users">Users</a></li>
 				<li class="dropdown">
