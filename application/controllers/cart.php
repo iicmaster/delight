@@ -58,7 +58,8 @@ class Cart_Controller extends Base_Controller
         Session::forget('cart');
         
         $orders = Input::get('orders');
-        FB::Log($orders);
+        $orders['head']['user_id'] = Auth::user()->id;
+        // FB::Log($orders);
 
         try {
             DB::transaction((function() use ($orders) {
@@ -71,14 +72,14 @@ class Cart_Controller extends Base_Controller
                 }
             }));
 
-            $report['status'] = true;
+            $report['status'] = 'success';
             $report['message'] = __('admin.message_create_succeed');
         }
         catch(\Exception $e)
         {
-            // Log::write('error', $e->getMessage());
-            dd($e->getMessage());
-            $report['status'] = false;
+            Log::write('error', $e->getMessage());
+            // dd($e->getMessage());
+            $report['status'] = 'error';
             $report['message'] = __('admin.message_create_failed');
         }
 
