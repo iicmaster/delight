@@ -19,7 +19,7 @@ class Admin_Orders_Controller extends Base_Controller
         return View::make('admin.orders.show', $data);
     }
 
-    // --------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
 
     public function action_store()
     {    
@@ -39,7 +39,7 @@ class Admin_Orders_Controller extends Base_Controller
         return Redirect::to_action('admin.locations@index')->with('result', $result);
     }
 
-    // --------------------------------------------------------------------------
+    // -------------------------------------------------------------------------
 
     public function action_update($id)
     {    
@@ -58,25 +58,7 @@ class Admin_Orders_Controller extends Base_Controller
         // Redirect to index page
         return Redirect::to_action('admin.locations@index')->with('result', $result);
     }
-
-    // --------------------------------------------------------------------------
-
-    public function action_delete($id)
-    {    
-        try {
-            Location::find($id)->delete();
-            $result['status'] = true;
-            $result['message'] = __('admin.message_delete_succeed');
-        }  catch(\Exception $e) {
-            Log::write('error', $e);
-            $result['status'] = false;
-            $result['message'] = __('admin.message_delete_failed');
-        }
-
-        // Redirect to index page
-        return Redirect::to_action('admin.locations@index')->with('result', $result);
-    }
-
+    
     // --------------------------------------------------------------------------
 
 }
