@@ -12,6 +12,7 @@ class Create_Product_Orders_Table {
 			$table->string('address', 255)->nullable();
 			$table->integer('location_id')->unsigned();
 			$table->integer('shiping_fee')->unsigned();
+			$table->integer('shiping_cost')->unsigned();
 			$table->integer('total')->unsigned();
 			$table->integer('grand_total')->unsigned();
 			$table->integer('status')->unsigned();
