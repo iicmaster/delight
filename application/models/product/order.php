@@ -14,14 +14,42 @@ class Product_order extends Eloquent
 
     public function get_status_text()
     {
-        switch ((int) $this->get_attribute('status')) {
-            case '1':
-                $status = 'Waiting for manufacturing';
+        switch ((string) $this->get_attribute('status')) {
+            case '0':
+                $status = 'Waiting for Baking';
                 break;
-
-            return $status;
+            case '1':
+                $status = 'Baking';
+                break;
+            case '2':
+                $status = 'Waiting for shipping';
+                break;
+            case '3':
+                $status = 'Completed';
+                break;
+            case '4':
+                $status = 'Cancel';
+                break;        
         }
 
-        return 'Waiting for shiping';
+        return $status;
+    }
+
+    public function get_status_text_for_customer()
+    {
+        switch ((string) $this->get_attribute('status')) {
+            case '3':
+                $status = 'Completed';
+                break;
+            case '4':
+                $status = 'Cancel';
+                break;
+
+            default:
+                $status = 'Waiting for shipping';
+                break;
+        }
+
+        return $status;
     }
 }

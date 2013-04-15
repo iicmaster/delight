@@ -111,9 +111,9 @@ Order History
       <tbody>
         @forelse ($orders as $key => $order)
           <tr>
-            <td class="center">{{ $key++ }}</td>
+            <td class="center">{{ ++$key }}</td>
             <td class="center">{{ Helper::change_date_time_format($order->created_at) }}</td>
-            <td class="center">{{ $order->status_text }}</td>
+            <td class="center">{{ $order->status_text_for_customer }}</td>
             <td class="center">
               <a class="btn" href="/orders/{{ $order->id }}" title="Order detail"><i class="icon-list"></i></a>
             </td>

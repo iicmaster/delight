@@ -8,6 +8,7 @@
 
 .clear { clear: both; }
 .nowrap { white-space: nowrap; }
+.hide { display: none; }
 
 .bold { font-weight: bold; }
 .normal { font-weight: normal; font-style: normal; text-decoration: none; }
