@@ -23,7 +23,7 @@
 @endsection
 
 @section('content')
-<div id="admin-materials-index">
+<div id="admin-orders-index">
   <!-- Report Message -->
   @if ( ! is_null($report_message))
     @if ($report_message['status'])
@@ -35,10 +35,8 @@
       {{ $report_message['message'] }}
     </div>
   @endif
-
   <h1>{{ __('orders.orders') }}</h1>  
   <hr>    
-
   <table class="table table-striped">
     <thead>
       <tr>
@@ -59,8 +57,8 @@
           <td class="left">{{ Helper::change_date_time_format($data->created_at) }}</td>
           <td class="left">{{ $data->status_text }}</td>
           <td class="right">
-            <a href="#update-modal-{{ $data->id }}" role="button" class="btn" data-toggle="modal" title="{{ __('admin.button_update') }}"><i class="icon-list"></i></a>
-            <a href="" role="button" class="btn" title="{{ __('admin.button_edit') }}"><i class="icon-pencil"></i></a>
+            <a href="/admin/orders/show/{{ $data->id }}" role="button" class="btn" title="{{ __('admin.button_read') }}"><i class="icon-list"></i></a>
+            <a href="#update-modal-{{ $data->id }}" role="button" class="btn" data-toggle="modal" title="{{ __('admin.button_update') }}"><i class="icon-pencil"></i></a>
           </td>
         </tr>
       @empty

@@ -7,12 +7,21 @@ class Admin_Orders_Controller extends Base_Controller
         $data['report_message'] = Session::get('result');
         $data['query'] = Product_Order::order_by('id', 'desc')
                                       ->paginate(Config::get('admin.row_per_page'));
-        return View::make('admin.orders', $data);
+        return View::make('admin.orders.index', $data);
+    }
+    
+    // -------------------------------------------------------------------------
+
+    public function action_show($id)
+    {
+        $data['order'] = Product_Order::find($id);
+        $data['locations'] = Location::all();
+        return View::make('admin.orders.show', $data);
     }
 
     // --------------------------------------------------------------------------
 
-    public function action_create()
+    public function action_store()
     {    
         $input = Input::get();
 
