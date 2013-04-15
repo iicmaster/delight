@@ -11,12 +11,10 @@ class Orders_Controller extends Base_Controller
     
     // -------------------------------------------------------------------------
 
-    public function action_view($id)
+    public function action_show($id)
     {
         $data['order'] = Product_Order::find($id);
-        $data['locations'] = Location::all();
-        FB::log($data);
-        return View::make('main.orders.view', $data);
+        return View::make('main.orders.show', $data);
     }
     
     // -------------------------------------------------------------------------

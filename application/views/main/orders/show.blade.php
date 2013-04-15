@@ -192,6 +192,8 @@ Order no: {{ $order->id }}
             </tr>
           </tfoot>
         </table>
+        <hr>
+        <div class="right"><a href="/orders" class="btn">Back</a></div>
     </form> 
   </div>
 @endsection

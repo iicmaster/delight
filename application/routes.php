@@ -56,7 +56,7 @@ Route::group(array('before' => 'auth'), function()
     Route::get('profile', 'users@profile');
     Route::get('cart', 'cart@index');
     Route::get('orders', 'orders@index');
-    Route::get('orders/(:num)', 'orders@view');
+    Route::get('orders/(:num)', 'orders@show');
 });
 
 // Required admin auth
