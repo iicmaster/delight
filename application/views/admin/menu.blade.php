@@ -30,8 +30,11 @@
       </ul>
       @if (Auth::check())
         <ul class="nav pull-right">
-          <li  id="fat-menu">
-            <a role="button" href="/admin/auth/logout">{{ __('admin.logout') }}</a>
+          <li class="dropdown">
+            <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">{{ Auth::user()->name }} <b class="caret"></b></a>
+            <ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
+              <li>{{ HTML::link('/admin/auth/logout', 'Logout') }}</li>
+            </ul>
           </li>
         </ul>
       @endif
