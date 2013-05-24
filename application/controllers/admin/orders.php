@@ -67,17 +67,8 @@ class Admin_Orders_Controller extends Base_Controller
                 // Update material stock for this shop
                 foreach ($materials as $material) {
 
-                    // Get materail stock
-                    $sql = "SELECT 
-                                material_id,
-                                stock_code, 
-                                SUM(quantity) as remain
-                            FROM material_transactions
-                            WHERE
-                                material_id = {$material['id']}
-                            GROUP BY stock_code, material_id
-                            HAVING remain > 0";
-                    $stocks = DB::query($sql);
+                    // Get remain stock
+                    $stocks = Material_Transaction::get_remain_stock($material['id']);
                     $total_qualtity = $material['quantity'];
 
                     while ($total_qualtity > 0) {
