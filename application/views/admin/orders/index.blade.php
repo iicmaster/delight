@@ -137,6 +137,7 @@
                         type="text" 
                         value="{{ $data->shiping_cost }}" 
                       >
+                      Baht
                     </div>
                   </div>
                 </div>

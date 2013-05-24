@@ -15,7 +15,7 @@
 
 		function sumTotal(obj) {
 			var id = obj.attr('ref');
-			var quantity = parseInt($('#item-'+id+'-quantity').val());
+			var quantity = Math.round(parseInt($('#item-'+id+'-quantity').val()), 2);
 			var $price = $('#item-'+id+'-price');
 			var price = parseFloat($price.val());
 			var $total = $('#item-'+id+'-total');

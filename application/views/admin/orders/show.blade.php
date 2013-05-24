@@ -83,6 +83,19 @@ Order no: {{ $order->id }}
     }
 
     #content hr { margin: 16px 0; }
+
+    #content .form-horizontal .control-group {
+      margin-bottom: 0;
+    }
+
+    #content .form-horizontal label:after {
+      content: ':';
+    } 
+
+    #content .form-horizontal .controls {
+      font-size: 14px;
+      padding-top: 2px;
+    }
   </style>
 @endsection 
 
@@ -139,61 +152,96 @@ Order no: {{ $order->id }}
           @endforelse
         </tbody>
       </table>
-        <hr>
-        <h1>Shipping Address</h1>
-        <div class="control-group">
-          <label for="inputName" class="control-label">Name</label>
-          <div class="controls"><p>{{ Auth::user()->name }}</p></div>
-        </div>
-        <div class="control-group">
-          <label for="inputTel" class="control-label">Tel</label>
-          <div class="controls"><p>{{ Auth::user()->tel }}</p></div>
-        </div>
-        <div class="control-group">
-          <label for="inputLocation" class="control-label">Location</label>
-          <div class="controls"><p>{{ $order->location->name }}</p></div>
-        </div>
-        <div class="control-group">
-          <label for="inputAddress" class="control-label">Address</label>
-          <div class="controls"><p>{{ Auth::user()->address }}</p></div>
-        </div>
-        <hr>
-        <h1>Total</h1>
-        <table class="table table-striped table-bordered">
-          <tbody>
-            <tr>
-              <td class="right">Total</td>
-              <td class="right">
-                <span id="total">{{ Helper::add_comma($total) }}</span>
-                <input 
-                  id="total-input" 
-                  name="orders[head][total]" 
-                  type="hidden" 
-                  value="{{ $total }}"
-                >
-              </td>
+      <hr>
+      <h1>Material</h1>
+      @if($is_out_of_stock)
+        <div class="alert alert-block alert-error">Your materials is not enough for baking.</div>
+      @endif
+      <hr>
+      <table class="table table-striped table-bordered">
+        <thead>
+          <tr>
+            <th class="span1">#</th>
+            <th>Name</th>
+            <th>Stock Remain</th>
+            <th>Required</th>
+            <th>Unit</th>
+          </tr>
+        </thead>
+        <tbody>
+          @foreach ($materials as $loop => $material)
+            <tr class="{{ ($material['remain'] < $material['quantity']) ? 'error' : '' }}">
+              <td class="center">{{ $loop++ }}</td>
+              <td>{{ $material['name'] }}</td>
+              <td class="right">{{ Helper::add_comma($material['remain']) }}</td>
+              <td class="right">{{ $material['quantity'] }}</td>
+              <td class="right">{{ $material['unit'] }}</td>
             </tr>
-              <td class="right">Shipping fee</td>
-              <td class="right">
-                <span id="shipping-fee">0</span>
-                <input 
-                  id="shipping-fee-input" 
-                  name="orders[head][shiping_fee]" 
-                  type="hidden" 
-                >
-              </td>
-          </tbody>
-          <tfoot>
-            </tr>
-              <td class="right">Grand Total</td>
-              <td class="right">
-                <span id="grand-total">{{ $total }}</span>
-              </td>
-            </tr>
-          </tfoot>
-        </table>
-        <hr>
-        <div class="right"><a href="/admin/orders" class="btn">Back</a></div>
+          @endforeach
+        </tbody>
+      </table>
+      <h1>Shipping Address</h1>
+      <div class="control-group">
+        <label for="inputName" class="control-label">Name</label>
+        <div class="controls"><p>{{ Auth::user()->name }}</p></div>
+      </div>
+      <div class="control-group">
+        <label for="inputTel" class="control-label">Tel</label>
+        <div class="controls"><p>{{ Auth::user()->tel }}</p></div>
+      </div>
+      <div class="control-group">
+        <label for="inputLocation" class="control-label">Location</label>
+        <div class="controls"><p>{{ $order->location->name }}</p></div>
+      </div>
+      <div class="control-group">
+        <label for="inputAddress" class="control-label">Address</label>
+        <div class="controls"><p>{{ Auth::user()->address }}</p></div>
+      </div>
+      <hr>
+      <h1>Total</h1>
+      <table class="table table-striped table-bordered">
+        <tbody>
+          <tr>
+            <td class="right">Total</td>
+            <td class="right">
+              <span id="total">{{ Helper::add_comma($total) }}</span>
+              <input 
+                id="total-input" 
+                name="orders[head][total]" 
+                type="hidden" 
+                value="{{ $total }}"
+              >
+            </td>
+          </tr>
+            <td class="right">Shipping fee</td>
+            <td class="right">
+              <span id="shipping-fee">0</span>
+              <input 
+                id="shipping-fee-input" 
+                name="orders[head][shiping_fee]" 
+                type="hidden" 
+              >
+            </td>
+        </tbody>
+        <tfoot>
+          </tr>
+            <td class="right">Grand Total</td>
+            <td class="right">
+              <span id="grand-total">{{ $total }}</span>
+            </td>
+          </tr>
+        </tfoot>
+      </table>
+      <hr>
+      <div class="right">
+        <a href="/admin/orders" class="btn pull-left">Back</a>
+        @if($order->stauts == 0)
+          <a 
+            href="{{ ($material['remain'] < $material['quantity']) ? 'javascript:void(0)' : '#' }}" 
+            class="btn btn-large btn-primary {{ ($material['remain'] < $material['quantity']) ? 'disabled' : '' }}"
+          >Baking</a>
+        @endif
+      </div>
     </form> 
   </div>
 @endsection
