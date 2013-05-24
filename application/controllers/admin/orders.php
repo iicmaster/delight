@@ -15,7 +15,7 @@ class Admin_Orders_Controller extends Base_Controller
     public function action_show($id)
     {
         $data['order'] = Product_Order::find($id);
-        $data['materials'] = Product_Order::required_materials($id);
+        $data['materials'] = Product_Order::get_required_materials($id);
         $data['locations'] = Location::all();
         $data['is_out_of_stock'] = false;
 
@@ -26,7 +26,7 @@ class Admin_Orders_Controller extends Base_Controller
             }
         }
 
-        FB::log($data['materials']);
+        // FB::log($data['materials']);
         return View::make('admin.orders.show', $data);
     }
 
@@ -54,6 +54,68 @@ class Admin_Orders_Controller extends Base_Controller
 
     /**
      * Update order status to baking and update material stock
+     * @param   int         $order_id
+     * @return  Response
      */
+
+    public function action_baking($order_id) {
+
+        try {
+            DB::transaction((function() use ($order_id) {
+                $materials = Product_Order::get_required_materials($order_id);
+
+                // Update material stock for this shop
+                foreach ($materials as $material) {
+
+                    // Get materail stock
+                    $sql = "SELECT 
+                                material_id,
+                                stock_code, 
+                                SUM(quantity) as remain
+                            FROM material_transactions
+                            WHERE
+                                material_id = {$material['id']}
+                            GROUP BY stock_code, material_id
+                            HAVING remain > 0";
+                    $stocks = DB::query($sql);
+                    $total_qualtity = $material['quantity'];
+
+                    while ($total_qualtity > 0) {
+                        $stock = current($stocks);
+                        $quantity = ($stock->remain > $total_qualtity) ? $total_qualtity : $stock->remain;
+
+                        $transaction = new Material_Transaction([
+                            'owner_id' => Auth::user()->id,
+                            'product_order_id' => $order_id,
+                            'material_id' => $material['id'],
+                            'stock_code' => $stock->stock_code,
+                            'quantity' => ($quantity * -1)
+                        ]);
+                        $transaction->save();
+
+                        $total_qualtity -= $quantity;
+                        next($stocks);
+                    }
+                }
+
+                // Update orderstatus
+                $product_order = Product_Order::find($order_id);
+                $product_order->status = 1;
+                $product_order->save();
+            }));
+
+            $report['status'] = 'success';
+            $report['message'] = __('admin.message_create_succeed');
+        } catch(\Exception $e) {
+            Log::write('error', $e->getMessage());
+            dd($e->getMessage());
+            exit();
+            $report['status'] = 'error';
+            $report['message'] = __('admin.message_create_failed');
+        }
+
+        // Redirect to product index
+        return Redirect::to_action('admin.orders@index')->with('report', $report);
+    }
 
 }

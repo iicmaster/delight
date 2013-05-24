@@ -247,7 +247,7 @@ Order no: {{ $order->id }}
         <a href="/admin/orders" class="btn pull-left">Back</a>
         @if($order->stauts == 0)
           <a 
-            href="{{ ($material['remain'] < $material['quantity']) ? 'javascript:void(0)' : '#' }}" 
+            href="{{ ($material['remain'] < $material['quantity']) ? 'javascript:void(0)' : '/admin/orders/baking/'.$order->id }}" 
             class="btn btn-large btn-primary {{ ($material['remain'] < $material['quantity']) ? 'disabled' : '' }}"
           >Baking</a>
         @endif

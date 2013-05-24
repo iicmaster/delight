@@ -7,18 +7,20 @@ class Create_Material_Transactions_Table
 		Schema::create('material_transactions', function($table) {
 			$table->increments('id');
 			$table->integer('owner_id')->unsigned();
-			$table->integer('material_order_id')->unsigned()->nullable;
-			$table->integer('material_order_item_id')->unsigned();
-			$table->integer('supplier_id')->unsigned();
+			$table->integer('product_order_id')->unsigned()->nullable();
+			$table->integer('material_order_id')->unsigned()->nullable();
+			$table->integer('material_order_item_id')->unsigned()->nullable();
+			$table->integer('supplier_id')->unsigned()->nullable();
 			$table->integer('material_id')->unsigned();
 			$table->string('stock_code', 255);
-			$table->string('description', 255)->nullable;
-			$table->decimal('quantity', 10, 4)->nullable;
-			$table->decimal('price_per_unit', 10, 4)->unsigned()->nullable;
-			$table->decimal('amount', 10, 4)->unsigned()->nullable;
+			$table->string('description', 255)->nullable();
+			$table->decimal('quantity', 10, 4);
+			$table->decimal('price_per_unit', 10, 4)->unsigned()->nullable();
+			$table->decimal('amount', 10, 4)->unsigned()->nullable();
 			$table->timestamps();
 
 			$table->foreign('owner_id')->references('id')->on('users')->on_delete('cascade');
+			$table->foreign('product_order_id')->references('id')->on('product_orders')->on_delete('cascade');
 			$table->foreign('material_order_id')->references('id')->on('material_orders')->on_delete('cascade');
 			$table->foreign('material_order_item_id')->references('id')->on('material_order_items')->on_delete('cascade');
 			$table->foreign('material_id')->references('id')->on('materials')->on_delete('cascade');
