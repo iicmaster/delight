@@ -111,8 +111,8 @@ Order no: {{ $order->id }}
 
 @section('content')
   <div>
-    {{ Form::open('cart/checkout', 'POST', array('class' => 'form-horizontal')) }}
-      <h1>Order no: {{ $order->id }}</h1>
+    <section id="order-detail">
+      <h1>Order #{{ $order->id }}</h1>
       <p>Created Date: {{ Helper::change_date_time_format($order->created_at) }}</p>
       <table class="table table-striped table-bordered">
         <thead>
@@ -133,7 +133,7 @@ Order no: {{ $order->id }}
           ?>
           @forelse ($order->items as $item)
             <tr>
-              <td>{{ $loop }}</td>
+              <td class="center">{{ $loop }}</td>
               <td><div class="product-tumbnail" style="background-image: url('{{ $item->product->image }}')"></div></td>
               <td>
                 {{ $item->product->name }}
@@ -152,12 +152,13 @@ Order no: {{ $order->id }}
           @endforelse
         </tbody>
       </table>
-      <hr>
-      <h1>Material</h1>
+    </section>
+    <hr>
+    <section id="materials">
+      <h1>Materials</h1>
       @if($is_out_of_stock)
         <div class="alert alert-block alert-error">Your materials is not enough for baking.</div>
       @endif
-      <hr>
       <table class="table table-striped table-bordered">
         <thead>
           <tr>
@@ -180,26 +181,33 @@ Order no: {{ $order->id }}
           @endforeach
         </tbody>
       </table>
+    </section>
+    <hr>
+    <section id="shipping-address">
       <h1>Shipping Address</h1>
-      <div class="control-group">
-        <label for="inputName" class="control-label">Name</label>
-        <div class="controls"><p>{{ Auth::user()->name }}</p></div>
+      <div class="form-horizontal">
+        <div class="control-group">
+          <label for="inputName" class="control-label">Name</label>
+          <div class="controls"><p>{{ Auth::user()->name }}</p></div>
+        </div>
+        <div class="control-group">
+          <label for="inputTel" class="control-label">Tel</label>
+          <div class="controls"><p>{{ Auth::user()->tel }}</p></div>
+        </div>
+        <div class="control-group">
+          <label for="inputLocation" class="control-label">Location</label>
+          <div class="controls"><p>{{ $order->location->name }}</p></div>
+        </div>
+        <div class="control-group">
+          <label for="inputAddress" class="control-label">Address</label>
+          <div class="controls"><p>{{ Auth::user()->address }}</p></div>
+        </div>
       </div>
-      <div class="control-group">
-        <label for="inputTel" class="control-label">Tel</label>
-        <div class="controls"><p>{{ Auth::user()->tel }}</p></div>
-      </div>
-      <div class="control-group">
-        <label for="inputLocation" class="control-label">Location</label>
-        <div class="controls"><p>{{ $order->location->name }}</p></div>
-      </div>
-      <div class="control-group">
-        <label for="inputAddress" class="control-label">Address</label>
-        <div class="controls"><p>{{ Auth::user()->address }}</p></div>
-      </div>
-      <hr>
+    </section>
+    <hr>
+    <section id="total">
       <h1>Total</h1>
-      <table class="table table-striped table-bordered">
+      <table class="table table-bordered">
         <tbody>
           <tr>
             <td class="right">Total</td>
@@ -232,7 +240,9 @@ Order no: {{ $order->id }}
           </tr>
         </tfoot>
       </table>
-      <hr>
+    </section>
+    <hr>
+    <section id="page-buttons">
       <div class="right">
         <a href="/admin/orders" class="btn pull-left">Back</a>
         @if($order->stauts == 0)
@@ -242,6 +252,6 @@ Order no: {{ $order->id }}
           >Baking</a>
         @endif
       </div>
-    </form> 
+    </section>
   </div>
 @endsection

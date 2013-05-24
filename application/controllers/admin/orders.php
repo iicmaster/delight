@@ -15,25 +15,18 @@ class Admin_Orders_Controller extends Base_Controller
     public function action_show($id)
     {
         $data['order'] = Product_Order::find($id);
+        $data['materials'] = Product_Order::required_materials($id);
         $data['locations'] = Location::all();
         $data['is_out_of_stock'] = false;
 
-        foreach ($data['order']->items as $item) {
-            $materials = $item->product->materials;
-            $pivots = $item->product->materials()->pivot()->get();
-            // FB::log($materials);
-            foreach ($materials as $key => $material) {
-                $data['materials'][$material->id]['quantity'] = isset($data['materials'][$material->id]['quantity'])
-                                                                ? $data['materials'][$material->id]['quantity'] + ($pivots[$key]->quantity * $item->quantity)
-                                                                : $pivots[$key]->quantity * $item->quantity;
-                $data['materials'][$material->id]['name'] = $material->name;
-                $data['materials'][$material->id]['unit'] = $material->unit;
-                $data['materials'][$material->id]['remain'] = $material->total;
-                $data['is_out_of_stock'] = $material->total < $item->quantity ? true : $data['is_out_of_stock'];
+        foreach ($data['materials'] as $material) {
+            if ($material['is_out_of_stock']) {
+                $data['is_out_of_stock'] = true;
+                break;
             }
         }
 
-        // FB::log($data['materials']);
+        FB::log($data['materials']);
         return View::make('admin.orders.show', $data);
     }
 
@@ -58,5 +51,9 @@ class Admin_Orders_Controller extends Base_Controller
     }
 
     // --------------------------------------------------------------------------
+
+    /**
+     * Update order status to baking and update material stock
+     */
 
 }
