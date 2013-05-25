@@ -7,10 +7,14 @@ class Product_order extends Eloquent
         return $this->has_many('Product_order_item');
     }
 
+    // --------------------------------------------------------------------------
+
     public function location()
     {
         return $this->belongs_to('Location');
     }
+
+    // --------------------------------------------------------------------------
 
     public function get_status_text()
     {
@@ -35,6 +39,8 @@ class Product_order extends Eloquent
         return $status;
     }
 
+    // --------------------------------------------------------------------------
+
     public function get_status_text_for_customer()
     {
         switch ((string) $this->get_attribute('status')) {
@@ -52,6 +58,8 @@ class Product_order extends Eloquent
 
         return $status;
     }
+
+    // --------------------------------------------------------------------------
 
     /**
      * Get all required materials of this order
@@ -81,6 +89,20 @@ class Product_order extends Eloquent
         }
 
         return $list;
+    }
+
+    // --------------------------------------------------------------------------
+
+    /**
+     * Get order grand total
+     * 
+     * @return  int
+     */
+    public function get_grand_total()
+    {
+        return $this->get_attribute('shiping_fee') 
+               + $this->get_attribute('shiping_cost') 
+               + $this->get_attribute('total');
     }
 
 }

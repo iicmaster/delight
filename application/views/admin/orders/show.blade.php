@@ -96,6 +96,10 @@ Order no: {{ $order->id }}
       font-size: 14px;
       padding-top: 2px;
     }
+
+    #content .table td input[type="text"] {
+      width: inherit;
+    }
   </style>
 @endsection 
 
@@ -104,8 +108,36 @@ Order no: {{ $order->id }}
   {{ HTML::script('js/bootbox.min.js') }}
   <script>
     $(function() {
-
+      $('#completed-button').click(function() {
+         return validate();
+      });
     });
+
+    function isInt(value) { 
+      return !isNaN(parseInt(value,10)) && (parseFloat(value,10) == parseInt(value,10)); 
+    }
+
+    function validate() {
+      var value = $('#shipping-cost-input').val();
+
+      // Check empty
+      if (value.length == 0) {
+          alert('Please fill Shipping cost.');
+          $('#shipping-cost-input').focus();
+          return false;
+      }
+
+      if (! isInt(value)) {
+          alert('Please fill only integer number');
+          return false;
+      }
+
+      // Check > 0
+      if (value <= 0) {
+          alert('Shipping cost must greater that 0');
+          return false;
+      }
+    }
   </script>
 @endsection 
 
@@ -185,81 +217,91 @@ Order no: {{ $order->id }}
       </section>
       <hr>
     @endif
-    <section id="shipping-address">
-      <h1>Shipping Address</h1>
-      <div class="form-horizontal">
-        <div class="control-group">
-          <label for="inputName" class="control-label">Name</label>
-          <div class="controls"><p>{{ Auth::user()->name }}</p></div>
+    {{ Form::open('/admin/orders/update/'.$order->id, 'POST', ['class' => 'form-horizontal']) }}
+      <section id="shipping-address">
+        <h1>Shipping Address</h1>
+        <div class="form-horizontal">
+          <div class="control-group">
+            <label class="control-label">Name</label>
+            <div class="controls"><p>{{ Auth::user()->name }}</p></div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Tel</label>
+            <div class="controls"><p>{{ Auth::user()->tel }}</p></div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Location</label>
+            <div class="controls"><p>{{ $order->location->name }}</p></div>
+          </div>
+          <div class="control-group">
+            <label class="control-label">Address</label>
+            <div class="controls"><p>{{ Auth::user()->address }}</p></div>
+          </div>
+          @if($order->status == 2)
+            <div class="control-group">
+              <label for="shipping-cost-input" class="control-label">Shipping Cost</label>
+              <div class="controls">
+                <div class="input-append">
+                  <input class="span2 right" id="shipping-cost-input" name="shiping_cost" type="text">
+                  <span class="add-on">฿</span>
+                </div>
+              </div>
+            </div>
+          @elseif($order->status == 3)
+            <div class="control-group">
+              <label for="shipping-cost-input" class="control-label">Shipping Cost</label>
+              <div class="controls"><p>{{ $order->shiping_cost }} ฿</p></div>
+            </div>
+          @endif
         </div>
-        <div class="control-group">
-          <label for="inputTel" class="control-label">Tel</label>
-          <div class="controls"><p>{{ Auth::user()->tel }}</p></div>
+      </section>
+      <hr>
+      <section id="summary">
+        <h1>Summary</h1>
+        <table class="table table-bordered">
+          <tbody>
+            <tr>
+              <td class="right">Total</td>
+              <td class="right">
+                <span id="total">{{ Helper::add_comma($total) }} ฿</span>
+              </td>
+            </tr>
+            <tr>
+              <td class="right">Shipping Fee</td>
+              <td class="right">
+                <span id="shipping-fee">{{ Helper::add_comma($order->shiping_fee) }} ฿</span>
+              </td>
+            </tr>
+          </tbody>
+          <tfoot>
+            </tr>
+              <td class="right">Grand Total</td>
+              <td class="right">
+                <span id="grand-total">{{ $order->grand_total }} ฿</span>
+              </td>
+            </tr>
+          </tfoot>
+        </table>
+      </section>
+      <hr>
+      <section id="page-buttons">
+        <div class="right">
+          <a href="/admin/orders" class="btn pull-left">Back</a>
+          <?php FB::Log($order->status) ?>
+          @if($order->status == 0)
+            <a 
+              href="{{ ($material['remain'] < $material['quantity']) ? 'javascript:void(0)' : '/admin/orders/baking/'.$order->id }}" 
+              class="btn btn-large btn-primary {{ ($material['remain'] < $material['quantity']) ? 'disabled' : '' }}"
+            >Baking</a>
+          @elseif($order->status == 1)
+            <a class="btn btn-large btn-primary" href="/admin/orders/update/{{ $order->id }}?status=2">Waiting for shipping</a>
+          @elseif($order->status == 2)
+            <button class="btn btn-large btn-primary" id="completed-button">Completed</button>
+            <input type="hidden" name="status" value="3">
+          @endif
+          <div class="clear"></div>
         </div>
-        <div class="control-group">
-          <label for="inputLocation" class="control-label">Location</label>
-          <div class="controls"><p>{{ $order->location->name }}</p></div>
-        </div>
-        <div class="control-group">
-          <label for="inputAddress" class="control-label">Address</label>
-          <div class="controls"><p>{{ Auth::user()->address }}</p></div>
-        </div>
-      </div>
-    </section>
-    <hr>
-    <section id="total">
-      <h1>Total</h1>
-      <table class="table table-bordered">
-        <tbody>
-          <tr>
-            <td class="right">Total</td>
-            <td class="right">
-              <span id="total">{{ Helper::add_comma($total) }}</span>
-              <input 
-                id="total-input" 
-                name="orders[head][total]" 
-                type="hidden" 
-                value="{{ $total }}"
-              >
-            </td>
-          </tr>
-            <td class="right">Shipping fee</td>
-            <td class="right">
-              <span id="shipping-fee">0</span>
-              <input 
-                id="shipping-fee-input" 
-                name="orders[head][shiping_fee]" 
-                type="hidden" 
-              >
-            </td>
-        </tbody>
-        <tfoot>
-          </tr>
-            <td class="right">Grand Total</td>
-            <td class="right">
-              <span id="grand-total">{{ $total }}</span>
-            </td>
-          </tr>
-        </tfoot>
-      </table>
-    </section>
-    <hr>
-    <section id="page-buttons">
-      <div class="right">
-        <a href="/admin/orders" class="btn pull-left">Back</a>
-        <?php FB::Log($order->status) ?>
-        @if($order->status == 0)
-          <a 
-            href="{{ ($material['remain'] < $material['quantity']) ? 'javascript:void(0)' : '/admin/orders/baking/'.$order->id }}" 
-            class="btn btn-large btn-primary {{ ($material['remain'] < $material['quantity']) ? 'disabled' : '' }}"
-          >Baking</a>
-        @elseif($order->status == 1)
-          <a class="btn btn-large btn-primary" href="/admin/orders/update/{{ $order->id }}?status=2">Waiting for shipping</a>
-        @elseif($order->status == 2)
-          <a class="btn btn-large btn-primary" href="/admin/orders/update/{{ $order->id }}?status=3">Shipping</a>
-        @endif
-        <div class="clear"></div>
-      </div>
-    </section>
+      </section>
+    {{ Form::close() }}
   </div>
 @endsection
