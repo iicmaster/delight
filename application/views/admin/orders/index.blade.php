@@ -69,23 +69,23 @@
               role="button" 
               title="{{ __('admin.button_read') }}"
             ><i class="icon-list"></i></a>
-            <a 
-              class="btn" 
-              data-toggle="modal" 
-              href="#update-modal-{{ $data->id }}" 
-              role="button" 
-              title="{{ __('admin.button_update') }}"
-            ><i class="icon-pencil"></i></a>
-            
-            <div 
-              aria-hidden="true"
-              aria-labelledby="myModalLabel" 
-              class="modal hide fade left" 
-              id="update-modal-{{ $data->id }}" 
-              role="dialog" 
-              tabindex="-1" 
-            >
-              {{ Form::open('admin/orders/update/'.$data->id, '', array('class' => 'form-horizontal')) }}
+            @if($data->status == 0)
+              <a 
+                class="btn" 
+                data-toggle="modal" 
+                href="#update-modal-{{ $data->id }}" 
+                role="button" 
+                title="Cancel order"
+              ><i class="icon-remove"></i></a>
+              
+              <div 
+                aria-hidden="true"
+                aria-labelledby="myModalLabel" 
+                class="modal hide fade left" 
+                id="update-modal-{{ $data->id }}" 
+                role="dialog" 
+                tabindex="-1" 
+              >
                 <div class="modal-header">
                   <button 
                     aria-hidden="true" 
@@ -94,58 +94,23 @@
                     title="{{ __('admin.button_close') }}"
                     type="button" 
                   >×</button>
-                  <h3 id="myModalLabel">Order no: {{ $data->id }}</h3>
+                  <h3 id="myModalLabel">Order #{{ $data->id }}</h3>
                 </div>
                 <div class="modal-body">
-                  <div class="control-group">
-                    <label class="control-label" for="input-order-{{ $data->id }}-status">Order Status</label>
-                    <div class="controls">
-                      <select id="input-order-{{ $data->id }}-status" name="status" ref="{{ $data->id }}">
-                        <option 
-                          value="0" 
-                          {{ $data->status == 0 ? 'selected="selected"' : '' }}
-                        >Waiting for Baking</option>
-                        <option 
-                          value="1" 
-                          {{ $data->status == 1 ? 'selected="selected"' : '' }}
-                        >Baking</option>
-                        <option 
-                          value="2" 
-                          {{ $data->status == 2 ? 'selected="selected"' : '' }}
-                        >Waiting for shipping</option>
-                        <option 
-                          value="3" 
-                          {{ $data->status == 3 ? 'selected="selected"' : '' }}
-                        >Completed</option>
-                        <option 
-                          value="4" 
-                          {{ $data->status == 4 ? 'selected="selected"' : '' }}
-                        >Cancel</option>
-                      </select>
-                    </div>
-                  </div>
-                  <div 
-                    class="control-group {{ $data->shiping_cost ?:'hide' }}"
-                    id="shiping-cost-{{ $data->id }}-section" 
-                  >
-                    <label class="control-label" for="input-shiping-cost">Shiping Cost</label>
-                    <div class="controls">
-                      <input 
-                        class="right" 
-                        id="input-shiping-cost" 
-                        name="shiping_cost" 
-                        type="text" 
-                        value="{{ $data->shiping_cost }}" 
-                      >
-                      Baht
-                    </div>
-                  </div>
+                  <p>Confirm to cancel this order?</p>
                 </div>
                 <div class="modal-footer">
-                  <input type="submit" class="btn btn-primary" value="{{ __('admin.button_save') }}" />
+                  <button 
+                    aria-hidden="true" 
+                    class="btn" 
+                    data-dismiss="modal" 
+                    title="{{ __('admin.button_close') }}"
+                    type="button" 
+                  >Cancel</button>
+                  <a class="btn btn-primary" href="/admin/orders/update/{{ $data->id }}?status=4">Confirm</a>
                 </div>
-              {{ Form::close() }}
-            </div>
+              </div>
+            @endif
           </td>
         </tr>
       @empty

@@ -53,60 +53,15 @@ class Admin_Orders_Controller extends Base_Controller
     // --------------------------------------------------------------------------
 
     /**
-     * Update order status to baking and update material stock
+     * Update order status to Waiting for shipping
+     * 
      * @param   int         $order_id
      * @return  Response
      */
-
-    public function action_baking($order_id) {
-
-        try {
-            DB::transaction((function() use ($order_id) {
-                $materials = Product_Order::get_required_materials($order_id);
-
-                // Update material stock for this shop
-                foreach ($materials as $material) {
-
-                    // Get remain stock
-                    $stocks = Material_Transaction::get_remain_stock($material['id']);
-                    $total_qualtity = $material['quantity'];
-
-                    while ($total_qualtity > 0) {
-                        $stock = current($stocks);
-                        $quantity = ($stock->remain > $total_qualtity) ? $total_qualtity : $stock->remain;
-
-                        $transaction = new Material_Transaction([
-                            'owner_id' => Auth::user()->id,
-                            'product_order_id' => $order_id,
-                            'material_id' => $material['id'],
-                            'stock_code' => $stock->stock_code,
-                            'quantity' => ($quantity * -1)
-                        ]);
-                        $transaction->save();
-
-                        $total_qualtity -= $quantity;
-                        next($stocks);
-                    }
-                }
-
-                // Update orderstatus
-                $product_order = Product_Order::find($order_id);
-                $product_order->status = 1;
-                $product_order->save();
-            }));
-
-            $report['status'] = 'success';
-            $report['message'] = __('admin.message_create_succeed');
-        } catch(\Exception $e) {
-            Log::write('error', $e->getMessage());
-            dd($e->getMessage());
-            exit();
-            $report['status'] = 'error';
-            $report['message'] = __('admin.message_create_failed');
-        }
-
-        // Redirect to product index
-        return Redirect::to_action('admin.orders@index')->with('report', $report);
+    public function action_waiting_for_shipping($order_id)
+    {
+        # code...
     }
+
 
 }

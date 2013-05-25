@@ -154,35 +154,37 @@ Order no: {{ $order->id }}
       </table>
     </section>
     <hr>
-    <section id="materials">
-      <h1>Materials</h1>
-      @if($is_out_of_stock)
-        <div class="alert alert-block alert-error">Your materials is not enough for baking.</div>
-      @endif
-      <table class="table table-striped table-bordered">
-        <thead>
-          <tr>
-            <th class="span1">#</th>
-            <th>Name</th>
-            <th>Stock Remain</th>
-            <th>Required</th>
-            <th>Unit</th>
-          </tr>
-        </thead>
-        <tbody>
-          @foreach ($materials as $loop => $material)
-            <tr class="{{ ($material['remain'] < $material['quantity']) ? 'error' : '' }}">
-              <td class="center">{{ $loop++ }}</td>
-              <td>{{ $material['name'] }}</td>
-              <td class="right">{{ Helper::add_comma($material['remain']) }}</td>
-              <td class="right">{{ $material['quantity'] }}</td>
-              <td class="right">{{ $material['unit'] }}</td>
+    @if($order->status == 0)
+      <section id="materials">
+        <h1>Materials</h1>
+        @if($is_out_of_stock)
+          <div class="alert alert-block alert-error">Your materials is not enough for baking.</div>
+        @endif
+        <table class="table table-striped table-bordered">
+          <thead>
+            <tr>
+              <th class="span1">#</th>
+              <th>Name</th>
+              <th>Stock Remain</th>
+              <th>Required</th>
+              <th>Unit</th>
             </tr>
-          @endforeach
-        </tbody>
-      </table>
-    </section>
-    <hr>
+          </thead>
+          <tbody>
+            @foreach ($materials as $loop => $material)
+              <tr class="{{ ($material['remain'] < $material['quantity']) ? 'error' : '' }}">
+                <td class="center">{{ $loop++ }}</td>
+                <td>{{ $material['name'] }}</td>
+                <td class="right">{{ Helper::add_comma($material['remain']) }}</td>
+                <td class="right">{{ $material['quantity'] }}</td>
+                <td class="right">{{ $material['unit'] }}</td>
+              </tr>
+            @endforeach
+          </tbody>
+        </table>
+      </section>
+      <hr>
+    @endif
     <section id="shipping-address">
       <h1>Shipping Address</h1>
       <div class="form-horizontal">
@@ -245,12 +247,18 @@ Order no: {{ $order->id }}
     <section id="page-buttons">
       <div class="right">
         <a href="/admin/orders" class="btn pull-left">Back</a>
-        @if($order->stauts == 0)
+        <?php FB::Log($order->status) ?>
+        @if($order->status == 0)
           <a 
             href="{{ ($material['remain'] < $material['quantity']) ? 'javascript:void(0)' : '/admin/orders/baking/'.$order->id }}" 
             class="btn btn-large btn-primary {{ ($material['remain'] < $material['quantity']) ? 'disabled' : '' }}"
           >Baking</a>
+        @elseif($order->status == 1)
+          <a class="btn btn-large btn-primary" href="/admin/orders/update/{{ $order->id }}?status=2">Waiting for shipping</a>
+        @elseif($order->status == 2)
+          <a class="btn btn-large btn-primary" href="/admin/orders/update/{{ $order->id }}?status=3">Shipping</a>
         @endif
+        <div class="clear"></div>
       </div>
     </section>
   </div>
