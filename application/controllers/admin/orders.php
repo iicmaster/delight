@@ -87,7 +87,11 @@ class Admin_Orders_Controller extends Base_Controller
                         $transaction->save();
 
                         // Update material total
-                        Material::update($material['id'], ['total' => DB::raw('total - '.$quantity)]);
+                        Material::find($material['id'])
+                                ->users()
+                                ->pivot()
+                                ->where_user_id(Auth::user()->id)
+                                ->update(['total' => DB::raw('total - '.$quantity)]);
 
                         // Update loop variable
                         $total_qualtity -= $quantity;
