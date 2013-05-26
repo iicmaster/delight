@@ -5,7 +5,7 @@ class Seed_Users extends \S2\Seed
     public function grow()
     {
         $user = new User;
-        $user->name = 'โอ๊ค';
+        $user->name = 'โอ๊ค Admin1';
         $user->username = 'admin1';
         $user->password = Hash::make('1234');
         $user->email = 'okara@delight.com';
@@ -15,7 +15,7 @@ class Seed_Users extends \S2\Seed
         $user->save();
 
         $user = new User;
-        $user->name = 'แอน';
+        $user->name = 'แอน Admin2';
         $user->username = 'admin2';
         $user->password = Hash::make('1234');
         $user->email = 'anniza@delight,com';
