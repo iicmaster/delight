@@ -97,14 +97,10 @@ Materials
 		</thead>
 		<tbody>
 			@forelse ($query->results as $data)
-			<?php 
-				$pivot = $data->users()->pivot()->where_user_id(Auth::user()->id)->first();
-				// FB::log($pivot);
-			?>
 			<tr>
 				<td class="center">{{ $data->id }}</td>
 				<td class="left">{{ $data->name }}</td>
-				<td class="right">{{ Helper::add_comma($pivot->total) }}</td>
+				<td class="right">{{ Helper::add_comma($data->stock_remain) }}</td>
 				<td class="left">{{ $data->unit }}</td>
 				<td class="right">
 					<a href="#update-modal-{{ $data->id }}" role="button" class="btn" data-toggle="modal" title="{{ __('admin.button_update') }}"><i class="icon-pencil"></i></a>

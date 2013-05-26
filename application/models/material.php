@@ -12,6 +12,16 @@ class Material extends Eloquent
         return $this->has_many_and_belongs_to('User', 'user_materials');
     }
 
+    public function get_stock_remain()
+    {
+        $user_materials = $this->users()
+                               ->pivot()
+                               ->where_user_id(Auth::user()->id)
+                               ->first();
+                               
+        return $user_materials->total;
+    }
+
     /**
      * Scope for recommended to restock
      * 

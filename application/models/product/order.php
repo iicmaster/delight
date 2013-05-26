@@ -82,9 +82,9 @@ class Product_order extends Eloquent
                                                        : $required_quantity;
                 $list[$material->id]['id'] = $material->id;
                 $list[$material->id]['name'] = $material->name;
-                $list[$material->id]['remain'] = $material->total;
+                $list[$material->id]['remain'] = $material->stock_remain;
                 $list[$material->id]['unit'] = $material->unit;
-                $list[$material->id]['is_out_of_stock'] = ($material->total < $item->quantity);
+                $list[$material->id]['is_out_of_stock'] = ($material->stock_remain < $item->quantity);
             }
         }
 
