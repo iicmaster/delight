@@ -235,6 +235,83 @@ class Seed_Materials extends \S2\Seed
         $material->users()->sync([1, 2]);
         $material->suppliers()->sync([1, 2, 3, 4]);
 
+        $material = new Material([
+            'name' => 'เอสพี',
+            'description' => 'เอสพี',
+            'unit' => 'g.',
+            'min_stock' => '100',
+            'max_stock' => '1000',
+        ]);
+        $material->save();
+        $material->users()->sync([1, 2]);
+        $material->suppliers()->sync([1, 2, 3, 4]);
+
+        $material = new Material([
+            'name' => 'กลิ่นส้ม',
+            'description' => 'กลิ่นส้ม',
+            'unit' => 'cc.',
+            'min_stock' => '50',
+            'max_stock' => '500',
+        ]);
+        $material->save();
+        $material->users()->sync([1, 2]);
+        $material->suppliers()->sync([1, 2, 3, 4]);
+
+        $material = new Material([
+            'name' => 'น้ำส้ม',
+            'description' => 'น้ำส้ม',
+            'unit' => 'cc.',
+            'min_stock' => '500',
+            'max_stock' => '1000',
+        ]);
+        $material->save();
+        $material->users()->sync([1, 2]);
+        $material->suppliers()->sync([1, 2, 3, 4]);
+
+        $material = new Material([
+            'name' => 'วิปปิ้งครีม',
+            'description' => 'วิปปิ้งครีม',
+            'unit' => 'g.',
+            'min_stock' => '1000',
+            'max_stock' => '5000',
+        ]);
+        $material->save();
+        $material->users()->sync([1, 2]);
+        $material->suppliers()->sync([1, 2, 3, 4]);
+
+        $material = new Material([
+            'name' => 'น้ำตาลไอซิ่ง',
+            'description' => 'น้ำตาลไอซิ่ง',
+            'unit' => 'g.',
+            'min_stock' => '500',
+            'max_stock' => '1000',
+        ]);
+        $material->save();
+        $material->users()->sync([1, 2]);
+        $material->suppliers()->sync([1, 2, 3, 4]);
+
+        $material = new Material([
+            'name' => 'นมสด',
+            'description' => 'นมสด',
+            'unit' => 'g.',
+            'min_stock' => '500',
+            'max_stock' => '1000',
+        ]);
+        $material->save();
+        $material->users()->sync([1, 2]);
+        $material->suppliers()->sync([1, 2, 3, 4]);
+
+        $material = new Material([
+            'name' => 'สตอเบอร์รี่',
+            'description' => 'สตอเบอร์รี่',
+            'unit' => 'g.',
+            'min_stock' => '500',
+            'max_stock' => '1000',
+        ]);
+        $material->save();
+        $material->users()->sync([1, 2]);
+        $material->suppliers()->sync([1, 2, 3, 4]);
+
 /* ====================================================================================================== */
 
 

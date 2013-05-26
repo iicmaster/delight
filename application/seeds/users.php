@@ -25,7 +25,7 @@ class Seed_Users extends \S2\Seed
         $user->save();
 
         $user = new User;
-        $user->name = 'กวิน';
+        $user->name = 'กวิน มหัทธนโสภณ';
         $user->username = 'kawin';
         $user->password = Hash::make('1234');
         $user->email = 'kawin99@delihgt.com';
@@ -35,7 +35,7 @@ class Seed_Users extends \S2\Seed
         $user->save();
 
         $user = new User;
-        $user->name = 'เจมส์';
+        $user->name = 'นพดล ธนาภูวนัตถ์';
         $user->username = 'jame';
         $user->password = Hash::make('1234');
         $user->email = 'jame01@hotmail.com';
@@ -45,47 +45,47 @@ class Seed_Users extends \S2\Seed
         $user->save();
 
         $user = new User;
-        $user->name = 'แทยอน';
-        $user->username = 'taeyeon';
+        $user->name = 'นริศรา วรโชติธนัน';
+        $user->username = 'pui';
         $user->password = Hash::make('1234');
-        $user->email = 'taeyeon09@girls-generation.net';
+        $user->email = 'naris_09@gmail.com';
         $user->address = 'Rachaprasong, Bangkok';
         $user->tel = '0859989999';
         $user->role = 'user';
         $user->save();
 
         $user = new User;
-        $user->name = 'เจสสิก้า';
+        $user->name = 'ศิริรัตน์ จรัสพุฒิพงศ์';
         $user->username = 'jessica';
         $user->password = Hash::make('1234');
-        $user->email = 'jessica09@girls-generation.net';
+        $user->email = 'jessica09@gmail.com';
         $user->address = 'Rachaprasong, Bangkok';
         $user->tel = '0899959995';
         $user->role = 'user';
         $user->save();
 
         $user = new User;
-        $user->name = 'ยุนอา';
-        $user->username = 'yoona';
+        $user->name = 'สุกัญญา ธวัชพลังกร';
+        $user->username = 'sukanya';
         $user->password = Hash::make('1234');
-        $user->email = 'yoona09@girls-generation.net';
+        $user->email = 'sukanya@hotmail.com';
         $user->address = 'Rachaprasong, Bangkok';
         $user->tel = '0899988899';
         $user->role = 'user';
         $user->save();
 
         $user = new User;
-        $user->name = 'ยูริ';
+        $user->name = 'ฐิติภรณ์ ปริยากรโสภณ';
         $user->username = 'yuri';
         $user->password = Hash::make('1234');
-        $user->email = 'yuri09@girls-generation.net';
+        $user->email = 'yuri09@hotmail.com';
         $user->address = 'Rachaprasong, Bangkok';
         $user->tel = '0899988855';
         $user->role = 'user';
         $user->save();
 
         $user = new User;
-        $user->name = 'อ็อฟ';
+        $user->name = 'ปองศักดิ์ เจนกิจโสภณ';
         $user->username = 'aof';
         $user->password = Hash::make('1234');
         $user->email = 'aof_05@hotmail.com';
@@ -95,7 +95,7 @@ class Seed_Users extends \S2\Seed
         $user->save();
 
         $user = new User;
-        $user->name = 'แนน';
+        $user->name = 'นันธิตา พิชญเดชา';
         $user->username = 'nan';
         $user->password = Hash::make('1234');
         $user->email = 'nan_99@gmail.com';
@@ -105,7 +105,7 @@ class Seed_Users extends \S2\Seed
         $user->save();
 
         $user = new User;
-        $user->name = 'นุ่น';
+        $user->name = 'นันธิภา พิชญเดชา';
         $user->username = 'nun';
         $user->password = Hash::make('1234');
         $user->email = 'nun_55@gmail.com';
@@ -115,7 +115,7 @@ class Seed_Users extends \S2\Seed
         $user->save();
 
         $user = new User;
-        $user->name = 'เกม';
+        $user->name = 'วีรยุทธ์ ธนาภูวนัตถ์';
         $user->username = 'game';
         $user->password = Hash::make('1234');
         $user->email = 'gamer_mama@gmail.com';
@@ -125,7 +125,7 @@ class Seed_Users extends \S2\Seed
         $user->save();
 
         $user = new User;
-        $user->name = 'เจน';
+        $user->name = 'เจนจิรา กิจสุพัฒน์ภาคิน';
         $user->username = 'jane';
         $user->password = Hash::make('1234');
         $user->email = 'jane012@gmail.com';
@@ -135,7 +135,7 @@ class Seed_Users extends \S2\Seed
         $user->save();
 
         $user = new User;
-        $user->name = 'โอคาระ';
+        $user->name = 'พิรชัช ย่วนยินรักษ์';
         $user->username = 'Okara';
         $user->password = Hash::make('suankularb');
         $user->email = 'Okara_Os@delight.com';
