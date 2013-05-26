@@ -69,7 +69,7 @@
               role="button" 
               title="{{ __('admin.button_read') }}"
             ><i class="icon-list"></i></a>
-            @if($data->status == 0)
+            @if($data->status < 3)
               <a 
                 class="btn" 
                 data-toggle="modal" 
@@ -77,39 +77,6 @@
                 role="button" 
                 title="Cancel order"
               ><i class="icon-remove"></i></a>
-              
-              <div 
-                aria-hidden="true"
-                aria-labelledby="myModalLabel" 
-                class="modal hide fade left" 
-                id="update-modal-{{ $data->id }}" 
-                role="dialog" 
-                tabindex="-1" 
-              >
-                <div class="modal-header">
-                  <button 
-                    aria-hidden="true" 
-                    class="close" 
-                    data-dismiss="modal" 
-                    title="{{ __('admin.button_close') }}"
-                    type="button" 
-                  >×</button>
-                  <h3 id="myModalLabel">Order #{{ $data->id }}</h3>
-                </div>
-                <div class="modal-body">
-                  <p>Confirm to cancel this order?</p>
-                </div>
-                <div class="modal-footer">
-                  <button 
-                    aria-hidden="true" 
-                    class="btn" 
-                    data-dismiss="modal" 
-                    title="{{ __('admin.button_close') }}"
-                    type="button" 
-                  >Cancel</button>
-                  <a class="btn btn-primary" href="/admin/orders/update/{{ $data->id }}?status=4">Confirm</a>
-                </div>
-              </div>
             @endif
           </td>
         </tr>
