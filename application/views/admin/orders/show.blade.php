@@ -242,7 +242,7 @@ Order no: {{ $order->id }}
               <label for="shipping-cost-input" class="control-label">Shipping Cost</label>
               <div class="controls">
                 <div class="input-append">
-                  <input class="span2 right" id="shipping-cost-input" name="shiping_cost" type="text">
+                  <input class="span2 right" id="shipping-cost-input" name="shipping_cost" type="text">
                   <span class="add-on">฿</span>
                 </div>
               </div>
@@ -250,7 +250,7 @@ Order no: {{ $order->id }}
           @elseif($order->status == 3)
             <div class="control-group">
               <label for="shipping-cost-input" class="control-label">Shipping Cost</label>
-              <div class="controls"><p>{{ $order->shiping_cost }} ฿</p></div>
+              <div class="controls"><p>{{ $order->shipping_cost }} ฿</p></div>
             </div>
           @endif
         </div>
@@ -269,7 +269,7 @@ Order no: {{ $order->id }}
             <tr>
               <td class="right">Shipping Fee</td>
               <td class="right">
-                <span id="shipping-fee">{{ Helper::add_comma($order->shiping_fee) }} ฿</span>
+                <span id="shipping-fee">{{ Helper::add_comma($order->shipping_fee) }} ฿</span>
               </td>
             </tr>
           </tbody>

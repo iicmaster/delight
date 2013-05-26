@@ -100,8 +100,8 @@ class Product_order extends Eloquent
      */
     public function get_grand_total()
     {
-        return $this->get_attribute('shiping_fee') 
-               + $this->get_attribute('shiping_cost') 
+        return $this->get_attribute('shipping_fee') 
+               + $this->get_attribute('shipping_cost') 
                + $this->get_attribute('total');
     }
 

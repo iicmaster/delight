@@ -178,7 +178,7 @@ Order no: {{ $order->id }}
                 <span id="shipping-fee">0</span>
                 <input 
                   id="shipping-fee-input" 
-                  name="orders[head][shiping_fee]" 
+                  name="orders[head][shipping_fee]" 
                   type="hidden" 
                 >
               </td>

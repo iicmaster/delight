@@ -6,17 +6,13 @@ class Create_Materials_Table
     {
 		Schema::create('materials', function($table) {
 			$table->increments('id');
-			$table->integer('owner_id')->unsigned();
 			$table->string('name', 255);
 			$table->string('description', 255)->nullable();
 			$table->string('unit', 255)->nullable();
-			$table->integer('total')->unsigned()->default(0);
 			$table->integer('min_stock')->unsigned()->default(0);
 			$table->integer('max_stock')->unsigned()->default(0);
 			$table->date('latest_transaction');
 			$table->timestamps();
-
-			$table->foreign('owner_id')->references('id')->on('users')->on_delete('cascade');
 		});
     }    
 
