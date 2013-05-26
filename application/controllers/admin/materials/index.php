@@ -4,9 +4,8 @@ class Admin_Materials_Index_Controller extends Base_Controller
 {
 	public function action_index()
 	{
-		$data['report_message'] = Session::get('result');
-		$data['query'] = Material::where('owner_id', '=', Auth::user()->id)
-							  	 ->order_by('id', 'desc')
+		$data['report_message'] = Session::get('report');
+		$data['query'] = Material::order_by('id', 'desc')
 								 ->paginate(Config::get('admin.row_per_page'));
 		$data['suppliers'] = Supplier::all();
 		return View::make('admin.materials.index', $data);
@@ -16,17 +15,31 @@ class Admin_Materials_Index_Controller extends Base_Controller
 
 	public function action_create()
 	{    
-		$input = Input::get();
-		$query = Location::create($input);
+		$input = Input::except('suppliers');
+		FB::log($input);
 
-		if ($query) {
-			$material->suppliers()->sync(Input::get('suppliers'));
-			$result = __('admin.message_create_succeed');
-		} else {
-			$result = false;
-		}
+		try {
+            DB::transaction((function() use ($input) {
+				$material = Material::create($input);
 
-		return Redirect::to_action('admin.materials@index')->with('result', $result);
+				$material->suppliers()->sync(Input::get('suppliers'));
+
+				$users = User::where_role('admin')->get();
+				foreach ($users as $user) {
+					$material->users()->attach($user);
+				}
+			}));
+
+            $report['status'] = 'success';
+			$report['message'] = __('admin.message_create_succeed');
+		} catch(\Exception $e) {
+            dd($e->getMessage());
+            Log::write('error', $e->getMessage());
+            $report['status'] = 'error';
+            $report['message'] = __('admin.message_update_failed');
+        }
+
+		return Redirect::to_action('admin.materials@index')->with('report', $report);
 	}
 	
 	// --------------------------------------------------------------------------
@@ -36,24 +49,38 @@ class Admin_Materials_Index_Controller extends Base_Controller
 		$input = Input::get();
 		unset($input['suppliers']);
 
-		$material = Material::find($id)->update($id, $input);
+		try {
+			$material = Material::find($id)->update($id, $input);
+			$material->suppliers()->sync(Input::get('suppliers'));
 
-		if ($material) {
-			Material::find($id)->suppliers()->sync(Input::get('suppliers'));
-			$result = __('admin.message_update_succeed');
-		} else {
-			$result = false;
-		}
+            $report['status'] = 'success';
+			$report['message'] = __('admin.message_create_succeed');
+		} catch(\Exception $e) {
+            // dd($e->getMessage());
+            Log::write('error', $e->getMessage());
+            $report['status'] = 'error';
+            $report['message'] = __('admin.message_update_failed');
+        }
 
-		return Redirect::to_action('admin.materials@index')->with('result', $result);
+		return Redirect::to_action('admin.materials@index')->with('report', $report);
 	}
 	
 	// --------------------------------------------------------------------------
 
 	public function action_delete($id)
 	{    
-		$result = Material::where('id', '=', $id)->delete() ? __('admin.message_delete_succeed') : false;
-		return Redirect::to_action('admin.materials@index')->with('result', $result);
+		try {
+			Material::where('id', '=', $id)->delete();
+            $report['status'] = 'success';
+			$report['message'] = __('admin.message_delete_succeed');
+		} catch(\Exception $e) {
+            // dd($e->getMessage());
+            Log::write('error', $e->getMessage());
+            $report['status'] = 'error';
+            $report['message'] = __('admin.message_delete_failed');
+        }
+        
+		return Redirect::to_action('admin.materials@index')->with('report', $report);
 	}
 
 	// --------------------------------------------------------------------------

@@ -22,11 +22,9 @@ class Admin_Materials_Orders_Controller extends Base_Controller
 	public function action_create()
 	{
 		if (count(Input::get('selected_id')) > 0) {
-			$data['query'] = Material::where('owner_id', '=', Auth::user()->id)
-							 		 ->where_in('id', Input::get('selected_id'))
-									 ->get();
+			$data['query'] = Material::get_recommended_to_restock(Input::get('selected_id'));
 		} else {
-			$data['query'] = Material::where('owner_id', '=', Auth::user()->id)->get();
+			$data['query'] = Material::get_recommended_to_restock();
 		}
 
 		$data['suppliers'] = Supplier::all();
@@ -45,7 +43,7 @@ class Admin_Materials_Orders_Controller extends Base_Controller
 
 		// Create material order
 		$order = new Material_Order([
-			'owner_id' => Auth::user()->id,
+			'user_id' => Auth::user()->id,
 			'description' => Input::get('description'),
 		]);
 		$order->save();
@@ -97,9 +95,7 @@ class Admin_Materials_Orders_Controller extends Base_Controller
 	 */
 	public function action_approve($id)
 	{
-		$data['query'] = Material_Order::where('id', '=', $id)
-									   ->where('owner_id', '=', Auth::user()->id)
-									   ->first();
+		$data['query'] = Material_Order::find($id);
 
 		return View::make('admin.materials.orders.approve', $data);
 	}

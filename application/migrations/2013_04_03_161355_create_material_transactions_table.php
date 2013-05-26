@@ -6,7 +6,7 @@ class Create_Material_Transactions_Table
     {
 		Schema::create('material_transactions', function($table) {
 			$table->increments('id');
-			$table->integer('owner_id')->unsigned();
+			$table->integer('user_id')->unsigned();
 			$table->integer('product_order_id')->unsigned()->nullable();
 			$table->integer('material_order_id')->unsigned()->nullable();
 			$table->integer('material_order_item_id')->unsigned()->nullable();
@@ -19,7 +19,7 @@ class Create_Material_Transactions_Table
 			$table->decimal('amount', 10, 4)->unsigned()->nullable();
 			$table->timestamps();
 
-			$table->foreign('owner_id')->references('id')->on('users')->on_delete('cascade');
+			$table->foreign('user_id')->references('id')->on('users')->on_delete('cascade');
 			$table->foreign('product_order_id')->references('id')->on('product_orders')->on_delete('cascade');
 			$table->foreign('material_order_id')->references('id')->on('material_orders')->on_delete('cascade');
 			$table->foreign('material_order_item_id')->references('id')->on('material_order_items')->on_delete('cascade');

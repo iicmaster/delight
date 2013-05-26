@@ -78,7 +78,7 @@ class Admin_Orders_Controller extends Base_Controller
 
                         // Create transactions
                         $transaction = new Material_Transaction([
-                            'owner_id' => Auth::user()->id,
+                            'user_id' => Auth::user()->id,
                             'product_order_id' => $order_id,
                             'material_id' => $material['id'],
                             'stock_code' => $stock->stock_code,
@@ -104,13 +104,13 @@ class Admin_Orders_Controller extends Base_Controller
             }));
 
             $report['status'] = 'success';
-            $report['message'] = __('admin.message_create_succeed');
+            $report['message'] = __('admin.message_update_succeed');
         } catch(\Exception $e) {
             Log::write('error', $e->getMessage());
-            dd($e->getMessage());
-            exit();
+            // dd($e->getMessage());
+            // exit();
             $report['status'] = 'error';
-            $report['message'] = __('admin.message_create_failed');
+            $report['message'] = __('admin.message_update_failed');
         }
 
         // Redirect to product index

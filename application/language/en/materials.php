@@ -1,7 +1,7 @@
 <?php
 return [
 	'materials' => 'Materials',
-	'stock' => 'Recommended Restock Quantity',
+	'stock' => 'Recommended to Purchase',
 	'orders' => 'Materials Orders',
 	'approve' => 'Approve Materials Order',
 

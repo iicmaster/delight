@@ -62,7 +62,7 @@
       <div class="control-group">
         <label class="control-label">{{ __('locations.owner') }}</label>
         <div class="controls">
-          <select name="owner_id">
+          <select name="user_id">
             <option class="muted" value="" disabled selected>Choose...</option>
             @foreach ($users as $user)
               <option class="user-{{ $user->id }}" value="{{ $user->id }}" unit="{{ $user->unit }}">{{ $user->name }}</option>
@@ -123,10 +123,10 @@
                   <div class="control-group">
                     <label class="control-label">{{ __('locations.owner') }}</label>
                     <div class="controls">
-                      <select name="owner_id">
+                      <select name="user_id">
                         <option class="muted" value="" disabled>Choose...</option>
                         @foreach ($users as $user)
-                          <option value="{{ $user->id }}" <?php if ($data->owner_id == $user->id) echo 'selected="selected"' ?>>{{ $user->name }}</option>
+                          <option value="{{ $user->id }}" <?php if ($data->user_id == $user->id) echo 'selected="selected"' ?>>{{ $user->name }}</option>
                         @endforeach
                       </select>
                     </div>

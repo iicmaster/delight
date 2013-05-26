@@ -19,10 +19,14 @@ Materials
 @section('content')
 <div id="admin-materials-index">
 	<!-- Report Message -->
-	@if ($report_message !== false and ! is_null($report_message))
-		<div class="alert alert-success">
+	@if ( ! is_null($report_message))
+		@if ($report_message['status'])
+			<div class="alert alert-success">
+		@else
+			<div class="alert alert-error">
+		@endif
 			<button class="close" data-dismiss="alert" type="button">×</button>
-			{{ $report_message }}
+			{{ $report_message['message'] }}
 		</div>
 	@endif
 
@@ -37,40 +41,40 @@ Materials
 			<h3 id="myModalLabel">Material</h3>
 		</div>
 		<div class="modal-body">
-				<div class="control-group">
-					<label class="control-label" for="inputSuppliers">{{ __('suppliers.suppliers') }}</label>
-					<div class="controls">
-						<select id="inputSuppliers" class="select2" name="suppliers[]" multiple="multiple">
-							@foreach ($suppliers as $supplier)
-								<option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
-							@endforeach
-						</select>
-					</div>
+			<div class="control-group">
+				<label class="control-label" for="inputSuppliers">{{ __('suppliers.suppliers') }}</label>
+				<div class="controls">
+					<select id="inputSuppliers" class="select2" name="suppliers[]" multiple="multiple">
+						@foreach ($suppliers as $supplier)
+							<option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
+						@endforeach
+					</select>
 				</div>
-				<div class="control-group">
-					<label class="control-label" for="inputName">{{ __('admin.name') }}</label>
-					<div class="controls">
-						<input type="text" id="inputName" placeholder="Name" name="name">
-					</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="inputName">{{ __('admin.name') }}</label>
+				<div class="controls">
+					<input type="text" id="inputName" placeholder="Name" name="name">
 				</div>
-				<div class="control-group">
-					<label class="control-label" for="inputUnit">{{ __('admin.unit') }}</label>
-					<div class="controls">
-						<input type="text" id="inputUnit" placeholder="Unit" name="unit">
-					</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="inputUnit">{{ __('admin.unit') }}</label>
+				<div class="controls">
+					<input type="text" id="inputUnit" placeholder="Unit" name="unit">
 				</div>
-				<div class="control-group">
-					<label class="control-label" for="inputMin Stock">{{ __('materials.min_stock') }}</label>
-					<div class="controls">
-						<input type="text" id="inputMin Stock" placeholder="Min Stock" name="min_Stock">
-					</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="inputMin Stock">{{ __('materials.min_stock') }}</label>
+				<div class="controls">
+					<input type="text" id="inputMin Stock" placeholder="Min Stock" name="min_Stock">
 				</div>
-				<div class="control-group">
-					<label class="control-label" for="inputMax Stock">{{ __('materials.max_stock') }}</label>
-					<div class="controls">
-						<input type="text" id="inputMax Stock" placeholder="Max Stock" name="max_stock">
-					</div>
+			</div>
+			<div class="control-group">
+				<label class="control-label" for="inputMax Stock">{{ __('materials.max_stock') }}</label>
+				<div class="controls">
+					<input type="text" id="inputMax Stock" placeholder="Max Stock" name="max_stock">
 				</div>
+			</div>
 		</div>
 		<div class="modal-footer">
 			<input type="submit" class="btn btn-primary" value="Save" />
@@ -93,10 +97,14 @@ Materials
 		</thead>
 		<tbody>
 			@forelse ($query->results as $data)
+			<?php 
+				$pivot = $data->users()->pivot()->where_user_id(Auth::user()->id)->first();
+				// FB::log($pivot);
+			?>
 			<tr>
 				<td class="center">{{ $data->id }}</td>
 				<td class="left">{{ $data->name }}</td>
-				<td class="right">{{ Helper::add_comma($data->total) }}</td>
+				<td class="right">{{ Helper::add_comma($pivot->total) }}</td>
 				<td class="left">{{ $data->unit }}</td>
 				<td class="right">
 					<a href="#update-modal-{{ $data->id }}" role="button" class="btn" data-toggle="modal" title="{{ __('admin.button_update') }}"><i class="icon-pencil"></i></a>
@@ -130,12 +138,6 @@ Materials
 									<label class="control-label" for="inputName">{{ __('admin.name') }}</label>
 									<div class="controls">
 										<input type="text" id="inputName" placeholder="Name" name="name" value="{{ $data->name }}">
-									</div>
-								</div>
-								<div class="control-group">
-									<label class="control-label" for="inputTotal">{{ __('admin.total') }}</label>
-									<div class="controls">
-										<input type="text" id="inputTotal" placeholder="Total" name="total" value="{{ $data->total }}">
 									</div>
 								</div>
 								<div class="control-group">
