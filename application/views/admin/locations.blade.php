@@ -60,7 +60,7 @@
         </div>
       </div>
       <div class="control-group">
-        <label class="control-label">{{ __('locations.owner') }}</label>
+        <label class="control-label">{{ __('locations.user') }}</label>
         <div class="controls">
           <select name="user_id">
             <option class="muted" value="" disabled selected>Choose...</option>
@@ -84,9 +84,9 @@
     <thead>
       <tr>
         <th class="span1 center">#</th>
-        <th class="left">{{ __('locations.name') }}</th>
-        <th class="span2 right">{{ __('locations.price') }}</th>
-        <th class="span1 left">{{ __('locations.owner') }}</th>
+        <th class="">{{ __('locations.name') }}</th>
+        <th class="span2">{{ __('locations.price') }}</th>
+        <th class="span2">{{ __('locations.user') }}</th>
         <th class="span2"></th>
       </tr>
     </thead>
@@ -96,7 +96,7 @@
           <td class="center">{{ $data->id }}</td>
           <td class="left">{{ $data->name }}</td>
           <td class="right">{{ Helper::add_comma($data->price) }}</td>
-          <td class="left">{{ $data->owner->name }}</td>
+          <td class="left">{{ $data->user->name }}</td>
           <td class="right">
             <a href="#update-modal-{{ $data->id }}" role="button" class="btn" data-toggle="modal" title="{{ __('admin.button_update') }}"><i class="icon-pencil"></i></a>
             <a href="/admin/locations/delete/{{ $data->id }}" role="button" class="btn" title="{{ __('admin.button_delete') }}"><i class="icon-trash"></i></a>
@@ -121,7 +121,7 @@
                     </div>
                   </div>
                   <div class="control-group">
-                    <label class="control-label">{{ __('locations.owner') }}</label>
+                    <label class="control-label">{{ __('locations.user') }}</label>
                     <div class="controls">
                       <select name="user_id">
                         <option class="muted" value="" disabled>Choose...</option>

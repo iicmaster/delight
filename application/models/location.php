@@ -2,8 +2,8 @@
 
 class Location extends Eloquent 
 {
-	public function owner()
+	public function user()
 	{
-		return $this->belongs_to('user');
+		return $this->belongs_to('User');
 	}
 }
