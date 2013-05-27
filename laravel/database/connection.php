@@ -75,7 +75,8 @@ class Connection {
 
 		if (isset(\Laravel\Database::$registrar[$this->driver()]))
 		{
-			return $this->grammar = \Laravel\Database::$registrar[$this->driver()]['query']();
+			$resolver = \Laravel\Database::$registrar[$this->driver()]['query'];
+			return $this->grammar = $resolver($this);
 		}
 
 		switch ($this->driver())
@@ -196,7 +197,7 @@ class Connection {
 		// For insert statements that use the "returning" clause, which is allowed
 		// by database systems such as Postgres, we need to actually return the
 		// real query result so the consumer can get the ID.
-		elseif (stripos($sql, 'insert') === 0 and stripos($sql, 'returning') !== false)
+		elseif (stripos($sql, 'insert') === 0 and stripos($sql, ') returning') !== false)
 		{
 			return $this->fetch($statement, Config::get('database.fetch'));
 		}
@@ -308,7 +309,7 @@ class Connection {
 	 */
 	protected function log($sql, $bindings, $start)
 	{
-		$time = number_format((microtime(true) - $start) * 1000, 2);
+		$time = (microtime(true) - $start) * 1000;
 
 		Event::fire('laravel.query', array($sql, $bindings, $time));
 

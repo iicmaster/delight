@@ -39,7 +39,7 @@ return array(
 	|
 	*/
 
-	'index' => '',
+	'index' => 'index.php',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -53,7 +53,7 @@ return array(
 	|
 	*/
 
-	'key' => 'LCk468MFumP4oM8wnfRV5GBN6b41EXCD',
+	'key' => 'YourSecretKeyGoesHere!',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -159,6 +159,7 @@ return array(
 		'Blade'      	=> 'Laravel\\Blade',
 		'Bundle'     	=> 'Laravel\\Bundle',
 		'Cache'      	=> 'Laravel\\Cache',
+		'Command'    	=> 'Laravel\\CLI\\Command',
 		'Config'     	=> 'Laravel\\Config',
 		'Controller' 	=> 'Laravel\\Routing\\Controller',
 		'Cookie'     	=> 'Laravel\\Cookie',

@@ -87,18 +87,19 @@ Route::group(array('before' => 'admin_auth'), function()
 |
 | Similarly, we use an event to handle the display of 500 level errors
 | within the application. These errors are fired when there is an
-| uncaught exception thrown in the application.
+| uncaught exception thrown in the application. The exception object
+| that is captured during execution is then passed to the 500 listener.
 |
 */
 
 Event::listen('404', function()
 {
-    return Response::error('404');
+	return Response::error('404');
 });
 
-Event::listen('500', function()
+Event::listen('500', function($exception)
 {
-    return Response::error('500');
+	return Response::error('500');
 });
 
 /*
