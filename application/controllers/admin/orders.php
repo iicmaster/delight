@@ -5,7 +5,14 @@ class Admin_Orders_Controller extends Base_Controller
     public function action_index()
     {
         $data['report_message'] = Session::get('report');
-        $data['query'] = Product_Order::order_by('id', 'desc')
+
+        $data['query'] = Product_Order::select('product_orders.*')
+                                      ->join(
+                                        'locations',
+                                        'product_orders.location_id', '=', 'locations.id'
+                                      )
+                                      ->where('locations.user_id', '=', Auth::user()->id)
+                                      ->order_by('id', 'desc')
                                       ->paginate(Config::get('admin.row_per_page'));
         return View::make('admin.orders.index', $data);
     }
