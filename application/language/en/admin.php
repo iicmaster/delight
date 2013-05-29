@@ -1,6 +1,23 @@
 <?php
 
 return array(
+	// menus
+	'home' => 'Home',
+	'products' => 'Products',
+	'materials' => 'Materials',
+	'materials_list' => 'Raw Materials List',
+	'stock' => 'Recommended to Purchase',
+	'materials_orders' => 'Materials Orders',
+	'approve' => 'Approve Materials Order',
+	'locations' => 'Locations',
+	'orders' => 'Orders',
+	'users' => 'Users',
+	'reports' => 'Reports',
+	'material_used' => 'Material used report',
+	'material_purchased' => 'Material purchased report',
+	'product_sales' => 'Product sales report',
+	'income_charge' => 'Income - charge report',
+	
 	// Buttons
 	'button_close' => 'Close',
 	'button_create' => 'New',

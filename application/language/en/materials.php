@@ -1,6 +1,7 @@
 <?php
 return [
 	'materials' => 'Materials',
+	'list' => 'Raw Materials List',
 	'stock' => 'Recommended to Purchase',
 	'orders' => 'Materials Orders',
 	'approve' => 'Approve Materials Order',
