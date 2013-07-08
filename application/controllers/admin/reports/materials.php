@@ -20,6 +20,7 @@ class Admin_Reports_Materials_Controller extends Base_Controller
 		$end_date = Input::get('end-date', date('Y-m-d')).' 23:59:59';
 
 		$data['materials'] = Material_Transaction::with('material')
+		                                         ->select(array('*', DB::raw('sum(quantity) as total')))
 		                                         ->where('quantity', '<', '0')
 		                                         ->where_between('created_at', $start_date, $end_date)
 		                                         ->group_by('material_id')

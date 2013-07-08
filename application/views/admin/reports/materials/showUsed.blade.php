@@ -36,7 +36,7 @@
             <tr>
               <td>{{ ++$key }}</td>
               <td>{{ $material->material->name }}</td>
-              <td class="right">{{ Helper::add_comma(abs($material->quantity)) }}</td>
+              <td class="right">{{ Helper::add_comma(abs($material->total)) }}</td>
               <td>{{ $material->material->unit }}</td>
             </tr>
           @endforeach
