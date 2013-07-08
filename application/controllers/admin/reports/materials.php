@@ -21,6 +21,7 @@ class Admin_Reports_Materials_Controller extends Base_Controller
 
 		$data['materials'] = Material_Transaction::with('material')
 		                                         ->select(array('*', DB::raw('sum(quantity) as total')))
+		                                         ->where('user_id', '=', Auth::user()->id)
 		                                         ->where('quantity', '<', '0')
 		                                         ->where_between('created_at', $start_date, $end_date)
 		                                         ->group_by('material_id')
