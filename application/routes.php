@@ -75,6 +75,7 @@ Route::group(array('before' => 'admin_auth'), function()
         'admin.locations',
         'admin.orders',
         'admin.reports.materials',
+        'admin.reports.products',
     ));
 });
 
