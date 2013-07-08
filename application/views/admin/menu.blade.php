@@ -21,7 +21,7 @@
         <li class="dropdown">
           <a data-toggle="dropdown" class="dropdown-toggle" role="button" href="#" id="drop1">{{ __('reports.reports') }} <b class="caret"></b></a>
           <ul aria-labelledby="drop1" role="menu" class="dropdown-menu">
-            <li>{{ HTML::link('#', __('reports.material_used')) }}</li>
+            <li>{{ HTML::link('/admin/reports/materials/used', __('reports.material_used')) }}</li>
             <li>{{ HTML::link('#', __('reports.material_purchased')) }}</li>
             <li>{{ HTML::link('#', __('reports.product_sales')) }}</li>
             <li>{{ HTML::link('#', __('reports.income_charge')) }}</li>

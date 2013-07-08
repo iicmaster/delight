@@ -2,6 +2,12 @@
 
 class Material_Transaction extends Eloquent 
 {
+
+    public function material()
+    { 
+        return $this->belongs_to('Material');
+    }
+
 	/**
 	 * Get remain stok of each material
 	 * 

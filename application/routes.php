@@ -48,6 +48,7 @@ Route::controller(array(
     'users',
     'cart',
     'admin.auth',
+    'admin.reports.materials',
 ));
 
 // Required auth
@@ -73,6 +74,7 @@ Route::group(array('before' => 'admin_auth'), function()
         'admin.products.index',
         'admin.locations',
         'admin.orders',
+        'admin.reports.materials',
     ));
 });
 

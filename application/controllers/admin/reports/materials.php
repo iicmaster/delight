@@ -1,0 +1,27 @@
+<?php
+
+class Admin_Reports_Materials_Controller extends Base_Controller 
+{
+	public $restful = true;
+
+	/**
+	 * Material user report
+	 * 
+	 * @return Response 
+	 */
+	public function get_used()
+	{
+		return View::make('admin.reports.materials.indexUsed');
+	}
+
+	public function post_used()
+	{
+		$start_date = Input::get('start-date', date('Y-m-d')).' 00:00:00';
+		$end_date = Input::get('end-date', date('Y-m-d')).' 23:59:59';
+		// dd($end_date);
+		$data['materials'] = Material_Transaction::with('material')
+		                                         ->where_between('created_at', $start_date, $end_date)
+												 ->get();
+		return View::make('admin.reports.materials.showUsed', $data);
+	}
+}
