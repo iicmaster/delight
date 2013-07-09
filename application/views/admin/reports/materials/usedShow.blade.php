@@ -19,7 +19,7 @@
 @section('content')
   <div id="material-used-report">
     <h1>{{ __('reports.material_used') }}</h1>
-    <p>{{ Input::get('start-date')}} to {{ Input::get('end-date')}}</p>
+    <p>Start date {{ Input::get('start-date')}} to {{ Input::get('end-date')}}</p>
     <?php // dd($materials); ?>
     @if(count($materials))
       <table class="table table-striped materials-table">
