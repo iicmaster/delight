@@ -23,8 +23,16 @@
 	<div id="material-used-report">
 		<h1>{{ __('reports.material_purchased') }}</h1>
 		<form method="post">
-			<label class="inline">Start Date <input type="text" id="start-date" name="start-date" class="datepicker"></label>
-			<label>End Date <input type="text" id="end-date" name="end-date" class="datepicker"></label>
+			<table class="table products-table">
+		        <tbody>
+		          	<tr>
+		              	<td class="span2">Start Date</td>
+		              	<td class="span7"><input type="text" id="start-date" name="start-date" class="datepicker"></td>
+		              	<td class="span2">End Date</td>
+		              	<td class="span7"><input type="text" id="end-date" name="end-date" class="datepicker"></td>
+		            </tr>
+		        </tbody>
+	      	</table>
 			<p><input type="submit" class="btn btn-primary btn-large" value="Report"></p>
 		</form>
 	</div>
