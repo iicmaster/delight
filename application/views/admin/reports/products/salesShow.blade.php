@@ -20,7 +20,7 @@
   <div id="product-sales-show">
     <h1>{{ __('reports.product_sales') }}</h1>
     <hr>
-    <p>{{ Input::get('start-date')}} to {{ Input::get('end-date')}}</p>
+    <p>Start date {{ Input::get('start-date')}} to {{ Input::get('end-date')}}</p>
     <?php // dd($materials); ?>
     @if(count($products))
       <table class="table table-striped products-table">

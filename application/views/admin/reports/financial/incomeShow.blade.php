@@ -20,7 +20,7 @@
   <div id="financial-income-show">
     <h1>{{ __('reports.income_charge') }}</h1>
     <hr>
-    <p>{{ Input::get('start-date')}} to {{ Input::get('end-date')}}</p>
+    <p>Start date {{ Input::get('start-date')}} to {{ Input::get('end-date')}}</p>
     <h2>Income</h2>
     <table class="table">
       <tr>
@@ -37,7 +37,7 @@
         <td class="span2 right"> </td>
         <td class="span1 left">Baht</td>
       </tr>
-      <tr>
+      <tr class="bold">
         <td class="span6 right">Total</td>
         <td class="span5 right"> </td>
         <td class="span2 right"> </td>
@@ -61,15 +61,18 @@
         <td class="span2 right"> </td>
         <td class="span1 left">Baht</td>
       </tr>
-      <tr>
-        <td class="span6 right">Total</td>
+      
+      <tr class="bold">
+        <td class=" span6 right">Total</td>
         <td class="span5 right"> </td>
         <td class="span2 right"> </td>
         <td class="span2 right">{{ number_format($total_cost, 2) }}</td>
         <td class="span1 left">Baht</td>
       </tr>
     </table>
+    
     <h2>Profit</h2>
+    <b>
     <table class="table">
       <tr>
         <td class="span6 right">Total</td>
@@ -79,5 +82,6 @@
         <td class="span1 left">Baht</td>
       </tr>
     </table>
+    </b>
   </div>
 @endsection
