@@ -25,17 +25,23 @@
     <table class="table">
       <tr>
         <td class="span6 right">Prduct Sales</td>
-        <td class="right">{{ number_format($prduct_sales, 2) }}</td>
+        <td class="span5 right"> </td>
+        <td class="span2 right">{{ number_format($prduct_sales, 2) }}</td>
+        <td class="span2 right"> </td>
         <td class="span1 left">Baht</td>
       </tr>
       <tr>
         <td class="span6 right">Shipping Fee</td>
-        <td class="right">{{ number_format($shipping_fee, 2) }}</td>
+        <td class="span5 right"> </td>
+        <td class="span2 right">{{ number_format($shipping_fee, 2) }}</td>
+        <td class="span2 right"> </td>
         <td class="span1 left">Baht</td>
       </tr>
       <tr>
         <td class="span6 right">Total</td>
-        <td class="right">{{ number_format($total_income, 2) }}</td>
+        <td class="span5 right"> </td>
+        <td class="span2 right"> </td>
+        <td class="span2 right">{{ number_format($total_income, 2) }}</td>
         <td class="span1 left">Baht</td>
       </tr>
     </table>
@@ -43,17 +49,23 @@
     <table class="table">
       <tr>
         <td class="span6 right">Materials Cost</td>
-        <td class="right">{{ number_format($materials_cost, 2) }}</td>
+        <td class="span5 right"> </td>
+        <td class="span2 right">{{ number_format($materials_cost, 2) }}</td>
+        <td class="span2 right"> </td>
         <td class="span1 left">Baht</td>
       </tr>
       <tr>
         <td class="span6 right">Shipping Cost</td>
-        <td class="right">{{ number_format($shipping_cost, 2) }}</td>
+        <td class="span5 right"> </td>
+        <td class="span2 right">{{ number_format($shipping_cost, 2) }}</td>
+        <td class="span2 right"> </td>
         <td class="span1 left">Baht</td>
       </tr>
       <tr>
         <td class="span6 right">Total</td>
-        <td class="right">{{ number_format($total_cost, 2) }}</td>
+        <td class="span5 right"> </td>
+        <td class="span2 right"> </td>
+        <td class="span2 right">{{ number_format($total_cost, 2) }}</td>
         <td class="span1 left">Baht</td>
       </tr>
     </table>
@@ -61,7 +73,9 @@
     <table class="table">
       <tr>
         <td class="span6 right">Total</td>
-        <td class="right">{{ number_format($total_profit, 2) }}</td>
+        <td class="right"> </td>
+        <td class="right"> </td>
+        <td class="span2 right">{{ number_format($total_profit, 2) }}</td>
         <td class="span1 left">Baht</td>
       </tr>
     </table>
