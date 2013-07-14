@@ -24,7 +24,7 @@
             <li>{{ HTML::link('/admin/reports/materials/used', __('reports.material_used')) }}</li>
             <li>{{ HTML::link('/admin/reports/materials/purchased', __('reports.material_purchased')) }}</li>
             <li>{{ HTML::link('/admin/reports/products/sales', __('reports.product_sales')) }}</li>
-            <li>{{ HTML::link('#', __('reports.income_charge')) }}</li>
+            <li>{{ HTML::link('/admin/reports/financial/income', __('reports.income_charge')) }}</li>
           </ul>
         </li>
       </ul>
