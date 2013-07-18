@@ -4,6 +4,8 @@ class Admin_Orders_Controller extends Base_Controller
 {
     public function action_index()
     {
+        $start_date = Input::get('start-date', date('Y-m-d')).' 00:00:00';
+        $end_date = Input::get('end-date', date('Y-m-d')).' 23:59:59';
         $data['report_message'] = Session::get('report');
 
         $data['query'] = Product_Order::select('product_orders.*')
@@ -12,8 +14,10 @@ class Admin_Orders_Controller extends Base_Controller
                                         'product_orders.location_id', '=', 'locations.id'
                                       )
                                       ->where('locations.user_id', '=', Auth::user()->id)
+                                      ->where_between('product_orders.updated_at', $start_date, $end_date)
                                       ->order_by('id', 'desc')
                                       ->paginate(Config::get('admin.row_per_page'));
+                                      
         return View::make('admin.orders.index', $data);
     }
     
@@ -47,7 +51,7 @@ class Admin_Orders_Controller extends Base_Controller
             Product_Order::update($id, $input);
             $report['status'] = 'success';
             $report['message'] = __('admin.message_update_succeed');
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             Log::write('error', $e);
             $report['status'] = 'error';
             $report['message'] = __('admin.message_update_failed');
@@ -107,8 +111,6 @@ class Admin_Orders_Controller extends Base_Controller
                     }
                 }
 
-
-
                 // Update order status
                 $product_order = Product_Order::find($order_id);
                 $product_order->status = 1;
@@ -117,7 +119,7 @@ class Admin_Orders_Controller extends Base_Controller
 
             $report['status'] = 'success';
             $report['message'] = __('admin.message_update_succeed');
-        } catch(\Exception $e) {
+        } catch (\Exception $e) {
             Log::write('error', $e->getMessage());
             // dd($e->getMessage());
             // exit();

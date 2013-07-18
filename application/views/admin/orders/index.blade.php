@@ -13,6 +13,11 @@
       width: 250px;
       height: 250px;
     }
+
+    form { margin: 0; }
+    input[type="text"] {
+      margin-top: 10px;
+    }
   </style>
 @endsection
 
@@ -42,6 +47,12 @@
     </div>
   @endif
   <h1>{{ __('orders.orders') }}</h1>  
+  <hr>    
+  <form>
+    From: <input type="text" name="start-date" value="{{ Input::get('start-date', date('Y-m-d')) }}"> 
+    To: <input type="text" name="end-date" value="{{ Input::get('end-date', date('Y-m-d')) }}">  
+    <button class="btn">Search</button>
+  </form>
   <hr>    
   <table class="table table-striped">
     <thead>
