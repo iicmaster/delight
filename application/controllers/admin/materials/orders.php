@@ -8,7 +8,8 @@ class Admin_Materials_Orders_Controller extends Base_Controller
 	public function action_index()
 	{
 		$data['report_message'] = Session::get('result');
-		$data['query'] = Material_Order::order_by('id', 'desc')
+		$data['query'] = Material_Order::where('user_id', '=', Auth::user()->id)
+                                       ->order_by('id', 'desc')
 							 		   ->paginate(Config::get('admin.row_per_page'));
 		$data['suppliers'] = Supplier::all();
 		return View::make('admin.materials.orders.index', $data);
