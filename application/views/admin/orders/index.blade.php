@@ -18,6 +18,28 @@
     input[type="text"] {
       margin-top: 10px;
     }
+
+    div[class="input-prepend"]{
+      width: 330px;
+    }
+
+    span[class="add-on"]{
+      margin-top: 10px;
+      margin-left: 20px;
+    }
+
+    select[class="span3"]{
+      margin-top: 10px;
+      height: 29.5px;
+    }
+
+    input[class="span3"] {
+      margin-top: 10px;
+    }
+
+    div[id="index-search"]{
+      width: 350px;
+    }
   </style>
 @endsection
 
@@ -48,11 +70,28 @@
   @endif
   <h1>{{ __('orders.orders') }}</h1>  
   <hr>    
+  <!-- ******************************* -Search form- ******************************* -->
   <form>
-    From: <input type="text" name="start-date" value="{{ Input::get('start-date', date('Y-m-d')) }}"> 
+    <div>
+      <div >
+        <span class="add-on">Search by</span>
+        <select class="span3">
+          <option>Order ID.</option>
+          <option>Customer name.</option>
+          <option>Order status.</option>
+        </select>
+      </div>
+      <div id="index-search">
+        <input class="span3" type="text" placeholder="Search..."> 
+        <button class="btn">Search</button>
+      </div>
+    </div>
+    <!-- Search by Date -->
+    <!-- From: <input type="text" name="start-date" value="{{ Input::get('start-date', date('Y-m-d')) }}"> 
     To: <input type="text" name="end-date" value="{{ Input::get('end-date', date('Y-m-d')) }}">  
-    <button class="btn">Search</button>
+    <button class="btn">Search</button> -->
   </form>
+  <!-- ******************************* -End Search form- ******************************* -->
   <hr>    
   <table class="table table-striped">
     <thead>

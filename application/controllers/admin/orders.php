@@ -14,7 +14,7 @@ class Admin_Orders_Controller extends Base_Controller
                                         'product_orders.location_id', '=', 'locations.id'
                                       )
                                       ->where('locations.user_id', '=', Auth::user()->id)
-                                      ->where_between('product_orders.updated_at', $start_date, $end_date)
+                                      ->where_between('product_orders.created_at', $start_date, $end_date)
                                       ->order_by('id', 'desc')
                                       ->paginate(Config::get('admin.row_per_page'));
                                       
