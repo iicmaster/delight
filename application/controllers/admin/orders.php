@@ -4,19 +4,38 @@ class Admin_Orders_Controller extends Base_Controller
 {
     public function action_index()
     {
-        $start_date = Input::get('start-date', date('Y-m-d')).' 00:00:00';
-        $end_date = Input::get('end-date', date('Y-m-d')).' 23:59:59';
+        // $start_date = Input::get('start-date', date('Y-m-d')).' 00:00:00';
+        // $end_date = Input::get('end-date', date('Y-m-d')).' 23:59:59';
         $data['report_message'] = Session::get('report');
 
-        $data['query'] = Product_Order::select('product_orders.*')
+        $productOrders = Product_Order::select('product_orders.*')
                                       ->join(
                                         'locations',
                                         'product_orders.location_id', '=', 'locations.id'
                                       )
                                       ->where('locations.user_id', '=', Auth::user()->id)
-                                      ->where_between('product_orders.created_at', $start_date, $end_date)
-                                      ->order_by('id', 'desc')
-                                      ->paginate(Config::get('admin.row_per_page'));
+                                      ->join(
+                                        'users',
+                                        'product_orders.user_id', '=', 'users.id'
+                                      )
+                                      ->order_by('id', 'desc');
+
+        // Status
+        if (Input::has('status') and Input::get('status') != 'all') {
+            $productOrders = $productOrders->where('status', '=', Input::get('status'));
+        }
+
+        // Search
+        if (Input::has('criteria') and Input::has('keyword')) {
+            $productOrders = $productOrders->where(Input::get('criteria'), 'LIKE', '%'.Input::get('keyword').'%');
+        }
+
+        // Date filter
+        if (Input::has('start-date') and Input::has('end-date')) {
+            $productOrders = $productOrders->where_between('product_orders.created_at', Input::get('start-date'), Input::get('end-date'));
+        }
+
+        $data['query'] = $productOrders->paginate(Config::get('admin.row_per_page'));
                                       
         return View::make('admin.orders.index', $data);
     }

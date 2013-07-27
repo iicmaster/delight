@@ -23,22 +23,17 @@
       width: 330px;
     }
 
-    span[class="add-on"]{
-      margin-top: 10px;
-      margin-left: 20px;
+    span.add-on {
+      margin: 10px 5px 0 10px;
     }
 
-    select[class="span3"]{
+    select[class="span3"] {
       margin-top: 10px;
       height: 29.5px;
     }
 
     input[class="span3"] {
       margin-top: 10px;
-    }
-
-    div[id="index-search"]{
-      width: 350px;
     }
   </style>
 @endsection
@@ -47,6 +42,7 @@
   @parent
   <script>
     $(function() {
+      $('#criteria').val('{{ Input::get('criteria', 'product_orders.id') }}')
       $('select[id^=input-order]').on('change', function() {
         console.log($(this).attr('id'))
         if ($(this).val() == 3) {
@@ -71,25 +67,30 @@
   <h1>{{ __('orders.orders') }}</h1>  
   <hr>    
   <!-- ******************************* -Search form- ******************************* -->
-  <form>
+  <form class="inline-form">
     <div>
-      <div >
-        <span class="add-on">Search by</span>
-        <select class="span3">
-          <option>Order ID.</option>
-          <option>Customer name.</option>
-          <option>Order status.</option>
-        </select>
-      </div>
-      <div id="index-search">
-        <input class="span3" type="text" placeholder="Search..."> 
-        <button class="btn">Search</button>
-      </div>
+      <span class="add-on">Search by</span>
+      <select class="span3" name="criteria" id="criteria">
+        <option value="product_orders.id">Order ID.</option>
+        <option value="user.name">Customer name.</option>
+      </select>
+      <input class="span3" type="text" name="keyword" placeholder="Search..."> 
+      <span class="add-on">Status</span>
+      <select class="span3" name="status" id="status">
+        <option value="all">All</option>
+        <option value="0">Waiting for Baking</option>
+        <option value="1">Baking</option>
+        <option value="2">Waiting for shipping</option>
+        <option value="3">Completed</option>
+        <option value="4">Cancel</option>
+      </select>
+    </div>
+    <div>
+      <span class="add-on">From:</span> <input type="text" name="start-date" value="{{ Input::get('start-date', date('Y-m-d')) }}"> 
+      <span class="add-on">To:</span> <input type="text" name="end-date" value="{{ Input::get('end-date', date('Y-m-d')) }}">  
+      <button class="btn">Search</button>
     </div>
     <!-- Search by Date -->
-    <!-- From: <input type="text" name="start-date" value="{{ Input::get('start-date', date('Y-m-d')) }}"> 
-    To: <input type="text" name="end-date" value="{{ Input::get('end-date', date('Y-m-d')) }}">  
-    <button class="btn">Search</button> -->
   </form>
   <!-- ******************************* -End Search form- ******************************* -->
   <hr>    
