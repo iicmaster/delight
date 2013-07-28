@@ -60,7 +60,8 @@
 						<a href="/admin/materials/orders/approve/{{ $data->id }}" role="button" class="btn" title="{{ __('materials.approve') }}"><i class="icon-ok-circle"></i></a>
 						<a href="/admin/materials/orders/delete/{{ $data->id }}" role="button" class="btn" title="{{ __('admin.button_delete') }}"><i class="icon-trash"></i></a>
 					@endif
-
+					
+					<!-- Order Detail Modal -->
 					<div id="create-update-{{ $data->id }}" class="modal hide fade left" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						<div class="modal-header">
 							<button type="button" class="close" data-dismiss="modal" aria-hidden="true" title="{{ __('admin.button_close') }}">×</button>
@@ -86,7 +87,7 @@
 										<td class="left">{{ $item->supplier->name }}</td>
 										<td class="left">{{ $item->material->name }}</td>
 										<td class="right">{{ Helper::add_comma($item->ordered_quantity) }}</td>
-										<td class="right">{{ $item->approved_quantity ? Helper::add_comma($item->ordered_quantity) : '-' }}</td>
+										<td class="right">{{ $item->approved_quantity ? Helper::add_comma($item->approved_quantity) : '-' }}</td>
 										<td class="center">{{ $item->material->unit }}</td>
 									</tr>
 									@endforeach
