@@ -6,6 +6,13 @@
 
 @section('css')
   @parent
+  <style>
+    #report-table.table-striped table,
+    #report-table.table-striped table tr,
+    #report-table.table-striped table td {
+      background: transparent !important;
+    }
+  </style>
 @endsection
 
 @section('js')
@@ -20,25 +27,39 @@
   <div id="material-used-report">
     <h1>{{ __('reports.material_used') }}</h1>
     <hr>
-    <p>Start date {{ Input::get('start-date')}} to {{ Input::get('end-date')}}</p>
-    <?php // dd($materials); ?>
+    <p>Date: {{ Input::get('start-date')}} to {{ Input::get('end-date')}}</p>
     @if(count($materials))
-      <table class="table table-striped materials-table">
+      <table id="report-table" class="table table-striped">
         <thead>
           <tr>
             <th class="span1">#</th>
             <th>Name</th>
+            <th class="span2">Date</th>
             <th class="span2">Quantity</th>
             <th class="span2">Unit</th>
+            <th class="span2">Unit Price</th>
           </tr>
         </thead>
         <tbody>
           @foreach($materials as $key => $material)
             <tr>
               <td>{{ ++$key }}</td>
-              <td>{{ $material->material->name }}</td>
-              <td class="right">{{ Helper::add_comma(abs($material->total)) }}</td>
-              <td>{{ $material->material->unit }}</td>
+              <td colspan="5">
+                <p>{{ $material['name'] }}</p>
+                <table class="table">
+                  <tbody>
+                    @foreach($material['transactions'] as $key => $transaction)
+                      <tr>
+                        <td></td>
+                        <td class="span2">{{ $transaction->stock_code }}</td>
+                        <td class="span2 right">{{ Helper::add_comma(abs($transaction->total)) }}</td>
+                        <td class="span2">{{ $transaction->material->unit }}</td>
+                        <td class="span2 right">{{ $transaction->price_per_unit }}</td>
+                      </tr>
+                    @endforeach
+                  </tbody>
+                </table>
+              </td>
             </tr>
           @endforeach
         </tbody>
