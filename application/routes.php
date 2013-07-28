@@ -51,7 +51,7 @@ Route::controller(array(
     'admin.reports.materials',
 ));
 
-// Required auth
+// Required user auth
 Route::group(array('before' => 'auth'), function()
 {
     Route::get('profile', 'users@profile');
@@ -63,6 +63,11 @@ Route::group(array('before' => 'auth'), function()
 // Required admin auth
 Route::group(array('before' => 'admin_auth'), function()
 {
+    Route::get('admin/materials/(:any)/stock/transactions', array(
+        'as' => 'admin.materials.stock.transactions', 
+        'uses' => 'admin.materials.stock@transactions'
+    ));
+
     Route::controller(array(
         'admin.home',
         'admin.users',

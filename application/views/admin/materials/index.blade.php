@@ -33,7 +33,7 @@ Materials
 	<!-- Button to trigger modal -->
 	<a href="#create-modal" role="button" class="btn" data-toggle="modal" style="float:right"><i class="icon-plus"></i> {{ __('admin.button_create') }}</a>
 	 
-	<!-- Create Modal -->
+	<!-- Create Material Modal -->
 	<div id="create-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		{{ Form::open('admin/materials/index/create', '', array('class' => 'form-horizontal')); }}
 		<div class="modal-header">
@@ -92,7 +92,7 @@ Materials
 				<th class="left">{{ __('admin.name') }}</th>
 				<th class="span2 right">{{ __('materials.stock_remain') }}</th>
 				<th class="span1 left">{{ __('admin.unit') }}</th>
-				<th class="span2"></th>
+				<th class="span3"></th>
 			</tr>
 		</thead>
 		<tbody>
@@ -103,9 +103,11 @@ Materials
 				<td class="right">{{ Helper::add_comma($data->stock_remain) }}</td>
 				<td class="left">{{ $data->unit }}</td>
 				<td class="right">
+					<a href="{{ URL::to_route('admin.materials.stock.transactions', array($data->id)) }}" role="button" class="btn" title="View Transactions"><i class="icon-list"></i></a>
 					<a href="#update-modal-{{ $data->id }}" role="button" class="btn" data-toggle="modal" title="{{ __('admin.button_update') }}"><i class="icon-pencil"></i></a>
 					<a href="/admin/materials/index/delete/{{ $data->id }}" role="button" class="btn" title="{{ __('admin.button_delete') }}"><i class="icon-trash"></i></a>
 
+					<!-- Update Material Modal -->
 					<div id="update-modal-{{ $data->id }}" class="modal hide fade left" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 						{{ Form::open('admin/materials/index/update/'.$data->id, '', array('class' => 'form-horizontal')) }}
 						<div class="modal-header">
