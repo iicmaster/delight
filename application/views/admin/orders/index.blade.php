@@ -42,7 +42,8 @@
   @parent
   <script>
     $(function() {
-      $('#criteria').val('{{ Input::get('criteria', 'product_orders.id') }}')
+      $('#criteria').val('{{ Input::get('criteria', 'product_orders.id') }}');
+      $('#status').val('{{ Input::get('status', 'all') }}');
       $('select[id^=input-order]').on('change', function() {
         console.log($(this).attr('id'))
         if ($(this).val() == 3) {
@@ -72,9 +73,9 @@
       <span class="add-on">Search by</span>
       <select class="span3" name="criteria" id="criteria">
         <option value="product_orders.id">Order ID.</option>
-        <option value="user.name">Customer name.</option>
+        <option value="users.name">Customer name.</option>
       </select>
-      <input class="span3" type="text" name="keyword" placeholder="Search..."> 
+      <input class="span3" type="text" name="keyword" placeholder="Search..." value="{{ Input::get('keyword') }}"> 
       <span class="add-on">Status</span>
       <select class="span3" name="status" id="status">
         <option value="all">All</option>
