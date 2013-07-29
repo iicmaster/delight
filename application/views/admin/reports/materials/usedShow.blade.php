@@ -35,6 +35,7 @@
             <th class="span1">#</th>
             <th>Name</th>
             <th class="span2">Date</th>
+            <th class="span2">Order ID</th>
             <th class="span2">Quantity</th>
             <th class="span2">Unit</th>
             <th class="span2">Unit Price</th>
@@ -44,7 +45,7 @@
           @foreach($materials as $key => $material)
             <tr>
               <td>{{ ++$key }}</td>
-              <td colspan="5">
+              <td colspan="6">
                 <p>{{ $material['name'] }}</p>
                 <table class="table">
                   <tbody>
@@ -52,6 +53,7 @@
                       <tr>
                         <td></td>
                         <td class="span2">{{ $transaction->stock_code }}</td>
+                        <td class="span2 right">{{ $transaction->material_order_id }}</td>
                         <td class="span2 right">{{ Helper::add_comma(abs($transaction->total)) }}</td>
                         <td class="span2">{{ $transaction->material->unit }}</td>
                         <td class="span2 right">{{ $transaction->price_per_unit }}</td>

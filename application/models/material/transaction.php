@@ -19,6 +19,7 @@ class Material_Transaction extends Eloquent
         $sql = "SELECT 
                     material_id,
                     stock_code, 
+                    material_order_id,
                     price_per_unit,
                     SUM(quantity) as remain
                 FROM material_transactions

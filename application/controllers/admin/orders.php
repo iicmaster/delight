@@ -112,6 +112,7 @@ class Admin_Orders_Controller extends Base_Controller
                             'product_order_id' => $order_id,
                             'material_id' => $material['id'],
                             'stock_code' => $stock->stock_code,
+                            'material_order_id' => $stock->material_order_id,
                             'quantity' => ($quantity * -1),
                             'price_per_unit' => $stock->price_per_unit,
                         ]);
