@@ -28,7 +28,7 @@
     <h1>{{ __('reports.material_used') }}</h1>
     <hr>
     <p>Date: {{ Input::get('start-date')}} to {{ Input::get('end-date')}}</p>
-    @if(count($materials))
+    @if(isset($materials) and count($materials) > 0)
       <table id="report-table" class="table table-striped">
         <thead>
           <tr>

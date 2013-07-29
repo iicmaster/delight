@@ -21,6 +21,7 @@ class Admin_Reports_Materials_Controller extends Base_Controller
      */
     public function post_used()
     {
+        $data = array();
         $start_date = Input::get('start-date', date('Y-m-d')).' 00:00:00';
         $end_date = Input::get('end-date', date('Y-m-d')).' 23:59:59';
 

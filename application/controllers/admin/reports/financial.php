@@ -24,32 +24,17 @@ class Admin_Reports_Financial_Controller extends Base_Controller
         $start_date = Input::get('start-date', date('Y-m-d')).' 00:00:00';
         $end_date = Input::get('end-date', date('Y-m-d')).' 23:59:59';
 
-        $data['prduct_sales'] = Product_Order::join(
+        $product_orders = Product_Order::join(
                                                 'locations',
                                                 'product_orders.location_id', '=', 'locations.id'
                                              )
                                              ->where('locations.user_id', '=', Auth::user()->id)
                                              ->where('status', '=', '3')
-		                                     ->where_between('product_orders.updated_at', $start_date, $end_date)
-		                                     ->sum('total');
+                                             ->where_between('product_orders.updated_at', $start_date, $end_date);
 
-        $data['shipping_fee'] = Product_Order::join(
-                                                'locations',
-                                                'product_orders.location_id', '=', 'locations.id'
-                                             )
-                                             ->where('locations.user_id', '=', Auth::user()->id)
-                                             ->where('status', '=', '3')
-                                             ->where_between('product_orders.updated_at', $start_date, $end_date)
-                                             ->sum('shipping_fee');
-
-        $data['shipping_cost'] = Product_Order::join(
-                                                'locations',
-                                                'product_orders.location_id', '=', 'locations.id'
-                                              )
-                                              ->where('locations.user_id', '=', Auth::user()->id)
-                                              ->where('status', '=', '3')
-                                              ->where_between('product_orders.updated_at', $start_date, $end_date)
-                                              ->sum('shipping_cost');
+        $data['prduct_sales'] = $product_orders->sum('total');
+        $data['shipping_fee'] = $product_orders->sum('shipping_fee');
+        $data['shipping_cost'] = $product_orders->sum('shipping_cost');
 
         $materials = Material_Transaction::with('material')
                                          ->select(array(DB::raw('ABS(SUM(quantity * price_per_unit)) as cost')))

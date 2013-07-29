@@ -100,7 +100,7 @@ class Admin_Orders_Controller extends Base_Controller
 
                     // Get remain stock
                     $stocks = Material_Transaction::get_remain_stock($material['id']);
-                    $total_qualtity = $stocks->total;
+                    $total_qualtity = $material['quantity'];
 
                     while ($total_qualtity > 0) {
                         $stock = current($stocks);
