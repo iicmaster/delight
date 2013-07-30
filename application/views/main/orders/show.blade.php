@@ -175,7 +175,7 @@ Order no: {{ $order->id }}
             </tr>
               <td class="right">Shipping fee</td>
               <td class="right">
-                <span id="shipping-fee">0</span>
+                <span id="shipping-fee">{{ Helper::add_comma($order->shipping_fee) }}</span>
                 <input 
                   id="shipping-fee-input" 
                   name="orders[head][shipping_fee]" 
@@ -187,7 +187,7 @@ Order no: {{ $order->id }}
             </tr>
               <td class="right">Grand Total</td>
               <td class="right">
-                <span id="grand-total">{{ $total }}</span>
+                <span id="grand-total">{{ $order->total + $order->shipping_fee }}</span>
               </td>
             </tr>
           </tfoot>
