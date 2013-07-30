@@ -90,15 +90,41 @@ Cart
   @parent
   {{ HTML::script('js/bootbox.min.js') }}
   <script>
-    $(function() {
-      $('#inputLocation').on('change', function() {
-        var shippingFee = parseInt($('option:selected', this).attr('price'));
-        var total = parseInt($('#total').html());
-        var grandTotal = shippingFee + total
+    $.fn.digits = function() { 
+        return this.each(function(){ 
+            $(this).text( $(this).text().replace(/(\d)(?=(\d\d\d)+(?!\d))/g, "$1,") ); 
+        })
+    }
 
-        $('#shipping-fee').html(shippingFee);
-        $('#shipping-fee-input').val(shippingFee);
-        $('#grand-total').html(grandTotal);
+    function sumGrandTotal() {
+      var total = 0;
+      var shippingFee = parseInt($('option:selected', $('#inputLocation')).attr('price').replace(/,/g, ''));
+      $('#shipping-fee').html(shippingFee);
+      $('#shipping-fee-input').val(shippingFee);
+
+      $('#order-table tbody tr').each(function(i) {
+        var unitPrice = $(this).find('td:eq(4)').find('input[type=hidden]').val();
+        var quantity = $(this).find('td:eq(5)').find('input').val();
+        var itemTotal = quantity * unitPrice;
+
+        $(this).find('td:eq(6)').html(itemTotal).digits();
+
+        total += (quantity * unitPrice);
+      });
+
+      var grandTotal = shippingFee + total
+
+      $('#total').html(total).digits()
+      $('#grand-total').html(grandTotal).digits();
+    }
+
+    $(function() {
+      $('.order-item-quantity').on('change', function() {
+        sumGrandTotal();
+      });
+
+      $('#inputLocation').on('change', function() {
+        sumGrandTotal();
       });
 
       $('#submit-btn').on('click', function(event) {
@@ -111,7 +137,6 @@ Cart
             });
           }
       });
-
     });
   </script>
 @endsection 
@@ -120,7 +145,7 @@ Cart
   <div>
     {{ Form::open('cart/checkout', 'POST', array('class' => 'form-horizontal')) }}
       <h1>Cart</h1>
-      <table class="table table-striped table-bordered">
+      <table id="order-table" class="table table-striped table-bordered">
         <thead>
           <tr>
             <th>#</th>
@@ -129,7 +154,7 @@ Cart
             <th>Size</th>
             <th>Price</th>
             <th>Quantity</th>
-            <th>Total</th>
+            <th class="span1">Total</th>
             <th></th>
           </tr>
         </thead>
@@ -163,9 +188,11 @@ Cart
               </td>
               <td class="right">
                 <input 
-                  type="text" 
+                  type="number" 
+                  min="1"
+                  max="10"
                   name="orders[items][{{ $loop }}][quantity]" 
-                  class="right" 
+                  class="span1 right order-item-quantity" 
                   value="{{ $product->quantity }}"
                 >
               </td>
@@ -216,7 +243,7 @@ Cart
           <label for="inputLocation" class="control-label">Location</label>
           <div class="controls">
             <select id="inputLocation" name="orders[head][location_id]" required>
-              <option value="" selected disabled>Please select</option>
+              <option value="" price="0" selected disabled>Please select</option>
               @foreach ($locations as $location)
                 <option value="{{ $location->id }}" price="{{ $location->price }}">{{ $location->name }}</option>
               @endforeach
