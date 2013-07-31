@@ -277,7 +277,7 @@ Order no: {{ $order->id }}
             </tr>
               <td class="right">Grand Total</td>
               <td class="right">
-                <span id="grand-total">{{ $order->grand_total }} ฿</span>
+                <span id="grand-total">{{ number_format($order->total + $order->shipping_fee) }} ฿</span>
               </td>
             </tr>
           </tfoot>

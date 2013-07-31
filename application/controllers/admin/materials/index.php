@@ -50,13 +50,15 @@ class Admin_Materials_Index_Controller extends Base_Controller
 		unset($input['suppliers']);
 
 		try {
-			$material = Material::find($id)->update($id, $input);
+			$material = Material::find($id);
+			$material->update($id, $input);
+			// dd($material);
 			$material->suppliers()->sync(Input::get('suppliers'));
 
             $report['status'] = 'success';
 			$report['message'] = __('admin.message_create_succeed');
 		} catch(\Exception $e) {
-            // dd($e->getMessage());
+            dd($e->getMessage());
             Log::write('error', $e->getMessage());
             $report['status'] = 'error';
             $report['message'] = __('admin.message_update_failed');

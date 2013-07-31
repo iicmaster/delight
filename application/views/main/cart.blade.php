@@ -115,6 +115,7 @@ Cart
       var grandTotal = shippingFee + total
 
       $('#total').html(total).digits()
+      $('#total-input').val(total);
       $('#grand-total').html(grandTotal).digits();
     }
 
