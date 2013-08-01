@@ -9,7 +9,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'แป้งเค้ก',
             'unit' => 'g.',
             'min_stock' => '500',
-            'max_stock' => '10000',
+            'max_stock' => '20000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -20,7 +20,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'ใข่ไก่',
             'unit' => 'ฟอง',
             'min_stock' => '5',
-            'max_stock' => '32',
+            'max_stock' => '120',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -31,7 +31,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'น้ำตาลทรายป่น',
             'unit' => 'g.',
             'min_stock' => '500',
-            'max_stock' => '5000',
+            'max_stock' => '10000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -42,7 +42,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'ผงฟู',
             'unit' => 'g.',
             'min_stock' => '500',
-            'max_stock' => '5000',
+            'max_stock' => '10000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -53,7 +53,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'นมข้นจืด',
             'unit' => 'cc.',
             'min_stock' => '100',
-            'max_stock' => '1000',
+            'max_stock' => '15000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -64,7 +64,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'ผงโกโก้',
             'unit' => 'g.',
             'min_stock' => '500',
-            'max_stock' => '5000',
+            'max_stock' => '10000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -75,7 +75,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'น้ำมันพืช',
             'unit' => 'cc.',
             'min_stock' => '100',
-            'max_stock' => '1000',
+            'max_stock' => '2000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -86,7 +86,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'เกลือป่น',
             'unit' => 'g.',
             'min_stock' => '500',
-            'max_stock' => '5000',
+            'max_stock' => '10000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -108,7 +108,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'น้ำมะนาว',
             'unit' => 'cc.',
             'min_stock' => '200',
-            'max_stock' => '500',
+            'max_stock' => '1000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -119,7 +119,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'ครีมออฟทาทา',
             'unit' => 'cc.',
             'min_stock' => '50',
-            'max_stock' => '100',
+            'max_stock' => '500',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -163,7 +163,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'ผงวุ้น',
             'unit' => 'g.',
             'min_stock' => '50',
-            'max_stock' => '500',
+            'max_stock' => '1000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -174,7 +174,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'แป้งข้าวโพด',
             'unit' => 'g.',
             'min_stock' => '500',
-            'max_stock' => '5000',
+            'max_stock' => '10000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -185,7 +185,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'เหล้ารัม',
             'unit' => 'cc.',
             'min_stock' => '100',
-            'max_stock' => '1000',
+            'max_stock' => '5000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -196,7 +196,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'เนยสด',
             'unit' => 'g.',
             'min_stock' => '100',
-            'max_stock' => '1000',
+            'max_stock' => '5000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -218,7 +218,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'แป้งกวนไส้',
             'unit' => 'g.',
             'min_stock' => '500',
-            'max_stock' => '5000',
+            'max_stock' => '10000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -229,7 +229,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'นมผง',
             'unit' => 'g.',
             'min_stock' => '500',
-            'max_stock' => '5000',
+            'max_stock' => '10000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -273,7 +273,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'วิปปิ้งครีม',
             'unit' => 'g.',
             'min_stock' => '1000',
-            'max_stock' => '5000',
+            'max_stock' => '10000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -284,7 +284,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'น้ำตาลไอซิ่ง',
             'unit' => 'g.',
             'min_stock' => '500',
-            'max_stock' => '1000',
+            'max_stock' => '5000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -295,7 +295,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'นมสด',
             'unit' => 'g.',
             'min_stock' => '500',
-            'max_stock' => '1000',
+            'max_stock' => '10000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);
@@ -306,7 +306,7 @@ class Seed_Materials extends \S2\Seed
             'description' => 'สตอเบอร์รี่',
             'unit' => 'g.',
             'min_stock' => '500',
-            'max_stock' => '1000',
+            'max_stock' => '5000',
         ]);
         $material->save();
         $material->users()->sync([1, 2]);

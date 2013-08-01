@@ -69,8 +69,8 @@
                         <td class="span2 right">{{ $transaction->material_order_id }}</td>
                         <td class="span2 right">{{ Helper::add_comma(abs($transaction->total)) }}</td>
                         <td class="span2">{{ $transaction->material->unit }}</td>
-                        <td class="span2 right">{{ $transaction->price_per_unit }}</td>
-                        <td class="span2 right">{{ number_format($total) }}</td>
+                        <td class="span2 right">{{ number_format($transaction->price_per_unit, 2) }}</td>
+                        <td class="span2 right">{{ number_format($total, 2)}}</td>
                       </tr>
                       <?php $grand_total += $total  ?>
                     @endforeach

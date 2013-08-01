@@ -36,7 +36,7 @@ Materials Stock Transaction
 				<td class="left">{{ Helper::change_date_format($data->stock_code) }}</td>
 				<td class="right">{{ number_format($data->quantity) }}</td>
 				<td class="right">{{ $data->material->unit }}</td>
-				<td class="right">{{ number_format($data->price_per_unit, 4) }}</td>
+				<td class="right">{{ number_format($data->price_per_unit, 2) }}</td>
 				<td class="right">{{ number_format($data->amount) }}</td>
 			</tr>
 			@empty
