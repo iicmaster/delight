@@ -31,8 +31,8 @@ class Admin_Reports_Materials_Controller extends Base_Controller
                                                      ->where('quantity', '<', '0')
                                                      ->where_between('created_at', $start_date, $end_date)
                                                      ->group_by('material_id')
-                                                     ->group_by('stock_code')
                                                      ->group_by('material_order_id')
+                                                     ->group_by('stock_code')
                                                      ->get();
 
         foreach ($material_transactions as $key => $transactions) {

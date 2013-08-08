@@ -16,7 +16,7 @@
 
     form { margin: 0; }
     input[type="text"] {
-      margin-top: 10px;
+      margin: 10px 0px 10px 0px;
     }
 
     div[class="input-prepend"]{
@@ -28,12 +28,31 @@
     }
 
     select[class="span3"] {
-      margin-top: 10px;
+      margin: 10px 20px 10px 10px;
       height: 29.5px;
     }
 
+    select[name="status"] {
+      margin: 10px 20px 10px 10px;
+      height: 29.5px;
+      width: 170px;
+    }
+
+    button.btn {
+      margin: 0px 0px 0px 170px;
+    }
+
+    input[name="start-date"] {
+      margin: 0px 10px 10px 36px;
+    }
+
+    input[name="end-date"] {
+      margin: 0px 10px 10px 10px;
+    }
+
     input[class="span3"] {
-      margin-top: 10px;
+      margin: 10px 10px 10px 0px;
+      width: 246px;
     }
   </style>
 @endsection
