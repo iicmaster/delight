@@ -26,7 +26,7 @@ class Material_Transaction extends Eloquent
                 WHERE
                     material_id = {$material_id}
                     AND user_id = ".Auth::user()->id."
-                GROUP BY stock_code, material_id
+                GROUP BY stock_code, material_id, material_order_id
                 HAVING remain > 0";
         return DB::query($sql);
 	}
