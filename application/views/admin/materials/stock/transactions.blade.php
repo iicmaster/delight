@@ -21,7 +21,7 @@ Materials Stock Transaction
 	<table class="table table-striped">
 		<thead>
 			<tr>
-				<th class="span1 center">#</th>
+				<th class="span1 center">Order ID</th>
 				<th class="left">Date</th>
 				<th class="span2 right">Buy</th>
 				<th class="span2 right">Remain</th>

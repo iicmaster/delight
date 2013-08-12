@@ -8,6 +8,7 @@ class Admin_Materials_Stock_Controller extends Base_Controller
 		$data['query'] = Material_Transaction::where('user_id', '=', Auth::user()->id)
 		                                     ->where('material_id', '=', $material_id)
 		                                     ->where('quantity', '>', 0)
+		                                     ->order_by('stock_code', 'DESC')
 		                                     ->paginate(10);
 		$data['history'] = Material_Transaction::get_stock_history($material_id);
 

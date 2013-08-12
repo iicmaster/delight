@@ -49,8 +49,15 @@ class Material_Transaction extends Eloquent
                 WHERE
                     material_id = {$material_id}
                     AND user_id = ".Auth::user()->id."
-                GROUP BY stock_code, material_id, material_order_id";
-                
+                GROUP BY 
+                    stock_code, 
+                    material_id, 
+                    material_order_id
+                ORDER BY 
+                    stock_code DESC, 
+                    material_id, 
+                    material_order_id DESC";
+
         return DB::query($sql);
     }
 
