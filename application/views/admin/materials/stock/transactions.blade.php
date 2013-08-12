@@ -23,7 +23,8 @@ Materials Stock Transaction
 			<tr>
 				<th class="span1 center">#</th>
 				<th class="left">Date</th>
-				<th class="span2 right">Quantity</th>
+				<th class="span2 right">Buy</th>
+				<th class="span2 right">Remain</th>
 				<th class="span1 right">Unit</th>
 				<th class="span1 right">Unit Price</th>
 				<th class="span1 right">Total</th>
@@ -31,16 +32,19 @@ Materials Stock Transaction
 		</thead>
 		<tbody>
 			@forelse ($query->results as $key => $data)
-			<tr>
-				<td class="center">{{ $data->material_order_id }}</td>
-				<td class="left">{{ Helper::change_date_format($data->stock_code) }}</td>
-				<td class="right">{{ number_format($data->quantity) }}</td>
-				<td class="right">{{ $data->material->unit }}</td>
-				<td class="right">{{ number_format($data->price_per_unit, 2) }}</td>
-				<td class="right">{{ number_format($data->amount) }}</td>
-			</tr>
+				<?php $stock = current($history); ?>
+				<tr>
+					<td class="center">{{ $data->material_order_id }}</td>
+					<td class="left">{{ Helper::change_date_format($data->stock_code) }}</td>
+					<td class="right">{{ number_format($data->quantity) }}</td>
+					<td class="right">{{ number_format($stock->remain) }}</td>
+					<td class="right">{{ $data->material->unit }}</td>
+					<td class="right">{{ number_format($data->price_per_unit, 2) }}</td>
+					<td class="right">{{ number_format($data->amount) }}</td>
+				</tr>
+				<?php next($history); ?>
 			@empty
-			<tr><td colspan="4" class="center">No result found.</td></tr>
+				<tr><td colspan="4" class="center">No result found.</td></tr>
 			@endforelse
 		</tbody>
 	</table>

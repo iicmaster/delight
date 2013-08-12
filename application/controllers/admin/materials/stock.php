@@ -9,6 +9,8 @@ class Admin_Materials_Stock_Controller extends Base_Controller
 		                                     ->where('material_id', '=', $material_id)
 		                                     ->where('quantity', '>', 0)
 		                                     ->paginate(10);
+		$data['history'] = Material_Transaction::get_stock_history($material_id);
+
 		return View::make('admin.materials.stock.transactions', $data);
 	}
 
